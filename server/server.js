@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose'
 import { Person } from './models/Person.js'
+import { DB_PASSWORD, DB_USERNAME } from './.env.js';
 
 const app = express()
 const PORT = 8000
@@ -15,12 +16,11 @@ app.use(express.json())
 
 app.post('/person', async (req, res) => {
     const { name, age } = req.body
+    const person = { name, age }
     
     if (!name) {
         res.status(422).json({ error: 'Name and age are required.' })
     }
-    
-    const person = { name, age }
     
     try {
         await Person.create(person)
@@ -29,14 +29,9 @@ app.post('/person', async (req, res) => {
     } catch (err) {
         res.status(500).json({ error: err })
     }
-    
 })
 
-
-const DB_USER = 'vitoraugustto'
-const DB_PASSWORD = ''
-
-mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@heros-market-cluster.mcfekrd.mongodb.net/?retryWrites=true&w=majority`)
+mongoose.connect(`mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@heros-market-cluster.mcfekrd.mongodb.net/?retryWrites=true&w=majority`)
 .then(() => {
     app.listen(PORT, () => {
         console.log('App listening on port', PORT)
