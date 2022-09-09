@@ -21,7 +21,7 @@ app.post('/person', async (req, res) => {
     }
     
     const person = { name, age }
-
+    
     try {
         await Person.create(person)
 
@@ -36,7 +36,7 @@ app.post('/person', async (req, res) => {
 const DB_USER = 'vitoraugustto'
 const DB_PASSWORD = ''
 
-mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@heros-market-clust.tskbhjh.mongodb.net/?retryWrites=true&w=majority`)
+mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@heros-market-cluster.mcfekrd.mongodb.net/?retryWrites=true&w=majority`)
 .then(() => {
     app.listen(PORT, () => {
         console.log('App listening on port', PORT)
