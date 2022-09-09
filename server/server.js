@@ -18,9 +18,7 @@ app.post('/person', async (req, res) => {
     const { name, age } = req.body
     const person = { name, age }
     
-    if (!name) {
-        res.status(422).json({ error: 'Name and age are required.' })
-    }
+    if (!name || !age) res.status(422).json({ error: 'Name and age are required.' })
     
     try {
         await Person.create(person)
