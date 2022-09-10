@@ -1,38 +1,22 @@
-import express from 'express';
+import express from 'express'
 import mongoose from 'mongoose'
-import { Person } from './models/Person.js'
-import { DB_PASSWORD, DB_USERNAME } from './.env.js';
-
+import { DB_PASSWORD, DB_USERNAME } from './.env.js'
+import personRoutes from './src/routes/personRoutes.js'
 const app = express()
 const PORT = 8000
 
 app.use(
-    express.urlencoded({
-        extended: true
-    })
+  express.urlencoded({
+    extended: true
+  })
 )
-
 app.use(express.json())
-
-app.post('/person', async (req, res) => {
-    const { name, age } = req.body
-    const person = { name, age }
-    
-    if (!name || !age) res.status(422).json({ error: 'Name and age are required.' })
-    
-    try {
-        await Person.create(person)
-
-        res.status(201).json({ message: 'Person created successfully' })
-    } catch (err) {
-        res.status(500).json({ error: err })
-    }
-})
+app.use('/person', personRoutes)
 
 mongoose.connect(`mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@heros-market-cluster.mcfekrd.mongodb.net/?retryWrites=true&w=majority`)
-.then(() => {
+  .then(() => {
     app.listen(PORT, () => {
-        console.log('App listening on port', PORT)
+      console.log('App listening on port', PORT)
     })
-})
-.catch(err => console.log(err))
+  })
+  .catch(err => console.log(err))
