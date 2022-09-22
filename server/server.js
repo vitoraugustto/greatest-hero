@@ -1,8 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 
-import { DB_PASSWORD, DB_USERNAME } from './.env';
-import itemRoutes from './src/routes/itemRoutes';
+import { DB_PASSWORD, DB_USERNAME } from './.env.js';
+import itemRoutes from './src/routes/itemRoutes.js';
 
 const app = express();
 const PORT = 8000;
