@@ -835,6 +835,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-import-helpers@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "eslint-plugin-import-helpers@npm:1.2.1"
+  peerDependencies:
+    eslint: 5.x - 8.x
+  checksum: d2b2f835f5d3cb0cfadd28342d532360b17c9a2d64691eb455b067b2312ae446a5971a1640496eb3ec79fbdec2f56321d32b0cf7a176d5e8d3fcb99c9f087a3c
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-import@npm:^2.25.2":
   version: 2.26.0
   resolution: "eslint-plugin-import@npm:2.26.0"
@@ -2646,6 +2655,7 @@ __metadata:
     eslint: "npm:^7.32.0 || ^8.2.0"
     eslint-config-airbnb-base: "npm:^15.0.0"
     eslint-plugin-import: "npm:^2.25.2"
+    eslint-plugin-import-helpers: "npm:^1.2.1"
     express: "npm:^4.18.1"
     mongoose: "npm:^6.5.2"
     nodemon: "npm:^2.0.19"
