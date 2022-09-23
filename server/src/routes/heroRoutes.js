@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import Hero from '../models/Hero.js';
+import Item from '../models/Item.js';
 
 const router = Router();
 
@@ -31,15 +32,24 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.patch('/', async (req, res) => {
-  const { attack, defense } = req.body;
-  const heroStatus = { attack, defense };
+router.patch('/equip-item/:id', async (req, res) => {
+  const { id } = req.params;
 
   try {
-    const hero = await Hero.find();
+    const hero = await Hero.findOne();
+    const item = await Item.findOne({ _id: id });
+
+    const currentAttack = hero.status.attack;
+    const currentDefense = hero.status.defense;
+    const itemAttack = item.status.attack;
+    const itemDefense = item.status.defense;
+
     const updatedHero = await Hero.findOneAndUpdate(
-      { _id: hero[0]._id },
-      { 'status.attack': heroStatus.attack, 'status.defense': heroStatus.defense },
+      {},
+      {
+        'status.attack': currentAttack + itemAttack,
+        'status.defense': currentDefense + itemDefense,
+      },
       { new: true },
     );
 
