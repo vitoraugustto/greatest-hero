@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
   const hero = { name, role, status };
 
   try {
-    await Hero.updateOne({ _id: '632d3d924372d1879fb3a50f' }, hero);
+    await Hero.updateOne({}, hero, { upsert: true });
 
     res.status(201).json(hero);
   } catch (error) {
