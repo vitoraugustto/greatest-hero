@@ -27,4 +27,22 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.patch('/', async (req, res) => {
+  const { attack, defense } = req.body;
+  const heroStatus = { attack, defense };
+
+  try {
+    const hero = await Hero.find();
+    const updatedHero = await Hero.findOneAndUpdate(
+      { _id: hero[0]._id },
+      { status: heroStatus },
+      { new: true },
+    );
+
+    res.status(200).json(updatedHero);
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+});
+
 export default router;
