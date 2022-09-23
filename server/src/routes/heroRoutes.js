@@ -15,13 +15,17 @@ router.get('/', async (_, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const { name, role, status } = req.body;
-  const hero = { name, role, status };
+  const { name, role } = req.body;
+  const hero = { name, role };
 
   try {
-    await Hero.updateOne({}, hero, { upsert: true });
+    const createdHero = await Hero.findOneAndUpdate(
+      {},
+      { ...hero, status: { attack: 1, defense: 0, hp: 100 } },
+      { upsert: true, new: true },
+    );
 
-    res.status(201).json(hero);
+    res.status(201).json(createdHero);
   } catch (error) {
     res.status(500).json({ error });
   }
@@ -35,7 +39,7 @@ router.patch('/', async (req, res) => {
     const hero = await Hero.find();
     const updatedHero = await Hero.findOneAndUpdate(
       { _id: hero[0]._id },
-      { status: heroStatus },
+      { 'status.attack': heroStatus.attack, 'status.defense': heroStatus.defense },
       { new: true },
     );
 
