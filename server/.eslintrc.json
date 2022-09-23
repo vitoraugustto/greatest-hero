@@ -13,6 +13,7 @@
     "plugins": ["eslint-plugin-import-helpers"],
     "rules": {
       "import/extensions": ["off"], // remove later
+      "no-underscore-dangle": ["off"],
         "import-helpers/order-imports": [
             "error",
             {
