@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 
-const Hero = mongoose.model('Hero', {
+import { itemSchema } from './Item.js';
+
+const { Schema } = mongoose;
+
+const heroSchema = new Schema({
   name: String,
   role: String,
   status: {
@@ -8,7 +12,9 @@ const Hero = mongoose.model('Hero', {
     defense: Number,
     hp: Number,
   },
-  inventory: Array,
+  inventory: [itemSchema],
 });
+
+const Hero = mongoose.model('Hero', heroSchema);
 
 export default Hero;
