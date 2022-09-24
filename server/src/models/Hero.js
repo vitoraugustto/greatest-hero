@@ -8,6 +8,7 @@ const Hero = mongoose.model('Hero', {
     defense: Number,
     hp: Number,
   },
+  inventory: Array,
 });
 
 export default Hero;
