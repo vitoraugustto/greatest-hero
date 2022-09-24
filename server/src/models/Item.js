@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 
-const Item = mongoose.model('Item', {
+const { Schema } = mongoose;
+
+export const itemSchema = new Schema({
   name: String,
   description: String,
   role: String,
@@ -9,5 +11,7 @@ const Item = mongoose.model('Item', {
     defense: Number,
   },
 });
+
+const Item = mongoose.model('Item', itemSchema);
 
 export default Item;
