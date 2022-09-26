@@ -1,19 +1,36 @@
 import { Router } from 'express';
+import multer from 'multer';
 
 import Item from '../models/Item.js';
+import cloudinary from '../services/cloudinary.js';
 
 const router = Router();
+const upload = multer({ dest: 'uploads/' });
 
-router.post('/', async (req, res) => {
+router.post('/', upload.single('image'), async (req, res) => {
+  const image = req.file;
   const {
     name, description, role, status,
   } = req.body;
+
   const item = {
-    name, description, role, status,
+    name, description, role, status, image,
   };
 
+  try {
+    await cloudinary.v2.uploader.upload(
+      image.path,
+      { public_id: image.originalname.split('.')[0] },
+      (_, result) => {
+        item.image = result.url;
+      },
+    );
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+
   if (!name || !description || !role || Object.keys(item.status).length === 0) {
-    res.status(422).json({ error: 'Name, description, role and status are required.' });
+    res.status(422).json({ error: 'Name, description, role, status and image are required.' });
     return;
   }
 

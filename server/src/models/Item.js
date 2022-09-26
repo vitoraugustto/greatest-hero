@@ -6,6 +6,7 @@ export const itemSchema = new Schema({
   name: String,
   description: String,
   role: String,
+  image: String,
   status: {
     attack: Number,
     defense: Number,
