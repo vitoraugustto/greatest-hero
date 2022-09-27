@@ -22,7 +22,7 @@ dist-ssr
 !.yarn/versions
 
 # Environment 
-.env.prod
+.env.production
 
 # Editor directories and files
 .vscode/*
