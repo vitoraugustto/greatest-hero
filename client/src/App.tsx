@@ -1,11 +1,10 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 import './App.css';
 import reactLogo from './assets/react.svg';
-import { BACKEND_BASE_URL } from './config/api';
+import { fetchItems } from './services/items';
 
-interface IItem {
+export interface IItem {
   _id: string;
   name: string;
   image: string;
@@ -21,37 +20,44 @@ interface IText {
 }
 
 const App = () => {
-  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [items, setItems] = useState<[IItem]>([
+    { _id: '', name: '', image: '', status: { attack: 0, defense: 0 } },
+  ]);
 
-  const fetchItems = () => {
-    axios
-      .get(`${BACKEND_BASE_URL}/api/v1/items`)
-      .then((res) => setItems(res.data));
+  const handleFetchItems = async (): Promise<void> => {
+    setLoading(true);
+    fetchItems()
+      .then(({ data }) => setItems(data))
+      .catch((err) => console.log(err.response.data))
+      .finally(() => setLoading(false));
   };
 
   useEffect(() => {
-    fetchItems();
+    handleFetchItems();
   }, []);
 
   return (
     <div>
       <VitePlusReact />
       <h1>Hero's Market</h1>
-      {items.map((item: IItem) => (
-        <div
-          style={{
-            display: 'inline-block',
-            marginLeft: 12,
-            marginRight: 12,
-          }}
-          key={item._id}
-        >
-          <img style={{ width: 220, borderRadius: 12 }} src={item.image} />
-          <Text fontSize={18}>{item.name}</Text>
-          <Text fontSize={16}>Ataque: {item.status.attack}</Text>
-          <Text fontSize={16}>Defesa: {item.status.defense}</Text>
-        </div>
-      ))}
+      {loading
+        ? 'Carregando...'
+        : items.map((item: IItem) => (
+            <div
+              style={{
+                display: 'inline-block',
+                marginLeft: 12,
+                marginRight: 12,
+              }}
+              key={item._id}
+            >
+              <img style={{ width: 220, borderRadius: 12 }} src={item.image} />
+              <Text fontSize={18}>{item.name}</Text>
+              <Text fontSize={16}>Ataque: {item.status.attack}</Text>
+              <Text fontSize={16}>Defesa: {item.status.defense}</Text>
+            </div>
+          ))}
     </div>
   );
 };
