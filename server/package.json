@@ -1,5 +1,5 @@
 {
-  "name": "heros-market-server",
+  "name": "greatest-hero-backend",
   "type": "module",
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^3.3.0",

@@ -313,13 +313,13 @@ __metadata:
   linkType: hard
 
 "@humanwhocodes/config-array@npm:^0.10.5":
-  version: 0.10.5
-  resolution: "@humanwhocodes/config-array@npm:0.10.5"
+  version: 0.10.6
+  resolution: "@humanwhocodes/config-array@npm:0.10.6"
   dependencies:
     "@humanwhocodes/object-schema": "npm:^1.2.1"
     debug: "npm:^4.1.1"
     minimatch: "npm:^3.0.4"
-  checksum: 9bf08561df9fa3c97e8d031a0523ea85d5bd4bc39dbaaa612db527decef99d2b836a1561fc254c315615f7ef6e1695ac74c9b572812f3d78b1b726161ff455b1
+  checksum: e44a6af24ddbdbee0120f3b58f29c379b2b5647b7e7309dc26cd91b54b7dfb46ac8e250c25d50e161ed067b7cf438dde5ab47a316517ace8e94c4ea82876c904
   languageName: node
   linkType: hard
 
@@ -1173,9 +1173,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.251":
-  version: 1.4.265
-  resolution: "electron-to-chromium@npm:1.4.265"
-  checksum: 265287aed9fa2a3b9495bb60df7d75b72822c9b14f24fbe73412883828b99b9ade1d7b67c5bbf364da3280e2704d06db907f8aac5b664b25e07a7fc11dcf5b52
+  version: 1.4.267
+  resolution: "electron-to-chromium@npm:1.4.267"
+  checksum: 3c576eadf6d262edb68fbbdfe08cc821fd1f4d268e55643ee1728b31920d8543209ee797e8d68d43976a79554f0d796b9999eb7fa972aa129126687e819b5136
   languageName: node
   linkType: hard
 
@@ -1788,6 +1788,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"greatest-hero-backend@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "greatest-hero-backend@workspace:."
+  dependencies:
+    "@trivago/prettier-plugin-sort-imports": "npm:^3.3.0"
+    cloudinary: "npm:^1.32.0"
+    eslint: "npm:^8.24.0"
+    eslint-config-prettier: "npm:^8.5.0"
+    express: "npm:^4.18.1"
+    mongoose: "npm:^6.5.2"
+    multer: "npm:^1.4.5-lts.1"
+    nodemon: "npm:^2.0.19"
+    prettier: "npm:^2.7.1"
+  languageName: unknown
+  linkType: soft
+
 "has-flag@npm:^3.0.0":
   version: 3.0.0
   resolution: "has-flag@npm:3.0.0"
@@ -1824,22 +1840,6 @@ __metadata:
   checksum: 3e8c4d87ccd9c160d61a5db829b5fb647acac79e482476c857d5d1dc580517c6a77cf84337808f28361f6263008ce1ce5aff44407bd9241af93c623ef8d8d4f1
   languageName: node
   linkType: hard
-
-"heros-market-server@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "heros-market-server@workspace:."
-  dependencies:
-    "@trivago/prettier-plugin-sort-imports": "npm:^3.3.0"
-    cloudinary: "npm:^1.32.0"
-    eslint: "npm:^8.24.0"
-    eslint-config-prettier: "npm:^8.5.0"
-    express: "npm:^4.18.1"
-    mongoose: "npm:^6.5.2"
-    multer: "npm:^1.4.5-lts.1"
-    nodemon: "npm:^2.0.19"
-    prettier: "npm:^2.7.1"
-  languageName: unknown
-  linkType: soft
 
 "http-cache-semantics@npm:^4.1.0":
   version: 4.1.0
