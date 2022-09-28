@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import './App.css';
-import reactLogo from './assets/react.svg';
+import GlobalStyle from './components/GlobalStyle';
+import Background from './components/Layout/Background';
+import Spacer from './components/Layout/Spacer';
 import { fetchItems } from './services/items';
 
 export interface IItem {
@@ -16,6 +17,7 @@ export interface IItem {
 
 interface IText {
   fontSize?: number;
+  fontWeight?: string;
   children: React.ReactNode;
 }
 
@@ -37,57 +39,79 @@ const App = () => {
     handleFetchItems();
   }, []);
 
+  const lastItem = (index: number) => {
+    return index === items.length - 1;
+  };
+
   return (
-    <div>
-      <VitePlusReact />
-      <h1>Hero's Market</h1>
-      {loading
-        ? 'Carregando...'
-        : items.map((item: IItem) => (
-            <div
-              style={{
-                display: 'inline-block',
-                marginLeft: 12,
-                marginRight: 12,
-              }}
-              key={item._id}
-            >
-              <img style={{ width: 220, borderRadius: 12 }} src={item.image} />
-              <Text fontSize={18}>{item.name}</Text>
-              <Text fontSize={16}>Ataque: {item.status.attack}</Text>
-              <Text fontSize={16}>Defesa: {item.status.defense}</Text>
-            </div>
-          ))}
+    <Background>
+      <GlobalStyle />
+      <h1 style={{ color: '#fff', fontWeight: 'bold' }}>Loja do Herói</h1>
+      <Spacer mt={12} />
+      <div style={{ display: 'flex', flexDirection: 'row' }}>
+        {loading
+          ? 'Carregando...'
+          : items.map((item: IItem, index) => (
+              <Spacer mr={lastItem(index) ? 0 : 26}>
+                <InventoryItem item={item} />
+              </Spacer>
+            ))}
+      </div>
+    </Background>
+  );
+};
+
+const InventoryItem: React.FC<{ item: IItem }> = ({ item }) => {
+  const { name, image, status } = item;
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        borderRadius: 8,
+        backgroundColor: '#302a54',
+        alignItems: 'center',
+      }}
+    >
+      <Spacer p={16}>
+        <Text fontWeight="bold" fontSize={14}>
+          {name}
+        </Text>
+        <div
+          style={{
+            height: 180,
+            width: 220,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <img style={{ width: 120, borderRadius: 12 }} src={image} />
+        </div>
+        <div style={{ width: '100%' }}>
+          <Text fontSize={14}>Preço: Não definido.</Text>
+          <Spacer mt={10} />
+          <Text fontSize={14}>Ataque: {status.attack}</Text>
+          <Text fontSize={14}>Defesa: {status.defense}</Text>
+        </div>
+      </Spacer>
     </div>
   );
 };
 
-const Text: React.FC<IText> = ({ fontSize, children }) => {
+const Text: React.FC<IText> = ({ fontWeight, fontSize, children }) => {
   return (
     <p
       style={{
         fontSize: fontSize,
-        fontWeight: 'bold',
+        fontWeight: fontWeight,
         textAlign: 'left',
         color: '#caa5fa',
-        letterSpacing: 0.5,
       }}
     >
       {children}
     </p>
-  );
-};
-
-const VitePlusReact = () => {
-  return (
-    <div>
-      <a href="https://vitejs.dev" target="_blank">
-        <img src="/vite.svg" className="logo" alt="Vite logo" />
-      </a>
-      <a href="https://reactjs.org" target="_blank">
-        <img src={reactLogo} className="logo react" alt="React logo" />
-      </a>
-    </div>
   );
 };
 
