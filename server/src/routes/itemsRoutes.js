@@ -9,12 +9,14 @@ const upload = multer({ dest: 'uploads/' });
 
 router.post('/', upload.single('image'), async (req, res) => {
   const image = req.file;
-  const {
-    name, description, role, status,
-  } = req.body;
+  const { name, description, role, status } = req.body;
 
   const item = {
-    name, description, role, status, image,
+    name,
+    description,
+    role,
+    status,
+    image,
   };
 
   try {
@@ -23,14 +25,16 @@ router.post('/', upload.single('image'), async (req, res) => {
       { public_id: image.originalname.split('.')[0] },
       (_, result) => {
         item.image = result.url;
-      },
+      }
     );
   } catch (error) {
     res.status(500).json({ error });
   }
 
   if (!name || !description || !role || Object.keys(item.status).length === 0) {
-    res.status(422).json({ error: 'Name, description, role, status and image are required.' });
+    res.status(422).json({
+      error: 'Name, description, role, status and image are required.',
+    });
     return;
   }
 
@@ -73,11 +77,13 @@ router.get('/:id', async (req, res) => {
 router.patch('/:id', async (req, res) => {
   const { id } = req.params;
 
-  const {
-    name, description, role, status,
-  } = req.body;
+  const { name, description, role, status, image } = req.body;
   const item = {
-    name, description, role, status,
+    name,
+    description,
+    role,
+    status,
+    image,
   };
 
   try {
