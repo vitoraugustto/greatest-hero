@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import './App.css';
 import reactLogo from './assets/react.svg';
-import { BACKEND_BASE_URL } from './config/api.js';
+import { BACKEND_BASE_URL } from './config/api';
 
 interface IItem {
   _id: string;
