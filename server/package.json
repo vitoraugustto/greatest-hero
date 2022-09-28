@@ -1,12 +1,12 @@
 {
-  "name": "server",
+  "name": "heros-market-server",
   "type": "module",
   "devDependencies": {
-    "eslint": "^7.32.0 || ^8.2.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-import-helpers": "^1.2.1",
-    "nodemon": "^2.0.19"
+    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1"
   },
   "scripts": {
     "start:dev": "nodemon ./index.js",
