@@ -26,7 +26,7 @@ app.use('/api/v1/hero', heroRoutes);
 
 mongoose
   .connect(
-    `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@heros-market-cluster.mcfekrd.mongodb.net/?retryWrites=true&w=majority`
+    `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@greatest-hero-cluster.iqrhkun.mongodb.net/?retryWrites=true&w=majority`
   )
   .then(() => {
     app.listen(PORT, () => {
