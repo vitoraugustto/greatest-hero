@@ -10,7 +10,10 @@ const PORT = 8000;
 
 app.use((_, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://heros-market.vercel.app');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
   next();
 });
 
@@ -20,7 +23,10 @@ app.use(express.json());
 app.use('/api/v1/items', itemsRoutes);
 app.use('/api/v1/hero', heroRoutes);
 
-mongoose.connect(`mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@heros-market-cluster.mcfekrd.mongodb.net/?retryWrites=true&w=majority`)
+mongoose
+  .connect(
+    `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@heros-market-cluster.mcfekrd.mongodb.net/?retryWrites=true&w=majority`
+  )
   .then(() => {
     app.listen(PORT, () => {
       console.log('App listening on port', PORT);
