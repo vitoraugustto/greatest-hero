@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 import { DB_PASSWORD, DB_USERNAME } from './.env.js';
+import { CLIENT_URL } from './src/config/environment.js';
 import heroRoutes from './src/routes/heroRoutes.js';
 import itemsRoutes from './src/routes/itemsRoutes.js';
 
@@ -9,7 +10,7 @@ const app = express();
 const PORT = 8000;
 
 app.use((_, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://heros-market.vercel.app');
+  res.header('Access-Control-Allow-Origin', CLIENT_URL);
   res.header(
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept'

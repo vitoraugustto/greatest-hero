@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start:dev": "nodemon ./index.js",
-    "start": "node ./index.js"
+    "start": "NODE_ENV=production node ./index.js"
   },
   "dependencies": {
     "cloudinary": "^1.32.0",
