@@ -52,7 +52,7 @@ const App = () => {
         {loading
           ? 'Carregando...'
           : items.map((item: IItem, index) => (
-              <Spacer mr={lastItem(index) ? 0 : 26}>
+              <Spacer key={item._id} mr={lastItem(index) ? 0 : 26}>
                 <InventoryItem item={item} />
               </Spacer>
             ))}
