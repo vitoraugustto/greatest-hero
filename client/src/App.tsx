@@ -39,25 +39,27 @@ const App = () => {
     handleFetchItems();
   }, []);
 
-  const lastItem = (index: number) => {
-    return index === items.length - 1;
-  };
-
   return (
-    <Background>
+    <>
       <GlobalStyle />
-      <h1 style={{ color: '#fff', fontWeight: 'bold' }}>Loja do Herói</h1>
-      <Spacer mt={12} />
-      <div style={{ display: 'flex', flexDirection: 'row' }}>
-        {loading
-          ? 'Carregando...'
-          : items.map((item: IItem, index) => (
-              <Spacer key={item._id} mr={lastItem(index) ? 0 : 26}>
-                <InventoryItem item={item} />
-              </Spacer>
-            ))}
-      </div>
-    </Background>
+      <Background>
+        <h1 style={{ color: '#fff', fontWeight: 'bold' }}>Loja do Herói</h1>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+          }}
+        >
+          {items.map((item: IItem) => (
+            <Spacer key={item._id} mr={26} mt={26}>
+              <InventoryItem item={item} />
+            </Spacer>
+          ))}
+        </div>
+      </Background>
+    </>
   );
 };
 
