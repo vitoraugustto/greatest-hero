@@ -32,8 +32,10 @@ const Box: React.FC<IBox> = ({
   style,
   children,
 }) => {
-  return onClick ? (
-    <StyledButton
+  const Component: React.FC<IBox> = onClick ? StyledButton : StyledBox;
+
+  return (
+    <Component
       testId={testId}
       onClick={onClick}
       color={color}
@@ -48,23 +50,7 @@ const Box: React.FC<IBox> = ({
       style={{ ...style }}
     >
       {children}
-    </StyledButton>
-  ) : (
-    <StyledBox
-      testId={testId}
-      color={color}
-      bgColor={bgColor}
-      height={size(height)}
-      width={size(width)}
-      vCenter={vCenter}
-      hCenter={hCenter}
-      borderRadius={borderRadius}
-      borderColor={borderColor}
-      flex={flex}
-      style={{ ...style }}
-    >
-      {children}
-    </StyledBox>
+    </Component>
   );
 };
 
