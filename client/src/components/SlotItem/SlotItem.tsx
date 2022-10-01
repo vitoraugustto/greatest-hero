@@ -1,3 +1,4 @@
+import Box from '../Layout/Box';
 import Spacer from '../Layout/Spacer';
 import Text from '../Text/Text';
 
@@ -9,21 +10,15 @@ export interface IItem {
     attack: number;
     defense: number;
   };
+  gold: number;
+  type: string;
 }
 
 const SlotItem: React.FC<{ item: IItem }> = ({ item }) => {
-  const { name, image, status } = item;
+  const { name, image, status, gold, type } = item;
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        borderRadius: 8,
-        backgroundColor: '#302a54',
-        alignItems: 'center',
-      }}
-    >
+    <Box borderRadius={8} bgColor="#302a54" hCenter>
       <Spacer p={16}>
         <Text fontWeight="bold" fontSize={14}>
           {name}
@@ -40,13 +35,16 @@ const SlotItem: React.FC<{ item: IItem }> = ({ item }) => {
           <img style={{ width: 120, borderRadius: 12 }} src={image} />
         </div>
         <div style={{ width: '100%' }}>
-          <Text fontSize={14}>Preço: Não definido.</Text>
+          <Text fontSize={14} color="gold">
+            {gold} moedas de ouro
+          </Text>
           <Spacer mt={10} />
+          <Text fontSize={14}>Tipo: {type.toUpperCase()}</Text>
           <Text fontSize={14}>Ataque: {status.attack}</Text>
           <Text fontSize={14}>Defesa: {status.defense}</Text>
         </div>
       </Spacer>
-    </div>
+    </Box>
   );
 };
 

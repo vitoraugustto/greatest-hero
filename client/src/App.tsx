@@ -8,7 +8,14 @@ import { fetchItems } from './services/items';
 
 const App = () => {
   const [items, setItems] = useState<[IItem]>([
-    { _id: '', name: '', image: '', status: { attack: 0, defense: 0 } },
+    {
+      _id: '',
+      name: '',
+      image: '',
+      status: { attack: 0, defense: 0 },
+      gold: 0,
+      type: '',
+    },
   ]);
 
   const handleFetchItems = async (): Promise<void> => {
