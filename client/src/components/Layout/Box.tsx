@@ -2,12 +2,13 @@ import React, { CSSProperties } from 'react';
 import styled from 'styled-components';
 
 interface IBox {
+  flexDirection?: string;
   color?: string;
   bgColor?: string;
   width?: string | number;
   height?: string | number;
-  vCenter?: string;
-  hCenter?: string;
+  vCenter?: boolean;
+  hCenter?: boolean;
   borderRadius?: string | number;
   borderColor?: string;
   flex?: string;
@@ -18,6 +19,7 @@ interface IBox {
 }
 
 const Box: React.FC<IBox> = ({
+  flexDirection,
   color,
   bgColor,
   width,
@@ -39,6 +41,7 @@ const Box: React.FC<IBox> = ({
 
   return (
     <Component
+      flexDirection={flexDirection}
       testId={testId}
       onClick={onClick}
       color={color}
@@ -67,7 +70,8 @@ const StyledBox = styled.div.attrs((props: IBox) => {
   addTestId(props.testId);
 })<IBox>`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${(props) =>
+    props.flexDirection ? props.flexDirection : 'column'};
   word-break: break-word;
   flex: ${(props) => (props.flex ? 1 : undefined)};
   justify-content: ${(props) => (props.vCenter ? 'center' : undefined)};
