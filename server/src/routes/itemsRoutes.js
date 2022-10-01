@@ -77,24 +77,28 @@ router.get('/:id', async (req, res) => {
 router.patch('/:id', async (req, res) => {
   const { id } = req.params;
 
-  const { name, description, role, status, image } = req.body;
+  const { name, description, role, status, image, gold, type } = req.body;
   const item = {
     name,
     description,
     role,
     status,
     image,
+    gold,
+    type,
   };
 
   try {
-    const updatedItem = await Item.updateOne({ _id: id }, item);
+    const updatedItem = await Item.findOneAndUpdate({ _id: id }, item, {
+      new: true,
+    });
 
     if (updatedItem.matchedCount === 0) {
       res.status(422).json({ message: 'Item not found.' });
       return;
     }
 
-    res.status(200).json(item);
+    res.status(200).json(updatedItem);
   } catch (error) {
     res.status(500).json({ error });
   }
