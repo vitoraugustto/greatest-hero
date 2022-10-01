@@ -32,7 +32,10 @@ const Box: React.FC<IBox> = ({
   style,
   children,
 }) => {
-  const Component: React.FC<IBox> = onClick ? StyledButton : StyledBox;
+  // I don't know what it does "[x: string]: unknown"
+  const Component: React.FC<IBox & { [x: string]: unknown }> = onClick
+    ? StyledButton
+    : StyledBox;
 
   return (
     <Component
@@ -54,7 +57,15 @@ const Box: React.FC<IBox> = ({
   );
 };
 
-const StyledBox = styled.div<IBox>`
+const addTestId = (testId: IBox['testId']) => {
+  return {
+    'data-test': testId,
+  };
+};
+
+const StyledBox = styled.div.attrs((props: IBox) => {
+  addTestId(props.testId);
+})<IBox>`
   display: flex;
   flex-direction: column;
   word-break: break-word;
@@ -71,7 +82,9 @@ const StyledBox = styled.div<IBox>`
     props.borderColor ? '1px solid ' + props.borderColor : undefined};
 `;
 
-const StyledButton = styled.button<IBox>`
+const StyledButton = styled.button.attrs((props: IBox) => {
+  addTestId(props.testId);
+})<IBox>`
   display: flex;
   flex-direction: column;
   flex: ${(props) => (props.flex ? 1 : undefined)};
