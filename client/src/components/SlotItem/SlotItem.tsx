@@ -20,7 +20,7 @@ const SlotItem: React.FC<{ item: IItem }> = ({ item }) => {
   return (
     <Box borderRadius={8} bgColor="#302a54" hCenter>
       <Spacer p={16}>
-        <Text fontWeight="bold" fontSize={14}>
+        <Text weight="bold" size={14}>
           {name}
         </Text>
         <div
@@ -35,13 +35,13 @@ const SlotItem: React.FC<{ item: IItem }> = ({ item }) => {
           <img style={{ width: 120, borderRadius: 12 }} src={image} />
         </div>
         <div style={{ width: '100%' }}>
-          <Text fontSize={14} color="gold">
+          <Text size={14} color="gold">
             {gold} moedas de ouro
           </Text>
           <Spacer mt={10} />
-          <Text fontSize={14}>Tipo: {type.toUpperCase()}</Text>
-          <Text fontSize={14}>Ataque: {status.attack}</Text>
-          <Text fontSize={14}>Defesa: {status.defense}</Text>
+          <Text size={14}>Tipo: {type.toUpperCase()}</Text>
+          <Text size={14}>Ataque: {status.attack}</Text>
+          <Text size={14}>Defesa: {status.defense}</Text>
         </div>
       </Spacer>
     </Box>
