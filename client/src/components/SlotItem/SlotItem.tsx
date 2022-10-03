@@ -18,23 +18,21 @@ const SlotItem: React.FC<{ item: IItem }> = ({ item }) => {
   const { name, image, status, gold, type } = item;
 
   return (
-    <Box borderRadius={8} bgColor="#302a54" hCenter>
+    <Box
+      testId={`slot-${name.replaceAll(' ', '-')}`}
+      borderRadius={10}
+      bgColor="#302a54"
+      hCenter
+      onClick={() => console.log(item)}
+    >
       <Spacer p={16}>
         <Text weight="bold" size={14}>
           {name}
         </Text>
-        <div
-          style={{
-            height: 180,
-            width: 220,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
+        <Box height={180} width={220} hCenter vCenter>
           <img style={{ width: 120, borderRadius: 12 }} src={image} />
-        </div>
-        <div style={{ width: '100%' }}>
+        </Box>
+        <Box width="100%">
           <Text size={14} color="gold">
             {gold} moedas de ouro
           </Text>
@@ -42,7 +40,7 @@ const SlotItem: React.FC<{ item: IItem }> = ({ item }) => {
           <Text size={14}>Tipo: {type.toUpperCase()}</Text>
           <Text size={14}>Ataque: {status.attack}</Text>
           <Text size={14}>Defesa: {status.defense}</Text>
-        </div>
+        </Box>
       </Spacer>
     </Box>
   );
