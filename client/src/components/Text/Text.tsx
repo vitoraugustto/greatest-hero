@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 interface IText {
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'span' | 'p';
   size?: number;
   weight?: string;
   color?: string;
@@ -11,6 +12,7 @@ interface IText {
 }
 
 const Text: React.FC<IText> = ({
+  as,
   weight,
   size,
   color,
@@ -21,6 +23,7 @@ const Text: React.FC<IText> = ({
 }) => {
   return (
     <StyledP
+      as={as}
       weight={weight}
       size={size}
       color={color}

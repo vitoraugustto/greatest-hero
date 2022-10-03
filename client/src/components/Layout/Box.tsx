@@ -2,7 +2,7 @@ import React, { CSSProperties } from 'react';
 import styled from 'styled-components';
 
 interface IBox {
-  flexDirection?: string;
+  as?: 'section' | 'main' | 'header' | 'footer' | 'aside';
   color?: string;
   bgColor?: string;
   width?: string | number;
@@ -19,7 +19,7 @@ interface IBox {
 }
 
 const Box: React.FC<IBox> = ({
-  flexDirection,
+  as,
   color,
   bgColor,
   width,
@@ -41,16 +41,16 @@ const Box: React.FC<IBox> = ({
 
   return (
     <Component
-      flexDirection={flexDirection}
+      as={as}
       testId={testId}
       onClick={onClick}
       color={color}
       bgColor={bgColor}
-      height={size(height)}
-      width={size(width)}
+      height={height && size(height)}
+      width={width && size(width)}
       vCenter={vCenter}
       hCenter={hCenter}
-      borderRadius={borderRadius}
+      borderRadius={borderRadius && size(borderRadius)}
       borderColor={borderColor}
       flex={flex}
       style={{ ...style }}
@@ -67,11 +67,10 @@ const addTestId = (testId: IBox['testId']) => {
 };
 
 const StyledBox = styled.div.attrs((props: IBox) => {
-  addTestId(props.testId);
+  return addTestId(props.testId);
 })<IBox>`
   display: flex;
-  flex-direction: ${(props) =>
-    props.flexDirection ? props.flexDirection : 'column'};
+  flex-direction: column;
   word-break: break-word;
   flex: ${(props) => (props.flex ? 1 : undefined)};
   justify-content: ${(props) => (props.vCenter ? 'center' : undefined)};
@@ -87,7 +86,7 @@ const StyledBox = styled.div.attrs((props: IBox) => {
 `;
 
 const StyledButton = styled.button.attrs((props: IBox) => {
-  addTestId(props.testId);
+  return addTestId(props.testId);
 })<IBox>`
   display: flex;
   flex-direction: column;
