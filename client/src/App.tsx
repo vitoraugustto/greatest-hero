@@ -1,5 +1,5 @@
 import GlobalStyle from './components/GlobalStyle';
-import { HeroStoreScreen } from './components/screens/HeroStoreScreen';
+import { HeroStoreScreen } from './screens/HeroStoreScreen';
 
 const App = () => {
   return (

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import { fetchItems } from '../../services/items';
-import Background from '../Layout/Background';
-import Spacer from '../Layout/Spacer';
-import SlotItem, { IItem } from '../SlotItem/SlotItem';
-import Text from '../Text/Text';
+import Background from '../components/Layout/Background';
+import Spacer from '../components/Layout/Spacer';
+import SlotItem, { IItem } from '../components/SlotItem/SlotItem';
+import Text from '../components/Text/Text';
+import { fetchItems } from '../services/items';
 
 export const HeroStoreScreen = () => {
   const [items, setItems] = useState<[IItem]>([
