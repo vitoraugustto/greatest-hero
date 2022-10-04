@@ -4,6 +4,7 @@ import Background from '../components/Layout/Background';
 import Spacer from '../components/Layout/Spacer';
 import SlotItem, { IItem } from '../components/SlotItem/SlotItem';
 import Text from '../components/Text/Text';
+import { storeInInventory } from '../services/hero';
 import { fetchItems } from '../services/items';
 
 export const HeroStoreScreen = () => {
@@ -43,7 +44,7 @@ export const HeroStoreScreen = () => {
       >
         {items.map((item: IItem) => (
           <Spacer key={item._id} mr={26} mt={26}>
-            <SlotItem item={item} />
+            <SlotItem onClick={storeInInventory} item={item} />
           </Spacer>
         ))}
       </div>
