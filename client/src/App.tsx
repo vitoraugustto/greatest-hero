@@ -1,13 +1,7 @@
-import GlobalStyle from './components/GlobalStyle';
-import { HeroStoreScreen } from './screens/HeroStoreScreen';
+import { Routes } from './routes';
 
 const App = () => {
-  return (
-    <>
-      <GlobalStyle />
-      <HeroStoreScreen />
-    </>
-  );
+  return <Routes />;
 };
 
 export default App;
