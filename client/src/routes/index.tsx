@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 
 import GlobalStyle from '../components/GlobalStyle';
+import { HeroInventoryScreen } from '../screens/HeroInventoryScreen';
 import { HeroStoreScreen } from '../screens/HeroStoreScreen';
 
 export const Routes = () => {
@@ -12,7 +13,8 @@ export const Routes = () => {
     <Router>
       <GlobalStyle />
       <_Routes>
-        <Route path="/" element={<HeroStoreScreen />} />
+        <Route path="/store" element={<HeroStoreScreen />} />
+        <Route path="/hero/inventory" element={<HeroInventoryScreen />} />
       </_Routes>
     </Router>
   );
