@@ -11,7 +11,7 @@ interface IBox {
   hCenter?: boolean;
   borderRadius?: string | number;
   borderColor?: string;
-  flex?: string;
+  flex?: true;
   testId?: string;
   onClick?: () => void;
   style?: CSSProperties;
