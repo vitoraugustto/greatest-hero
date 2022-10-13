@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 interface IText {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'span' | 'p';
-  size?: number;
+  size?: number | string;
   weight?: string;
   color?: string;
   align?: 'left' | 'center';
-  spacing?: number;
-  lineHeight?: number;
+  spacing?: number | string;
+  lineHeight?: number | string;
   children: React.ReactNode;
 }
 
@@ -25,11 +25,11 @@ const Text: React.FC<IText> = ({
     <StyledP
       as={as}
       weight={weight}
-      size={size}
+      size={size && calcPx(size)}
       color={color}
       align={align}
-      spacing={spacing}
-      lineHeight={lineHeight}
+      spacing={spacing && calcPx(spacing)}
+      lineHeight={lineHeight && calcPx(lineHeight)}
     >
       {children}
     </StyledP>
@@ -44,5 +44,13 @@ const StyledP = styled.p<IText>`
   letter-spacing: ${(props) => (props.spacing ? props.spacing : undefined)};
   line-height: ${(props) => (props.lineHeight ? props.lineHeight : undefined)};
 `;
+
+const calcPx = (prop?: string | number) => {
+  if (typeof prop === 'string') {
+    return prop;
+  }
+
+  return prop + 'px';
+};
 
 export default Text;
