@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import Background from '../components/Layout/Background';
 import Spacer from '../components/Layout/Spacer';
+import { Link } from '../components/Link/Link';
 import SlotItem, { IItem } from '../components/SlotItem/SlotItem';
 import Text from '../components/Text/Text';
 import { storeInInventory } from '../services/hero';
@@ -34,6 +35,10 @@ export const HeroStoreScreen = () => {
       <Text as="h1" weight="bold" color="#fff">
         Loja do Herói
       </Text>
+      <Spacer mt={12} />
+      <Link to="/hero/inventory">
+        <Text>Ir para o inventário</Text>
+      </Link>
       <div
         style={{
           display: 'flex',
