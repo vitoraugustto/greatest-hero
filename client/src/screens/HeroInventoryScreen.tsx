@@ -20,7 +20,7 @@ export const HeroInventoryScreen = () => {
 
   useEffect(() => {
     fetchInventory().then((res) => setItems(res.data));
-  });
+  }, []);
 
   return (
     <Background>
