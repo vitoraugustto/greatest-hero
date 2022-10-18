@@ -21,9 +21,7 @@ export const HeroStoreScreen = () => {
   ]);
 
   const handleFetchItems = async (): Promise<void> => {
-    fetchItems()
-      .then(({ data }) => setItems(data))
-      .catch((err) => console.log(err.response.data));
+    fetchItems().then(({ data }) => setItems(data));
   };
 
   useEffect(() => {
