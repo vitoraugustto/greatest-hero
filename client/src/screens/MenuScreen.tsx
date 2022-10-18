@@ -2,6 +2,7 @@ import Background from '../components/Layout/Background';
 import Spacer from '../components/Layout/Spacer';
 import { Link } from '../components/Link/Link';
 import Text from '../components/Text/Text';
+import { Button } from '../components/UI/Button';
 
 export const MenuScreen = () => {
   return (
@@ -11,23 +12,11 @@ export const MenuScreen = () => {
       </Text>
       <Spacer mt={12} />
       <Link to="/hero/inventory">
-        <button>
-          <Spacer p={12}>
-            <Text color="#fff" weight="bold" size={18} spacing={1.2}>
-              Ir para o inventário
-            </Text>
-          </Spacer>
-        </button>
+        <Button text="Ir para o inventário " />
       </Link>
-      <Spacer mt={12} />
+
       <Link to="/store">
-        <button>
-          <Spacer p={12}>
-            <Text color="#fff" weight="bold" size={18} spacing={1.2}>
-              Ir para a loja
-            </Text>
-          </Spacer>
-        </button>
+        <Button text="Ir para a loja " />
       </Link>
     </Background>
   );
