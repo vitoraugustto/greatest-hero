@@ -1,12 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Box from '../Layout/Box';
-import { Link } from '../Link/Link';
 import Text from '../Text/Text';
 
 interface IButton {
-  navigate?: string;
   height?: string | number;
   color?: string;
   bgColor?: string;
@@ -20,7 +17,6 @@ interface IButton {
 }
 
 export const Button: React.FC<IButton> = ({
-  navigate,
   height,
   color,
   bgColor,
@@ -32,25 +28,20 @@ export const Button: React.FC<IButton> = ({
   borderRadius,
   text,
 }) => {
-  const Container = navigate ? Link : Box;
-
   return (
-    <Container>
-      <StyledButton
-        navigate={navigate}
-        height={height}
-        fontSize={fontSize}
-        disabled={disabled}
-        color={color}
-        bgColor={bgColor}
-        rounded={rounded}
-        borderColor={borderColor}
-        borderRadius={borderRadius}
-        onClick={onClick}
-      >
-        <Text>{text}</Text>
-      </StyledButton>
-    </Container>
+    <StyledButton
+      height={height}
+      fontSize={fontSize}
+      disabled={disabled}
+      color={color}
+      bgColor={bgColor}
+      rounded={rounded}
+      borderColor={borderColor}
+      borderRadius={borderRadius}
+      onClick={onClick}
+    >
+      <Text>{text}</Text>
+    </StyledButton>
   );
 };
 
