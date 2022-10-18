@@ -15,7 +15,7 @@ app.use((_, res, next) => {
     'PUT',
     'GET',
     'PATCH',
-    'DEL',
+    'DELETE',
   ]);
   res.header(
     'Access-Control-Allow-Headers',
