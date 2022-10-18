@@ -9,15 +9,15 @@ const app = express();
 const PORT = 8000;
 
 app.use((_, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', [
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', [
     'POST',
     'PUT',
     'GET',
     'PATCH',
     'DELETE',
   ]);
-  res.header(
+  res.setHeader(
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept'
   );
