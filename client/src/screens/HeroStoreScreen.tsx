@@ -47,7 +47,7 @@ export const HeroStoreScreen = () => {
       >
         {items.map((item: IItem) => (
           <Spacer key={item._id} mr={26} mt={26}>
-            <SlotItem onClick={storeInInventory} item={item} />
+            <SlotItem onClick={() => storeInInventory(item._id)} item={item} />
           </Spacer>
         ))}
       </div>

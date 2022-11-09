@@ -38,7 +38,10 @@ export const HeroInventoryScreen = () => {
       >
         {items.map((item: IItem) => (
           <Spacer key={item._id} mr={26} mt={26}>
-            <SlotItem onClick={removeFromInventory} item={item} />
+            <SlotItem
+              onClick={() => removeFromInventory(item._id)}
+              item={item}
+            />
           </Spacer>
         ))}
       </div>

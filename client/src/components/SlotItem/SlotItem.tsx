@@ -16,11 +16,11 @@ export interface IItem {
 
 interface ISlotItem {
   item: IItem;
-  onClick: (_id: IItem['_id']) => void;
+  onClick: () => void;
 }
 
 const SlotItem: React.FC<ISlotItem> = ({ item, onClick }) => {
-  const { name, image, status, gold, type, _id } = item;
+  const { name, image, status, gold, type } = item;
 
   return (
     <Box
@@ -28,7 +28,7 @@ const SlotItem: React.FC<ISlotItem> = ({ item, onClick }) => {
       borderRadius={10}
       bgColor="#302a54"
       hCenter
-      onClick={() => onClick(_id)}
+      onClick={onClick}
     >
       <Spacer p={16}>
         <Text weight="bold" size={14}>
