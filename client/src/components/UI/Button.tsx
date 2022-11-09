@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Text from '../Text/Text';
+import Row from '../Layout/Row';
 
 interface IButton {
   height?: string | number;
@@ -13,7 +13,7 @@ interface IButton {
   disabled?: boolean;
   fontSize?: number;
   borderRadius?: string | number;
-  text?: string;
+  children: React.ReactElement | React.ReactElement[];
 }
 
 export const Button: React.FC<IButton> = ({
@@ -26,7 +26,7 @@ export const Button: React.FC<IButton> = ({
   disabled,
   fontSize,
   borderRadius,
-  text,
+  children,
 }) => {
   return (
     <StyledButton
@@ -40,7 +40,9 @@ export const Button: React.FC<IButton> = ({
       borderRadius={borderRadius}
       onClick={onClick}
     >
-      <Text>{text}</Text>
+      <Row hCenter vCenter>
+        {children}
+      </Row>
     </StyledButton>
   );
 };
