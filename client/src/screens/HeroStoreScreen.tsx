@@ -24,6 +24,10 @@ export const HeroStoreScreen = () => {
     fetchItems().then(({ data }) => setItems(data));
   };
 
+  const handleClick = (itemId: IItem['_id']): void => {
+    storeInInventory(itemId);
+  };
+
   useEffect(() => {
     handleFetchItems();
   }, []);
@@ -47,7 +51,7 @@ export const HeroStoreScreen = () => {
       >
         {items.map((item: IItem) => (
           <Spacer key={item._id} mr={26} mt={26}>
-            <SlotItem onClick={() => storeInInventory(item._id)} item={item} />
+            <SlotItem onClick={() => handleClick(item._id)} item={item} />
           </Spacer>
         ))}
       </div>
