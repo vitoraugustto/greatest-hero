@@ -16,7 +16,7 @@ export interface IItem {
 
 interface ISlotItem {
   item: IItem;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const SlotItem: React.FC<ISlotItem> = ({ item, onClick }) => {
