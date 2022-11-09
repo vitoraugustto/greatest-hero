@@ -12,11 +12,15 @@ export const MenuScreen = () => {
       </Text>
       <Spacer mt={12} />
       <Link to="/hero/inventory">
-        <Button text="Ir para o inventário " />
+        <Button>
+          <Text>Inventário</Text>
+        </Button>
       </Link>
 
       <Link to="/store">
-        <Button text="Ir para a loja " />
+        <Button>
+          <Text>Loja</Text>
+        </Button>
       </Link>
     </Background>
   );
