@@ -691,7 +691,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/styled-components@npm:^5":
+"@types/styled-components@npm:*, @types/styled-components@npm:^5":
   version: 5.1.26
   resolution: "@types/styled-components@npm:5.1.26"
   dependencies:
@@ -699,6 +699,16 @@ __metadata:
     "@types/react": "npm:*"
     csstype: "npm:^3.0.2"
   checksum: 1e954ca75707e7130c018d161ca8600a4d9e759a8e8e7cb14b88f51019e5f73ed68a77345114e45139aba60d4e46a2c050b534f58e55b0e8815ea91cf3bed69c
+  languageName: node
+  linkType: hard
+
+"@types/styled-react-modal@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@types/styled-react-modal@npm:1.2.2"
+  dependencies:
+    "@types/react": "npm:*"
+    "@types/styled-components": "npm:*"
+  checksum: f6b57a1acc6c271d6b3e68df6ce29c49fa2fda2f6d04cec992bd39b829d319b14d0e9adb31455dc49d367aabf5a2c0bd9419ba9e2193438310e79c325c0e9212
   languageName: node
   linkType: hard
 
@@ -1999,6 +2009,7 @@ __metadata:
     "@types/react": "npm:^18.0.17"
     "@types/react-dom": "npm:^18.0.6"
     "@types/styled-components": "npm:^5"
+    "@types/styled-react-modal": "npm:^1.2.2"
     "@typescript-eslint/eslint-plugin": "npm:^5.38.1"
     "@typescript-eslint/parser": "npm:^5.38.1"
     "@vitejs/plugin-react": "npm:^2.1.0"
@@ -2010,6 +2021,7 @@ __metadata:
     react-dom: "npm:^18.2.0"
     react-router-dom: "npm:^6.4.2"
     styled-components: "npm:^5.3.6"
+    styled-react-modal: "npm:^3.0.1"
     typescript: "npm:^4.6.4"
     vite: "npm:^3.1.0"
   languageName: unknown
@@ -2312,7 +2324,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.1.0":
+"loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -2589,6 +2601,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"object-assign@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "object-assign@npm:4.1.1"
+  checksum: f5cd1f2f1e82e12207e4f2377d9d7d90fbc0d9822a6afa717a6dcab6930d8925e1ebbbb25df770c31ff11335ee423459ba65ffa2e53999926c328b806b4d73d6
+  languageName: node
+  linkType: hard
+
 "once@npm:^1.3.0":
   version: 1.4.0
   resolution: "once@npm:1.4.0"
@@ -2748,6 +2767,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prop-types@npm:^15.8.1":
+  version: 15.8.1
+  resolution: "prop-types@npm:15.8.1"
+  dependencies:
+    loose-envify: "npm:^1.4.0"
+    object-assign: "npm:^4.1.1"
+    react-is: "npm:^16.13.1"
+  checksum: 196295f119e0f38ec64b43c1121a7e3bdbfcf66b86a01d50df22a247eb22b644033097b53a3b0961ce64d540c7a2c505c844ff245cb548b4f6eda59bbac6fbf0
+  languageName: node
+  linkType: hard
+
 "punycode@npm:^2.1.0":
   version: 2.1.1
   resolution: "punycode@npm:2.1.1"
@@ -2774,7 +2804,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is@npm:^16.7.0":
+"react-is@npm:^16.13.1, react-is@npm:^16.7.0":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: 0c9adc5d984db733fb1dd298f3e94cdec66bc328d27fb11df65971d2cc9a299008bc64baab8fe8e79943df85b445a1008b2cc9e270825d0fd056e5a0d2df8de6
@@ -3127,6 +3157,19 @@ __metadata:
     react-dom: ">= 16.8.0"
     react-is: ">= 16.8.0"
   checksum: bdbeb8f491267f8dca6ad01bdbb604b7a6b81e0da0f7cd30d03e4aa3f9a0b1958ec083bb783027756fcfe3ae51286ddf105867c70909930050bb7d23a01bc586
+  languageName: node
+  linkType: hard
+
+"styled-react-modal@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "styled-react-modal@npm:3.0.1"
+  dependencies:
+    prop-types: "npm:^15.8.1"
+  peerDependencies:
+    react: ^18.0.0
+    react-dom: ^18.0.0
+    styled-components: ^5.3.5
+  checksum: 5f95a7037af360a38f4286807cfefc02894207a5a608f469380b08831ccc3e761330675b510bd18bd2fe8cfa33bb6b3dafe78b8090ab70692b4be1476293226f
   languageName: node
   linkType: hard
 
