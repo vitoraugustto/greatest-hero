@@ -23,7 +23,7 @@ export const ConfirmModal: React.FC<IConfirmModal> = ({
       onBackgroundClick={onCancel}
     >
       <Spacer p={16}>
-        {children}
+        <>{children}</>
         <Button onClick={onConfirm} borderColor="#caa5fa">
           <Text>Confirmar</Text>
         </Button>
