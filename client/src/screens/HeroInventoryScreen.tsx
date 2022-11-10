@@ -45,8 +45,10 @@ export const HeroInventoryScreen = () => {
   };
 
   const sellItem = () => {
-    removeFromInventory(selectedItem._id).then(() => closeModal());
-    handleFetchInventory();
+    removeFromInventory(selectedItem._id).then(() => {
+      closeModal();
+      handleFetchInventory();
+    });
   };
 
   useEffect(() => {
