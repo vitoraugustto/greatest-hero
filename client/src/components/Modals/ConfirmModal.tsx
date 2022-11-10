@@ -1,5 +1,4 @@
 import Spacer from '../Layout/Spacer';
-import Text from '../Text/Text';
 import { Button } from '../UI/Button';
 import { ModalBase } from './ModalBase';
 
@@ -24,13 +23,9 @@ export const ConfirmModal: React.FC<IConfirmModal> = ({
     >
       <Spacer p={16}>
         <>{children}</>
-        <Button onClick={onConfirm} borderColor="#caa5fa">
-          <Text>Confirmar</Text>
-        </Button>
+        <Button text="Confirmar" onClick={onConfirm} borderColor="#caa5fa" />
         <Spacer mt={8} />
-        <Button onClick={onCancel}>
-          <Text size={18}>Cancelar</Text>
-        </Button>
+        <Button text="Cancelar" onClick={onCancel} />
       </Spacer>
     </ModalBase>
   );

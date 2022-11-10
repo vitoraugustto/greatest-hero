@@ -5,11 +5,11 @@ interface IBox {
   as?: 'section' | 'main' | 'header' | 'footer' | 'aside';
   color?: string;
   bgColor?: string;
-  width?: string | number;
-  height?: string | number;
+  width?: number;
+  height?: number;
   vCenter?: boolean;
   hCenter?: boolean;
-  borderRadius?: string | number;
+  borderRadius?: number;
   borderColor?: string;
   flex?: true;
   testId?: string;
@@ -46,11 +46,11 @@ const Box: React.FC<IBox> = ({
       onClick={onClick}
       color={color}
       bgColor={bgColor}
-      height={height && size(height)}
-      width={width && size(width)}
+      height={height}
+      width={width}
       vCenter={vCenter}
       hCenter={hCenter}
-      borderRadius={borderRadius && size(borderRadius)}
+      borderRadius={borderRadius}
       borderColor={borderColor}
       flex={flex}
       style={{ ...style }}
@@ -78,9 +78,10 @@ const StyledBox = styled.div.attrs((props: IBox) => {
   background-color: ${(props) =>
     props.bgColor ? props.bgColor : 'transparent'};
   color: ${(props) => (props.color ? props.color : 'white')};
-  width: ${(props) => (props.width ? props.width : 'auto')};
-  height: ${(props) => (props.height ? props.height : 'auto')};
-  border-radius: ${(props) => (props.borderRadius ? props.borderRadius : 0)};
+  width: ${(props) => (props.width ? props.width + 'px' : 'auto')};
+  height: ${(props) => (props.height ? props.height + 'px' : 'auto')};
+  border-radius: ${(props) =>
+    props.borderRadius ? props.borderRadius + 'px' : 0};
   border: ${(props) =>
     props.borderColor ? '1px solid ' + props.borderColor : undefined};
 `;
@@ -102,13 +103,5 @@ const StyledButton = styled.button.attrs((props: IBox) => {
   border: ${(props) =>
     props.borderColor ? '1px solid ' + props.borderColor : undefined};
 `;
-
-const size = (prop?: string | number) => {
-  if (typeof prop === 'string') {
-    return prop;
-  }
-
-  return prop + 'px';
-};
 
 export default Box;

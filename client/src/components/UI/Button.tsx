@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Row from '../Layout/Row';
+import Text from '../Text/Text';
 
 interface IButton {
-  height?: string | number;
+  height?: number;
   color?: string;
   bgColor?: string;
   rounded?: boolean;
@@ -12,8 +13,8 @@ interface IButton {
   onClick?: () => void;
   disabled?: boolean;
   fontSize?: number;
-  borderRadius?: string | number;
-  children: React.ReactElement | React.ReactElement[];
+  borderRadius?: number;
+  text: string;
 }
 
 export const Button: React.FC<IButton> = ({
@@ -22,26 +23,28 @@ export const Button: React.FC<IButton> = ({
   bgColor,
   rounded,
   borderColor,
+  text,
   onClick,
   disabled,
   fontSize,
   borderRadius,
-  children,
 }) => {
   return (
     <StyledButton
       height={height}
-      fontSize={fontSize}
       disabled={disabled}
       color={color}
       bgColor={bgColor}
       rounded={rounded}
+      text={text}
       borderColor={borderColor}
       borderRadius={borderRadius}
       onClick={onClick}
     >
       <Row hCenter vCenter>
-        {children}
+        <Text size={fontSize} color={color}>
+          {text}
+        </Text>
       </Row>
     </StyledButton>
   );
@@ -52,13 +55,12 @@ const StyledButton = styled.button<IButton>`
   border: ${(props) =>
     props.borderColor ? `1px solid ${props.borderColor}` : 'none'};
   border-radius: ${(props) =>
-    props.borderRadius ? props.borderRadius : '8px'};
+    props.borderRadius ? props.borderRadius + 'px' : '8px'};
   padding: 10px;
   background-color: ${(props) =>
     props.bgColor ? props.bgColor : 'transparent'};
   color: ${(props) => (props.color ? props.color : '#fff')};
   letter-spacing: 1.5px;
-  border-radius: ${(props) => (props.rounded ? '8px' : '0')};
-  font-size: ${(props) => (props.fontSize ? props.fontSize : '22px')};
+  font-size: ${(props) => (props.fontSize ? props.fontSize + 'px' : '22px')};
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
 `;

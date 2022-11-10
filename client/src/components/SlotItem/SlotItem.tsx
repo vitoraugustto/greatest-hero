@@ -37,7 +37,7 @@ const SlotItem: React.FC<ISlotItem> = ({ item, onClick }) => {
         <Box height={180} width={220} hCenter vCenter>
           <img style={{ width: 120, borderRadius: 12 }} src={image} />
         </Box>
-        <Box width="100%">
+        <Box width={220}>
           <Text size={14} color="gold">
             {gold} moedas de ouro
           </Text>
