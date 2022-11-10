@@ -39,7 +39,6 @@ export const HeroInventoryScreen = () => {
 
   const handleFetchInventory = () => {
     fetchInventory().then((res) => {
-      console.log('deu set');
       setItems(res.data);
     });
   };
