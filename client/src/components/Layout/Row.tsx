@@ -4,17 +4,23 @@ import styled from 'styled-components';
 interface IRow {
   vCenter?: boolean;
   hCenter?: boolean;
-  wrap?: boolean;
+  flexWrap?: boolean;
   style?: CSSProperties;
   children: React.ReactElement | React.ReactElement[];
 }
 
-const Row: React.FC<IRow> = ({ vCenter, hCenter, wrap, style, children }) => {
+const Row: React.FC<IRow> = ({
+  vCenter,
+  hCenter,
+  flexWrap,
+  style,
+  children,
+}) => {
   return (
     <StyledRow
       vCenter={vCenter}
       hCenter={hCenter}
-      wrap={wrap}
+      flexWrap={flexWrap}
       style={{ ...style }}
     >
       {children}
@@ -27,7 +33,7 @@ const StyledRow = styled.div<IRow>`
   flex-direction: row;
   width: 100%;
   word-break: break-word;
-  flex-wrap: ${(props) => (props.wrap ? 'wrap' : 'nowrap')};
+  flex-wrap: ${(props) => (props.flexWrap ? 'wrap' : 'nowrap')};
   justify-content: ${(props) => (props.hCenter ? 'center' : undefined)};
   align-items: ${(props) => (props.vCenter ? 'center' : undefined)};
 `;

@@ -58,7 +58,7 @@ export const HeroStoreScreen = () => {
       <Link to="/hero/inventory">
         <Text>Ir para o inventário</Text>
       </Link>
-      <Row wrap>
+      <Row flexWrap>
         {items.map((item: IItem) => (
           <Spacer key={item._id} mr={26} mt={26}>
             <SlotItem onClick={() => handleClick(item)} item={item} />
