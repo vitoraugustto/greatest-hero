@@ -50,12 +50,20 @@ export const Button: React.FC<IButton> = ({
   );
 };
 
+const borderRadius = (props: IButton) => {
+  if (props.rounded) {
+    return '16px';
+  } else {
+    return props.borderRadius + 'px';
+  }
+};
+
 const StyledButton = styled.button<IButton>`
-  height: ${(props) => (props.height ? props.height : 'auto')};
+  height: ${(props) => (props.height ? props.height + 'px' : 'auto')};
   border: ${(props) =>
     props.borderColor ? `1px solid ${props.borderColor}` : 'none'};
   border-radius: ${(props) =>
-    props.borderRadius ? props.borderRadius + 'px' : '8px'};
+    props.borderRadius || props.rounded ? borderRadius(props) : 0};
   padding: 10px;
   background-color: ${(props) =>
     props.bgColor ? props.bgColor : 'transparent'};
