@@ -9,11 +9,11 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
-  text: 'Botão primário',
-  borderColor: '#caa5fa',
-};
+export const OutlinedButton = Template.bind({});
+OutlinedButton.args = { text: 'Outlined Button', borderColor: '#caa5fa' };
 
-export const Secondary = Template.bind({});
-Secondary.args = { text: 'Botão secundário' };
+export const SolidButton = Template.bind({});
+SolidButton.args = { text: 'Solid Button', color: '#fff', bgColor: '#caa5fa' };
+
+export const TextButton = Template.bind({});
+TextButton.args = { text: 'Text Button' };
