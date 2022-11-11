@@ -1,5 +1,5 @@
 import Spacer from '../Layout/Spacer';
-import { Button } from '../UI/Button/Button';
+import { Button } from '../UI/Button';
 import { ModalBase } from './ModalBase';
 
 interface IConfirmModal {
