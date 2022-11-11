@@ -26,8 +26,6 @@ export const ModalBase: React.FC<IModalBase> = ({
 };
 
 const modalStyles: CSSObject = {
-  display: 'flex',
-  flexDirection: 'column',
   borderRadius: '8px',
   backgroundColor: '#302a54',
 };
