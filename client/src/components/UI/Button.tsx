@@ -10,6 +10,7 @@ interface IButton {
   bgColor?: string;
   rounded?: boolean;
   borderColor?: string;
+  extended?: boolean;
   onClick?: () => void;
   disabled?: boolean;
   fontSize?: number;
@@ -23,6 +24,7 @@ export const Button: React.FC<IButton> = ({
   bgColor,
   rounded,
   borderColor,
+  extended,
   text,
   onClick,
   disabled,
@@ -31,6 +33,7 @@ export const Button: React.FC<IButton> = ({
 }) => {
   return (
     <StyledButton
+      extended={extended}
       height={height}
       disabled={disabled}
       color={color}
@@ -59,6 +62,7 @@ const borderRadius = (props: IButton) => {
 };
 
 const StyledButton = styled.button<IButton>`
+  width: ${(props) => (props.extended ? '100%' : 'auto')};
   height: ${(props) => (props.height ? props.height + 'px' : 'auto')};
   border: ${(props) =>
     props.borderColor ? `1px solid ${props.borderColor}` : 'none'};
