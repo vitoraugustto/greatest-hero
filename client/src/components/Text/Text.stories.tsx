@@ -19,4 +19,4 @@ export default {
 const Template: ComponentStory<typeof Text> = (args) => <Text {...args} />;
 
 export const DefaultText = Template.bind({});
-DefaultText.args = { children: 'Test text' };
+DefaultText.args = { children: 'Lorem ipsum dolor sit amet.' };
