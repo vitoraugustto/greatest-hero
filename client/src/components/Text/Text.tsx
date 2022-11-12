@@ -1,17 +1,7 @@
-import styled from 'styled-components';
+import { StyledP } from './Text.styles';
+import { IText } from './Text.types';
 
-interface IText {
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'span' | 'p';
-  size?: number;
-  weight?: string;
-  color?: string;
-  align?: 'left' | 'center';
-  spacing?: number;
-  lineHeight?: number;
-  children: React.ReactNode;
-}
-
-const Text: React.FC<IText> = ({
+export const Text: React.FC<IText> = ({
   as,
   weight,
   size,
@@ -35,15 +25,3 @@ const Text: React.FC<IText> = ({
     </StyledP>
   );
 };
-
-const StyledP = styled.p<IText>`
-  font-weight: ${(props) => (props.weight ? props.weight : 14)};
-  font-size: ${(props) => (props.size ? props.size + 'px' : 14)};
-  color: ${(props) => (props.color ? props.color : '#caa5fa')};
-  text-align: ${(props) => (props.align ? props.align : 'left')};
-  letter-spacing: ${(props) =>
-    props.spacing ? props.spacing + 'px' : undefined};
-  line-height: ${(props) => (props.lineHeight ? props.lineHeight : undefined)};
-`;
-
-export default Text;
