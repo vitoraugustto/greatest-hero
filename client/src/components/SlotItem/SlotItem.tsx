@@ -1,6 +1,6 @@
 import Box from '../Layout/Box';
 import Spacer from '../Layout/Spacer';
-import Text from '../Text/Text';
+import { Text } from '../Text';
 
 export interface IItem {
   _id: string;

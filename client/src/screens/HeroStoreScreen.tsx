@@ -1,12 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import Background from '../components/Layout/Background';
-import Row from '../components/Layout/Row';
-import Spacer from '../components/Layout/Spacer';
-import { Link } from '../components/Link/Link';
+import { Background, Link, Row, SlotItem, Spacer, Text } from '../components';
 import { ConfirmModal } from '../components/Modals/ConfirmModal';
-import SlotItem, { IItem } from '../components/SlotItem/SlotItem';
-import Text from '../components/Text/Text';
+import { IItem } from '../components/SlotItem/SlotItem';
 import { storeInInventory } from '../services/hero';
 import { fetchItems } from '../services/items';
 

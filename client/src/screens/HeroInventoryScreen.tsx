@@ -5,7 +5,7 @@ import Row from '../components/Layout/Row';
 import Spacer from '../components/Layout/Spacer';
 import { ConfirmModal } from '../components/Modals/ConfirmModal';
 import SlotItem, { IItem } from '../components/SlotItem/SlotItem';
-import Text from '../components/Text/Text';
+import { Text } from '../components/Text';
 import { fetchInventory, removeFromInventory } from '../services/hero';
 
 export const HeroInventoryScreen = () => {
