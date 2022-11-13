@@ -18,5 +18,5 @@ export default {
 
 const Template: ComponentStory<typeof Text> = (args) => <Text {...args} />;
 
-export const DefaultText = Template.bind({});
-DefaultText.args = { children: 'Lorem ipsum dolor sit amet.' };
+export const CustomizableText = Template.bind({});
+CustomizableText.args = { children: 'Lorem ipsum dolor sit amet.' };

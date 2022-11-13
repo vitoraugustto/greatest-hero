@@ -19,8 +19,8 @@ export default {
 
 const Template: ComponentStory<typeof Box> = (args) => <Box {...args} />;
 
-export const DefaultBox = Template.bind({});
-DefaultBox.args = {
+export const CustomizableBox = Template.bind({});
+CustomizableBox.args = {
   children: <Text size={22}>Oi! Eu sou uma Box!</Text>,
   bgColor: '#302a54',
   vCenter: true,
