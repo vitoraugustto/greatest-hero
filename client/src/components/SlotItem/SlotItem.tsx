@@ -1,25 +1,9 @@
-import Box from '../Layout/Box';
+import { Box } from '../Layout/Box';
 import Spacer from '../Layout/Spacer';
 import { Text } from '../Text';
+import { ISlotItem } from './SlotItem.types';
 
-export interface IItem {
-  _id: string;
-  name: string;
-  image: string;
-  status: {
-    attack: number;
-    defense: number;
-  };
-  gold: number;
-  type: string;
-}
-
-interface ISlotItem {
-  item: IItem;
-  onClick?: () => void;
-}
-
-const SlotItem: React.FC<ISlotItem> = ({ item, onClick }) => {
+export const SlotItem: React.FC<ISlotItem> = ({ item, onClick }) => {
   const { name, image, status, gold, type } = item;
 
   return (
@@ -50,5 +34,3 @@ const SlotItem: React.FC<ISlotItem> = ({ item, onClick }) => {
     </Box>
   );
 };
-
-export default SlotItem;
