@@ -18,7 +18,7 @@ const boxStyles = (props: IBox): CSSObject => ({
   width: props.width ? props.width : 'auto',
   height: props.height ? props.height : 'auto',
   borderRadius: props.borderRadius ? props.borderRadius : 0,
-  border: props.borderColor ? '1 px solid' + props.borderColor : undefined,
+  border: props.borderColor ? '2px solid ' + props.borderColor : undefined,
 });
 export const StyledBox = styled.div.attrs((props: IBox) => {
   return addTestId(props.testId);

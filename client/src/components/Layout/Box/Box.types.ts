@@ -9,7 +9,7 @@ export interface IBox {
   hCenter?: boolean;
   borderRadius?: number;
   borderColor?: string;
-  flex?: true;
+  flex?: boolean;
   testId?: string;
   onClick?: () => void;
   style?: CSSProperties;
