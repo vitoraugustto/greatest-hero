@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { Background, Link, Row, SlotItem, Spacer, Text } from '../components';
 import { ConfirmModal } from '../components/Modals/ConfirmModal';
-import { IItem } from '../components/SlotItem/SlotItem';
+import { IItem } from '../components/SlotItem/SlotItem.types';
 import { storeInInventory } from '../services/hero';
 import { fetchItems } from '../services/items';
 
