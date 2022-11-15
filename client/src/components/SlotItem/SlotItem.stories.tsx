@@ -36,5 +36,5 @@ const item = {
   type: 'botas',
 };
 
-export const DefaultSlotItem = Template.bind({});
-DefaultSlotItem.args = { item };
+export const _SlotItem = Template.bind({});
+_SlotItem.args = { item };

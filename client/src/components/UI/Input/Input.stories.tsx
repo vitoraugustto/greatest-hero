@@ -18,4 +18,4 @@ export default {
 
 const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
-export const CustomizableInput = Template.bind({});
+export const _Input = Template.bind({});
