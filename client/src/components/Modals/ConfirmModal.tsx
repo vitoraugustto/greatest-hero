@@ -1,4 +1,4 @@
-import Spacer from '../Layout/Spacer';
+import { Spacer } from '../Layout/Spacer';
 import { Button } from '../UI/Button';
 import { ModalBase } from './ModalBase';
 

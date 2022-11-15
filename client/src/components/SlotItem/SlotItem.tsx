@@ -1,5 +1,5 @@
 import { Box } from '../Layout/Box';
-import Spacer from '../Layout/Spacer';
+import { Spacer } from '../Layout/Spacer';
 import { Text } from '../Text';
 import { ISlotItem } from './SlotItem.types';
 
