@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Box } from '../Box';
-import Spacer from '../Spacer';
+import Spacer from '../Spacer/Spacer';
 import { Row } from './Row';
 
 export default {
