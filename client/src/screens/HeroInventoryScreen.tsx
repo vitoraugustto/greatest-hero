@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import Background from '../components/Layout/Background';
-import Row from '../components/Layout/Row';
-import Spacer from '../components/Layout/Spacer';
+import { Background, Row, SlotItem, Spacer, Text } from '../components';
 import { ConfirmModal } from '../components/Modals/ConfirmModal';
-import SlotItem, { IItem } from '../components/SlotItem/SlotItem';
-import { Text } from '../components/Text';
+import { IItem } from '../components/SlotItem/SlotItem.types';
 import { fetchInventory, removeFromInventory } from '../services/hero';
 
 export const HeroInventoryScreen = () => {
