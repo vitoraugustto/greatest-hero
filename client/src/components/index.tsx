@@ -1,6 +1,6 @@
 import Background from './Layout/Background';
 import { Box } from './Layout/Box';
-import Row from './Layout/Row';
+import { Row } from './Layout/Row';
 import Spacer from './Layout/Spacer';
 import { Link } from './Link/Link';
 import { SlotItem } from './SlotItem';
