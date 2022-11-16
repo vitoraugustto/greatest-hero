@@ -5,6 +5,7 @@ export interface IBox {
   bgColor?: string;
   width?: number;
   height?: number;
+  gap?: number;
   vCenter?: boolean;
   hCenter?: boolean;
   borderRadius?: number;

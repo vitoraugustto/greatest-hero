@@ -12,8 +12,11 @@ const Template: ComponentStory<typeof Box> = (args) => <Box {...args} />;
 
 export const _Box = Template.bind({});
 _Box.args = {
-  children: <Text size={22}>Oi! Eu sou uma Box!</Text>,
+  children: (
+    <>
+      <Text size={22}>Oi!</Text>
+      <Text size={22}>Eu sou uma Box!</Text>
+    </>
+  ),
   bgColor: '#302a54',
-  vCenter: true,
-  hCenter: true,
 };

@@ -10,6 +10,7 @@ export const Box: React.FC<IBox> = ({
   height,
   vCenter,
   hCenter,
+  gap,
   borderRadius,
   borderColor,
   flex,
@@ -33,6 +34,7 @@ export const Box: React.FC<IBox> = ({
       width={width}
       vCenter={vCenter}
       hCenter={hCenter}
+      gap={gap}
       borderRadius={borderRadius}
       borderColor={borderColor}
       flex={flex}

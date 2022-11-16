@@ -11,6 +11,7 @@ const addTestId = (testId: IBox['testId']) => {
 const boxStyles = (props: IBox): CSSObject => ({
   display: 'flex',
   flexDirection: 'column',
+  rowGap: props.gap ? props.gap : 'normal',
   flex: props.flex ? 1 : undefined,
   justifyContent: props.vCenter ? 'center' : undefined,
   alignItems: props.hCenter ? 'center' : undefined,
