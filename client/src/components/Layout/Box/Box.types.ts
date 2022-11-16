@@ -1,5 +1,3 @@
-import { CSSProperties } from 'react';
-
 export interface IBox {
   as?: 'section' | 'main' | 'header' | 'footer' | 'aside';
   bgColor?: string;
@@ -13,6 +11,5 @@ export interface IBox {
   flex?: boolean;
   testId?: string;
   onClick?: () => void;
-  style?: CSSProperties;
   children?: React.ReactElement | React.ReactElement[];
 }

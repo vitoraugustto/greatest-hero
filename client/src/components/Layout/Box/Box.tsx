@@ -16,7 +16,6 @@ export const Box: React.FC<IBox> = ({
   flex,
   testId,
   onClick,
-  style,
   children,
 }) => {
   // I don't know what it does "[x: string]: unknown"
@@ -38,7 +37,6 @@ export const Box: React.FC<IBox> = ({
       borderRadius={borderRadius}
       borderColor={borderColor}
       flex={flex}
-      style={{ ...style }}
     >
       {children}
     </Component>
