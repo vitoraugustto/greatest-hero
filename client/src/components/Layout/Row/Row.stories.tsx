@@ -12,8 +12,8 @@ export default {
     (Story) => (
       <>
         <Row gap={8} vCenter>
-          <Box height={10} width={10} bgColor="pink" borderRadius={5} />
-          <Text color="pink">Row</Text>
+          <Box height={10} width={10} bgColor="#ff9ccc" borderRadius={5} />
+          <Text color="#ff9ccc">Row</Text>
         </Row>
         <Spacer mt={8} />
         <Story />
@@ -26,12 +26,13 @@ const Template: ComponentStory<typeof Row> = (args) => <Row {...args} />;
 
 export const _Row = Template.bind({});
 _Row.args = {
-  style: { backgroundColor: 'pink', height: 150 },
+  bgColor: '#ff9ccc',
   gap: 16,
   children: (
     <>
       <Box height={100} width={100} bgColor="blue" />
-      <Box height={100} width={100} bgColor="red" />
+      <Box height={80} width={100} bgColor="red" />
+      <Box height={60} width={100} bgColor="green" />
     </>
   ),
 };

@@ -8,7 +8,7 @@ export const Row: React.FC<IRow> = ({
   hCenter,
   flexWrap,
   gap,
-  style,
+  bgColor,
   children,
 }) => {
   return (
@@ -16,8 +16,8 @@ export const Row: React.FC<IRow> = ({
       vCenter={vCenter}
       hCenter={hCenter}
       gap={gap}
+      bgColor={bgColor}
       flexWrap={flexWrap}
-      style={{ ...style }}
     >
       {children}
     </StyledRow>
