@@ -11,9 +11,8 @@ export default {
   decorators: [
     (Story) => (
       <>
-        <Row vCenter>
+        <Row gap={8} vCenter>
           <Box height={10} width={10} bgColor="pink" borderRadius={5} />
-          <Spacer mr={8} />
           <Text color="pink">Row</Text>
         </Row>
         <Spacer mt={8} />
@@ -28,10 +27,10 @@ const Template: ComponentStory<typeof Row> = (args) => <Row {...args} />;
 export const _Row = Template.bind({});
 _Row.args = {
   style: { backgroundColor: 'pink', height: 150 },
+  gap: 16,
   children: (
     <>
       <Box height={100} width={100} bgColor="blue" />
-      <Spacer mr={16} />
       <Box height={100} width={100} bgColor="red" />
     </>
   ),

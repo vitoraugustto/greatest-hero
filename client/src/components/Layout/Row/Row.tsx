@@ -7,6 +7,7 @@ export const Row: React.FC<IRow> = ({
   vCenter,
   hCenter,
   flexWrap,
+  gap,
   style,
   children,
 }) => {
@@ -14,6 +15,7 @@ export const Row: React.FC<IRow> = ({
     <StyledRow
       vCenter={vCenter}
       hCenter={hCenter}
+      gap={gap}
       flexWrap={flexWrap}
       style={{ ...style }}
     >
