@@ -16,7 +16,7 @@ export const HeroStoreScreen = () => {
     gold: 0,
     type: '',
   });
-  const [items, setItems] = useState<[IItem]>([
+  const [items, setItems] = useState<IItem[]>([
     {
       _id: '',
       name: '',
@@ -54,11 +54,14 @@ export const HeroStoreScreen = () => {
       <Link to="/hero/inventory">
         <Text>Ir para o inventário</Text>
       </Link>
-      <Row flexWrap>
-        {items.map((item: IItem) => (
-          <Spacer key={item._id} mr={26} mt={26}>
-            <SlotItem onClick={() => handleClick(item)} item={item} />
-          </Spacer>
+      <Spacer mt={26} />
+      <Row gap={26} flexWrap>
+        {items.map((item) => (
+          <SlotItem
+            key={item._id}
+            onClick={() => handleClick(item)}
+            item={item}
+          />
         ))}
       </Row>
       <ConfirmModal

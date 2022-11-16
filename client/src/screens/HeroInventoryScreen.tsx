@@ -16,7 +16,7 @@ export const HeroInventoryScreen = () => {
     type: '',
   });
 
-  const [items, setItems] = useState<[IItem]>([
+  const [items, setItems] = useState<IItem[]>([
     {
       _id: '',
       name: '',
@@ -58,7 +58,7 @@ export const HeroInventoryScreen = () => {
       </Text>
 
       <Row flexWrap>
-        {items.map((item: IItem) => (
+        {items.map((item) => (
           <Spacer key={item._id} mr={26} mt={26}>
             <SlotItem onClick={() => handleClick(item)} item={item} />
           </Spacer>
