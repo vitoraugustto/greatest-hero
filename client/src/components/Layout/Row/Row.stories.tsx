@@ -16,6 +16,7 @@ export default {
           <Spacer mr={8} />
           <Text color="pink">Row</Text>
         </Row>
+        <Spacer mt={8} />
         <Story />
       </>
     ),

@@ -1,19 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import GlobalStyle from '../GlobalStyle';
 import { SlotItem } from './SlotItem';
 
 export default {
   title: 'SlotItem',
   component: SlotItem,
-  decorators: [
-    (Story) => (
-      <>
-        <GlobalStyle />
-        <Story />
-      </>
-    ),
-  ],
 } as ComponentMeta<typeof SlotItem>;
 
 const Template: ComponentStory<typeof SlotItem> = (args) => (
