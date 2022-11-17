@@ -47,15 +47,15 @@ export const HeroStoreScreen = () => {
 
   return (
     <Background>
-      <Text as="h1" weight="bold" color="#fff">
+      <Text align="center" as="h1" weight="bold" color="#fff">
         Loja do Herói
       </Text>
       <Spacer mt={12} />
       <Link to="/hero/inventory">
-        <Text>Ir para o inventário</Text>
+        <Text align="center">Ir para o inventário</Text>
       </Link>
       <Spacer mt={26} />
-      <Row gap={26} flexWrap>
+      <Row hCenter gap={26} flexWrap>
         {items.map((item) => (
           <SlotItem
             key={item._id}

@@ -53,11 +53,11 @@ export const HeroInventoryScreen = () => {
 
   return (
     <Background>
-      <Text as="h1" weight="bold" color="#fff">
+      <Text align="center" as="h1" weight="bold" color="#fff">
         Inventário
       </Text>
 
-      <Row flexWrap>
+      <Row hCenter flexWrap>
         {items.map((item) => (
           <Spacer key={item._id} mr={26} mt={26}>
             <SlotItem onClick={() => handleClick(item)} item={item} />
