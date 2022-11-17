@@ -30,7 +30,7 @@ export const ConfirmModal: React.FC<IConfirmModal> = ({
           borderColor="#caa5fa"
         />
         <Spacer mt={8} />
-        <Button text="Cancelar" extended onClick={onCancel} />
+        <Button cleared text="Cancelar" extended onClick={onCancel} />
       </Spacer>
     </ModalBase>
   );

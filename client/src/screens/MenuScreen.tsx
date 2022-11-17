@@ -1,18 +1,20 @@
-import { Background, Box, Button, Link, Text } from '../components';
+import { Background, Box, Button, Link, Row, Text } from '../components';
 
 export const MenuScreen = () => {
   return (
     <Background>
-      <Box gap={12}>
+      <Box gap={18}>
         <Text align="center" as="h1" color="#fff" weight="bold">
           Menu
         </Text>
-        <Link to="/hero/inventory">
-          <Button extended text="Inventário" />
-        </Link>
-        <Link to="/store">
-          <Button extended text="Loja" />
-        </Link>
+        <Row gap={18} hCenter>
+          <Link to="/store">
+            <Button text="Loja" />
+          </Link>
+          <Link to="/hero/inventory">
+            <Button text="Inventário" />
+          </Link>
+        </Row>
       </Box>
     </Background>
   );
