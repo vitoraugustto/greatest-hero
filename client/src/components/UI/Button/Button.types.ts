@@ -1,4 +1,5 @@
 export interface IButton {
+  testId?: string;
   height?: number;
   color?: string;
   bgColor?: string;

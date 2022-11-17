@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
+import { addTestId } from '../../../helpers/utils';
 import { IButton } from './Button.types';
 
-export const StyledButton = styled.button<IButton>`
+export const StyledButton = styled.button.attrs((props: IButton) => {
+  return addTestId(props.testId);
+})<IButton>`
   width: ${(props) => (props.extended ? '100%' : 'auto')};
   height: ${(props) => (props.height ? props.height + 'px' : 'auto')};
   border: ${(props) =>

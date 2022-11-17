@@ -6,6 +6,7 @@ import { StyledButton } from './Button.styles';
 import { IButton } from './Button.types';
 
 export const Button: React.FC<IButton> = ({
+  testId,
   height,
   color,
   bgColor,
@@ -20,6 +21,7 @@ export const Button: React.FC<IButton> = ({
 }) => {
   return (
     <StyledButton
+      testId={testId}
       extended={extended}
       height={height}
       disabled={disabled}
