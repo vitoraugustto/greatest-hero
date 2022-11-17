@@ -1,4 +1,4 @@
-export const addTestId = (testId: string) => {
+export const addTestId = (testId?: string) => {
   return {
     'data-testid': testId,
   };
