@@ -4,6 +4,7 @@ export interface IButton {
   color?: string;
   bgColor?: string;
   rounded?: boolean;
+  cleared?: boolean;
   borderColor?: string;
   extended?: boolean;
   onClick?: () => void;

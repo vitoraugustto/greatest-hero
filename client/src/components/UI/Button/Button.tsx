@@ -12,6 +12,7 @@ export const Button: React.FC<IButton> = ({
   bgColor,
   rounded,
   borderColor,
+  cleared,
   extended,
   text,
   onClick,
@@ -30,11 +31,12 @@ export const Button: React.FC<IButton> = ({
       rounded={rounded}
       text={text}
       borderColor={borderColor}
+      cleared={cleared}
       borderRadius={borderRadius}
       onClick={onClick}
     >
       <Row hCenter vCenter>
-        <Text size={fontSize} color={color}>
+        <Text size={fontSize} weight="bold" color={color}>
           {text}
         </Text>
       </Row>
