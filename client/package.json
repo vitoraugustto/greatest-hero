@@ -9,9 +9,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "postinstall": "husky install",
-    "prepare": "cd .. && husky install client/.husky"
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@types/styled-react-modal": "^1.2.2",
