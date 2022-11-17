@@ -14,9 +14,7 @@ export const StyledButton = styled.button.attrs((props: IButton) => {
   padding: 10px;
   background-color: ${(props) =>
     props.bgColor ? props.bgColor : 'transparent'};
-  color: ${(props) => (props.color ? props.color : '#fff')};
   letter-spacing: 1.5px;
-  font-size: ${(props) => (props.fontSize ? props.fontSize + 'px' : '22px')};
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
 `;
 

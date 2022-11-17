@@ -17,7 +17,7 @@ export const Button: React.FC<IButton> = ({
   text,
   onClick,
   disabled,
-  fontSize,
+  fontSize = 22,
   borderRadius,
 }) => {
   return (
