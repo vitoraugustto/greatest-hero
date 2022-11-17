@@ -1,4 +1,4 @@
-import Background from './Layout/Background';
+import { Background } from './Layout/Background';
 import { Box } from './Layout/Box';
 import { Row } from './Layout/Row';
 import { Spacer } from './Layout/Spacer';
