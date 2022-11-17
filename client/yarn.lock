@@ -9738,6 +9738,7 @@ __metadata:
     eslint: "npm:^8.24.0"
     eslint-config-prettier: "npm:^8.5.0"
     eslint-plugin-storybook: "npm:^0.6.7"
+    husky: "npm:^8.0.2"
     jsdom: "npm:^20.0.2"
     prettier: "npm:^2.7.1"
     react: "npm:^18.2.0"
@@ -10192,6 +10193,15 @@ __metadata:
   dependencies:
     ms: "npm:^2.0.0"
   checksum: fded981fd3b507fe78f7ce505c3f060e3b53cb2155d279d794a6bddb451bb1c7f865f4ca495dc0bae695ad0c182fd5be3a581b51ba30770e6adfda960bca0e68
+  languageName: node
+  linkType: hard
+
+"husky@npm:^8.0.2":
+  version: 8.0.2
+  resolution: "husky@npm:8.0.2"
+  bin:
+    husky: lib/bin.js
+  checksum: a1274b7c1d84c2a8ae84dc7db211e4736310f55312b91231525e9004eeda791b7953f0164ecb114d02f3db305b9273a1ead311c4fba8be987ca702b999f15e67
   languageName: node
   linkType: hard
 
