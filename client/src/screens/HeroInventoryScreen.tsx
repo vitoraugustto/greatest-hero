@@ -1,6 +1,15 @@
 import { useEffect, useState } from 'react';
 
-import { Background, Row, SlotItem, Spacer, Text } from '../components';
+import {
+  Background,
+  Box,
+  Button,
+  Link,
+  Row,
+  SlotItem,
+  Spacer,
+  Text,
+} from '../components';
 import { ConfirmModal } from '../components/Modals/ConfirmModal';
 import { IItem } from '../components/SlotItem/SlotItem.types';
 import { fetchInventory, removeFromInventory } from '../services/hero';
@@ -53,17 +62,28 @@ export const HeroInventoryScreen = () => {
 
   return (
     <Background>
-      <Text align="center" as="h1" weight="bold" color="#fff">
-        Inventário
-      </Text>
-
-      <Row hCenter flexWrap>
-        {items.map((item) => (
-          <Spacer key={item._id} mr={26} mt={26}>
-            <SlotItem onClick={() => handleClick(item)} item={item} />
-          </Spacer>
-        ))}
-      </Row>
+      <Box gap={18}>
+        <Text align="center" as="h1" weight="bold" color="#fff">
+          Inventário
+        </Text>
+        <Row gap={18} hCenter>
+          <Link to="/store">
+            <Button text="Loja" />
+          </Link>
+          <Link to="/">
+            <Button text="Menu" />
+          </Link>
+        </Row>
+        <Row gap={26} hCenter flexWrap>
+          {items.map((item) => (
+            <SlotItem
+              key={item._id}
+              onClick={() => handleClick(item)}
+              item={item}
+            />
+          ))}
+        </Row>
+      </Box>
       <ConfirmModal
         isModalOpen={isModalOpen}
         onConfirm={sellItem}

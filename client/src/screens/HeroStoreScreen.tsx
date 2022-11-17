@@ -1,6 +1,15 @@
 import { useEffect, useState } from 'react';
 
-import { Background, Link, Row, SlotItem, Spacer, Text } from '../components';
+import {
+  Background,
+  Box,
+  Button,
+  Link,
+  Row,
+  SlotItem,
+  Spacer,
+  Text,
+} from '../components';
 import { ConfirmModal } from '../components/Modals/ConfirmModal';
 import { IItem } from '../components/SlotItem/SlotItem.types';
 import { storeInInventory } from '../services/hero';
@@ -47,23 +56,28 @@ export const HeroStoreScreen = () => {
 
   return (
     <Background>
-      <Text align="center" as="h1" weight="bold" color="#fff">
-        Loja do Herói
-      </Text>
-      <Spacer mt={12} />
-      <Link to="/hero/inventory">
-        <Text align="center">Ir para o inventário</Text>
-      </Link>
-      <Spacer mt={26} />
-      <Row hCenter gap={26} flexWrap>
-        {items.map((item) => (
-          <SlotItem
-            key={item._id}
-            onClick={() => handleClick(item)}
-            item={item}
-          />
-        ))}
-      </Row>
+      <Box gap={18}>
+        <Text align="center" as="h1" weight="bold" color="#fff">
+          Loja do Herói
+        </Text>
+        <Row gap={18} hCenter>
+          <Link to="/hero/inventory">
+            <Button text="Inventário" />
+          </Link>
+          <Link to="/">
+            <Button text="Menu" />
+          </Link>
+        </Row>
+        <Row hCenter gap={26} flexWrap>
+          {items.map((item) => (
+            <SlotItem
+              key={item._id}
+              onClick={() => handleClick(item)}
+              item={item}
+            />
+          ))}
+        </Row>
+      </Box>
       <ConfirmModal
         isModalOpen={isModalOpen}
         onConfirm={buyItem}
