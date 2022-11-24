@@ -1797,6 +1797,7 @@ __metadata:
     eslint: "npm:^8.24.0"
     eslint-config-prettier: "npm:^8.5.0"
     express: "npm:^4.18.1"
+    helmet: "npm:^6.0.0"
     mongoose: "npm:^6.5.2"
     multer: "npm:^1.4.5-lts.1"
     nodemon: "npm:^2.0.19"
@@ -1838,6 +1839,13 @@ __metadata:
   dependencies:
     function-bind: "npm:^1.1.1"
   checksum: 3e8c4d87ccd9c160d61a5db829b5fb647acac79e482476c857d5d1dc580517c6a77cf84337808f28361f6263008ce1ce5aff44407bd9241af93c623ef8d8d4f1
+  languageName: node
+  linkType: hard
+
+"helmet@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "helmet@npm:6.0.0"
+  checksum: 73b6ba802d3b8b5b8c8eace60ff624c0b620efbcb15daedec144ee5de4593229fd98cf48210db59c75781a3516979f5fb7fc72be7efb34ab419dd5acc4e3d70d
   languageName: node
   linkType: hard
 

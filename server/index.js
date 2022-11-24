@@ -1,4 +1,5 @@
 import express from 'express';
+import helmet from 'helmet';
 import mongoose from 'mongoose';
 
 import { DB_PASSWORD, DB_USERNAME } from './.env.js';
@@ -37,6 +38,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
