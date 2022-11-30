@@ -49,6 +49,7 @@ router.patch('/equip-item/:id', async (req, res) => {
       {
         'status.attack': currentAttack + itemAttack,
         'status.defense': currentDefense + itemDefense,
+        equippedItems: [...hero.equippedItems, item],
       },
       { new: true }
     );
