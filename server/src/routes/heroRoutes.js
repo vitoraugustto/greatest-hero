@@ -7,7 +7,7 @@ const router = Router();
 
 router.get('/', async (_, res) => {
   try {
-    const hero = await Hero.find().select('-inventory');
+    const hero = await Hero.find();
 
     res.status(200).json(...hero);
   } catch (error) {
@@ -77,16 +77,6 @@ router.patch('/equip-item/:id', async (req, res) => {
     } else {
       res.status(500).json({ error });
     }
-  }
-});
-
-router.get('/inventory', async (_, res) => {
-  try {
-    const hero = await Hero.find().select('inventory -_id');
-
-    res.status(200).json(hero[0].inventory);
-  } catch (error) {
-    res.status(500).json({ error });
   }
 });
 
