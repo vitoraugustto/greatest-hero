@@ -34,6 +34,8 @@ router.post('/', async (req, res) => {
 
 router.patch('/equip-item/:id', async (req, res) => {
   const { id } = req.params;
+  let itemFoundInInventory;
+  let itemAlreadyEquipped;
 
   try {
     const hero = await Hero.findOne();
@@ -44,19 +46,37 @@ router.patch('/equip-item/:id', async (req, res) => {
     const itemAttack = item.status.attack;
     const itemDefense = item.status.defense;
 
-    await Hero.findOneAndUpdate(
-      {},
-      {
-        'status.attack': currentAttack + itemAttack,
-        'status.defense': currentDefense + itemDefense,
-        equippedItems: [...hero.equippedItems, item],
-      },
-      { new: true }
+    itemFoundInInventory = hero.inventory.some(
+      (inventoryItem) => String(inventoryItem._id) === id
     );
 
-    res.status(200).json({ message: `'${item.name}' equipped.` });
+    itemAlreadyEquipped = hero.equippedItems.some(
+      (inventoryItem) => String(inventoryItem._id) === id
+    );
+
+    if (itemFoundInInventory && !itemAlreadyEquipped) {
+      await Hero.findOneAndUpdate(
+        {},
+        {
+          'status.attack': currentAttack + itemAttack,
+          'status.defense': currentDefense + itemDefense,
+          equippedItems: [...hero.equippedItems, item],
+        },
+        { new: true }
+      );
+
+      res.status(200).json({ message: `'${item.name}' equipped.` });
+    } else {
+      throw new Error();
+    }
   } catch (error) {
-    res.status(500).json({ error });
+    if (itemAlreadyEquipped) {
+      res.status(400).json({ error: 'Item already equipped.' });
+    } else if (!itemFoundInInventory && !itemAlreadyEquipped) {
+      res.status(400).json({ error: 'Item not found in inventory.' });
+    } else {
+      res.status(500).json({ error });
+    }
   }
 });
 
@@ -132,10 +152,10 @@ router.put('/inventory/:id', async (req, res) => {
       throw new Error();
     }
   } catch (error) {
-    if (itemFound) {
-      res.status(500).json({ error });
+    if (!itemFound) {
+      res.status(400).json({ error: 'Item not found in inventory.' });
     } else {
-      res.status(400).json({ message: 'Item not found in inventory.' });
+      res.status(500).json({ error });
     }
   }
 });
