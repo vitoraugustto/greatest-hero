@@ -41,10 +41,15 @@ router.post('/equip-item/:id', async (req, res) => {
   const { id } = req.params;
   let itemFoundInInventory;
   let itemAlreadyEquipped;
+  let itemTypeAlreadyEquipped;
 
   try {
     const hero = await Hero.findOne();
     const item = await Item.findOne({ _id: id });
+
+    itemTypeAlreadyEquipped = hero.equippedItems.some(
+      (equippedItem) => equippedItem.type === item.type
+    );
 
     const currentAttack = hero.status.attack;
     const currentDefense = hero.status.defense;
@@ -59,7 +64,11 @@ router.post('/equip-item/:id', async (req, res) => {
       (inventoryItem) => String(inventoryItem._id) === id
     );
 
-    if (itemFoundInInventory && !itemAlreadyEquipped) {
+    if (
+      itemFoundInInventory &&
+      !itemAlreadyEquipped &&
+      !itemTypeAlreadyEquipped
+    ) {
       await Hero.findOneAndUpdate(
         {},
         {
@@ -70,18 +79,16 @@ router.post('/equip-item/:id', async (req, res) => {
         { new: true }
       );
 
-      res.status(200).json({ message: `'${item.name}' equipped.` });
-    } else {
-      throw new Error();
+      res.status(200).json({ message: `Item '${item.name}' equipped.` });
+    } else if (itemAlreadyEquipped) {
+      throw `Item '${item.name}' already equipped.`;
+    } else if (!itemFoundInInventory && !itemAlreadyEquipped) {
+      throw `Item '${item.name}' not found in inventory.`;
+    } else if (itemTypeAlreadyEquipped) {
+      throw `Item of type '${item.type}' already equipped. You can only have one item of the same type equipped.`;
     }
   } catch (error) {
-    if (itemAlreadyEquipped) {
-      res.status(400).json({ error: 'Item already equipped.' });
-    } else if (!itemFoundInInventory && !itemAlreadyEquipped) {
-      res.status(400).json({ error: 'Item not found in inventory.' });
-    } else {
-      res.status(500).json({ error });
-    }
+    res.status(400).json({ error });
   }
 });
 
