@@ -22,7 +22,12 @@ router.post('/', async (req, res) => {
   try {
     const createdHero = await Hero.findOneAndUpdate(
       {},
-      { ...hero, status: { attack: 1, defense: 0, hp: 100 } },
+      {
+        ...hero,
+        status: { attack: 1, defense: 0, hp: 100 },
+        inventory: [],
+        equippedItems: [],
+      },
       { upsert: true, new: true }
     );
 
