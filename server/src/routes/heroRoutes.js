@@ -121,6 +121,40 @@ router.put('/inventory/:id', async (req, res) => {
   let itemFound = false;
 
   try {
+    const item = await Item.findById(id);
+    const hero = await Hero.findOne();
+
+    itemFound = hero.equippedItems.some(
+      (equippedItem) => String(equippedItem._id) === id
+    );
+
+    if (itemFound) {
+      const updatedEquippedItems = hero.equippedItems.filter(
+        (equippedItem) => String(equippedItem._id) !== id
+      );
+
+      await Hero.updateOne({}, { equippedItems: updatedEquippedItems });
+
+      res.status(200).json({
+        message: `Item '${item.name}' unequipped successfully.`,
+      });
+    } else {
+      throw new Error();
+    }
+  } catch (error) {
+    if (!itemFound) {
+      res.status(400).json({ error: 'The item is not equipped.' });
+    } else {
+      res.status(500).json({ error });
+    }
+  }
+});
+
+router.put('/inventory/:id', async (req, res) => {
+  const { id } = req.params;
+  let itemFound = false;
+
+  try {
     const item = await Item.findOne({ _id: id });
     const hero = await Hero.findOne();
 
