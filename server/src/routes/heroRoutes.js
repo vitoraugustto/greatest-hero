@@ -71,6 +71,7 @@ router.get('/inventory', async (_, res) => {
 
 router.post('/inventory/:id', async (req, res) => {
   const { id } = req.params;
+  let itemAlreadyStored;
 
   try {
     const item = await Item.findOne({ _id: id });
@@ -78,9 +79,9 @@ router.post('/inventory/:id', async (req, res) => {
 
     hero.inventory.forEach((inventoryItem) => {
       if (String(inventoryItem._id) === id) {
-        res
-          .status(400)
-          .json({ error: `Item '${item.name}' already stored in inventory.` });
+        itemAlreadyStored = item.name;
+
+        throw new Error();
       }
     });
 
@@ -94,28 +95,47 @@ router.post('/inventory/:id', async (req, res) => {
       message: `Item '${item.name}' stored in inventory successfully.`,
     });
   } catch (error) {
-    res.status(500).json({ error });
+    if (itemAlreadyStored) {
+      res.status(400).json({
+        error: `Item '${itemAlreadyStored}' already stored in inventory.`,
+      });
+    } else {
+      res.status(500).json({ error });
+    }
   }
 });
 
 router.put('/inventory/:id', async (req, res) => {
   const { id } = req.params;
+  let itemFound = false;
 
   try {
     const item = await Item.findOne({ _id: id });
     const hero = await Hero.findOne();
 
-    const updatedInventory = hero.inventory.filter(
-      (inventoryItem) => String(inventoryItem._id) !== id
+    itemFound = hero.inventory.some(
+      (inventoryItem) => String(inventoryItem._id) === id
     );
 
-    await Hero.updateOne({}, { inventory: updatedInventory });
+    if (itemFound) {
+      const updatedInventory = hero.inventory.filter(
+        (inventoryItem) => String(inventoryItem._id) !== id
+      );
 
-    res.status(200).json({
-      message: `Item '${item.name}' removed from inventory successfully.`,
-    });
+      await Hero.updateOne({}, { inventory: updatedInventory });
+
+      res.status(200).json({
+        message: `Item '${item.name}' removed from inventory successfully.`,
+      });
+    } else {
+      throw new Error();
+    }
   } catch (error) {
-    res.status(500).json({ error });
+    if (itemFound) {
+      res.status(500).json({ error });
+    } else {
+      res.status(400).json({ message: 'Item not found in inventory.' });
+    }
   }
 });
 
