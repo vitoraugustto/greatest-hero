@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.patch('/equip-item/:id', async (req, res) => {
+router.post('/equip-item/:id', async (req, res) => {
   const { id } = req.params;
   let itemFoundInInventory;
   let itemAlreadyEquipped;
