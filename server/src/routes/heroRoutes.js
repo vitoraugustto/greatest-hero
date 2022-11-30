@@ -124,6 +124,11 @@ router.put('/inventory/:id', async (req, res) => {
     const item = await Item.findById(id);
     const hero = await Hero.findOne();
 
+    const currentAttack = hero.status.attack;
+    const currentDefense = hero.status.defense;
+    const itemAttack = item.status.attack;
+    const itemDefense = item.status.defense;
+
     itemFound = hero.equippedItems.some(
       (equippedItem) => String(equippedItem._id) === id
     );
@@ -133,7 +138,14 @@ router.put('/inventory/:id', async (req, res) => {
         (equippedItem) => String(equippedItem._id) !== id
       );
 
-      await Hero.updateOne({}, { equippedItems: updatedEquippedItems });
+      await Hero.updateOne(
+        {},
+        {
+          equippedItems: updatedEquippedItems,
+          'status.attack': currentAttack - itemAttack,
+          'status.defense': currentDefense - itemDefense,
+        }
+      );
 
       res.status(200).json({
         message: `Item '${item.name}' unequipped successfully.`,
@@ -143,7 +155,7 @@ router.put('/inventory/:id', async (req, res) => {
     }
   } catch (error) {
     if (!itemFound) {
-      res.status(400).json({ error: 'The item is not equipped.' });
+      res.status(400).json({ error: 'Item not equipped.' });
     } else {
       res.status(500).json({ error });
     }
