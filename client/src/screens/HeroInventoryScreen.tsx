@@ -16,25 +16,8 @@ import { fetchInventory, removeFromInventory } from '../services/hero';
 
 export const HeroInventoryScreen = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
-  const [selectedItem, setSelectedItem] = useState<IItem>({
-    _id: '',
-    name: '',
-    image: '',
-    status: { attack: 0, defense: 0 },
-    gold: 0,
-    type: '',
-  });
-
-  const [items, setItems] = useState<IItem[]>([
-    {
-      _id: '',
-      name: '',
-      image: '',
-      status: { attack: 0, defense: 0 },
-      gold: 0,
-      type: '',
-    },
-  ]);
+  const [selectedItem, setSelectedItem] = useState<IItem>(initItem);
+  const [items, setItems] = useState<IItem[]>([]);
 
   const handleClick = (item: IItem): void => {
     setSelectedItem(item);
@@ -98,4 +81,13 @@ export const HeroInventoryScreen = () => {
       </ConfirmModal>
     </Background>
   );
+};
+
+const initItem = {
+  _id: '',
+  name: '',
+  image: '',
+  status: { attack: 0, defense: 0 },
+  gold: 0,
+  type: '',
 };
