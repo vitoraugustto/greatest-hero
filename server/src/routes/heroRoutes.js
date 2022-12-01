@@ -92,43 +92,7 @@ router.post('/equip-item/:id', async (req, res) => {
   }
 });
 
-router.post('/inventory/:id', async (req, res) => {
-  const { id } = req.params;
-  let itemAlreadyStored;
-
-  try {
-    const item = await Item.findOne({ _id: id });
-    const hero = await Hero.findOne();
-
-    hero.inventory.forEach((inventoryItem) => {
-      if (String(inventoryItem._id) === id) {
-        itemAlreadyStored = item.name;
-
-        throw new Error();
-      }
-    });
-
-    await Hero.findOneAndUpdate(
-      {},
-      { inventory: [...hero.inventory, item] },
-      { new: true }
-    );
-
-    res.status(200).json({
-      message: `Item '${item.name}' stored in inventory successfully.`,
-    });
-  } catch (error) {
-    if (itemAlreadyStored) {
-      res.status(400).json({
-        error: `Item '${itemAlreadyStored}' already stored in inventory.`,
-      });
-    } else {
-      res.status(500).json({ error });
-    }
-  }
-});
-
-router.put('/inventory/:id', async (req, res) => {
+router.put('/unequip-item/:id', async (req, res) => {
   const { id } = req.params;
   let itemFound = false;
 
@@ -168,6 +132,42 @@ router.put('/inventory/:id', async (req, res) => {
   } catch (error) {
     if (!itemFound) {
       res.status(400).json({ error: 'Item not equipped.' });
+    } else {
+      res.status(500).json({ error });
+    }
+  }
+});
+
+router.post('/inventory/:id', async (req, res) => {
+  const { id } = req.params;
+  let itemAlreadyStored;
+
+  try {
+    const item = await Item.findOne({ _id: id });
+    const hero = await Hero.findOne();
+
+    hero.inventory.forEach((inventoryItem) => {
+      if (String(inventoryItem._id) === id) {
+        itemAlreadyStored = item.name;
+
+        throw new Error();
+      }
+    });
+
+    await Hero.findOneAndUpdate(
+      {},
+      { inventory: [...hero.inventory, item] },
+      { new: true }
+    );
+
+    res.status(200).json({
+      message: `Item '${item.name}' stored in inventory successfully.`,
+    });
+  } catch (error) {
+    if (itemAlreadyStored) {
+      res.status(400).json({
+        error: `Item '${itemAlreadyStored}' already stored in inventory.`,
+      });
     } else {
       res.status(500).json({ error });
     }
