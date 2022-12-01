@@ -12,7 +12,7 @@ import {
 } from '../components';
 import { ConfirmModal } from '../components/Modals/ConfirmModal';
 import { IItem } from '../components/SlotItem/SlotItem.types';
-import { fetchInventory, removeFromInventory } from '../services/hero';
+import { fetchHero, removeFromInventory } from '../services/hero';
 
 export const HeroInventoryScreen = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
@@ -26,21 +26,19 @@ export const HeroInventoryScreen = () => {
 
   const closeModal = () => setModalOpen(false);
 
-  const handleFetchInventory = () => {
-    fetchInventory().then((res) => {
-      setItems(res.data);
-    });
+  const handleFetchHero = () => {
+    fetchHero().then((res) => setItems(res.data.inventory));
   };
 
   const sellItem = () => {
     removeFromInventory(selectedItem._id).then(() => {
       closeModal();
-      handleFetchInventory();
+      handleFetchHero();
     });
   };
 
   useEffect(() => {
-    handleFetchInventory();
+    handleFetchHero();
   }, []);
 
   return (
