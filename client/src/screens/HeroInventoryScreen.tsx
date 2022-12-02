@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import {
   Background,
@@ -12,34 +12,23 @@ import {
 } from '../components';
 import { ConfirmModal } from '../components/Modals/ConfirmModal';
 import { IItem } from '../components/SlotItem/SlotItem.types';
-import { fetchHero, removeFromInventory } from '../services/hero';
+import { useInventory } from '../hooks/useInventory';
 
 export const HeroInventoryScreen = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<IItem>(initItem);
-  const [items, setItems] = useState<IItem[]>([]);
+  const { inventory, sellItem } = useInventory();
+
+  const closeModal = () => setModalOpen(false);
 
   const handleClick = (item: IItem): void => {
     setSelectedItem(item);
     setModalOpen(true);
   };
 
-  const closeModal = () => setModalOpen(false);
-
-  const handleFetchHero = () => {
-    fetchHero().then((res) => setItems(res.data.inventory));
+  const handleSellItem = () => {
+    sellItem(selectedItem._id).then(closeModal);
   };
-
-  const sellItem = () => {
-    removeFromInventory(selectedItem._id).then(() => {
-      closeModal();
-      handleFetchHero();
-    });
-  };
-
-  useEffect(() => {
-    handleFetchHero();
-  }, []);
 
   return (
     <Background>
@@ -56,7 +45,7 @@ export const HeroInventoryScreen = () => {
           </Link>
         </Row>
         <Row gap={26} hCenter flexWrap>
-          {items.map((item) => (
+          {inventory.map((item) => (
             <SlotItem
               key={item._id}
               onClick={() => handleClick(item)}
@@ -67,7 +56,7 @@ export const HeroInventoryScreen = () => {
       </Box>
       <ConfirmModal
         isModalOpen={isModalOpen}
-        onConfirm={sellItem}
+        onConfirm={handleSellItem}
         onCancel={closeModal}
       >
         <Text size={20}>Você deseja vender o item "{selectedItem.name}"?</Text>
