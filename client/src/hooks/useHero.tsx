@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 import { IItem } from '../components/SlotItem/SlotItem.types';
 import {
+  equipItem as _equipItem,
+  unequipItem as _unequipItem,
   fetchHero,
   removeFromInventory,
   storeInInventory,
@@ -25,6 +27,22 @@ export const useHero = () => {
   const handleFetchHero = () => {
     fetchHero().then((res) => setHero(res.data));
   };
+
+  const equipItem = (itemId: IItem['_id']) =>
+    new Promise((resolve) =>
+      _equipItem(itemId).then(() => {
+        handleFetchHero();
+        resolve({ message: 'Item equiped.' });
+      })
+    );
+
+  const unequipItem = (itemId: IItem['_id']) =>
+    new Promise((resolve) =>
+      _unequipItem(itemId).then(() => {
+        handleFetchHero();
+        resolve({ message: 'Item unequipped.' });
+      })
+    );
 
   const storeItem = (itemId: IItem['_id']) =>
     new Promise((resolve) =>
@@ -50,6 +68,8 @@ export const useHero = () => {
     hero: { name: hero.name, role: hero.role, status: hero.status },
     equippedItems: hero.equippedItems,
     inventory: hero.inventory,
+    equipItem,
+    unequipItem,
     storeItem,
     sellItem,
   };
