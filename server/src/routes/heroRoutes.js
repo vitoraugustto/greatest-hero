@@ -174,10 +174,9 @@ router.put('/inventory/:id', async (req, res) => {
   let itemFound = false;
 
   try {
-    const item = await Item.findOne({ _id: id });
     const hero = await Hero.findOne();
 
-    itemFound = hero.inventory.some(
+    itemFound = hero.inventory.find(
       (inventoryItem) => String(inventoryItem._id) === id
     );
 
@@ -189,14 +188,14 @@ router.put('/inventory/:id', async (req, res) => {
       await Hero.updateOne({}, { inventory: updatedInventory });
 
       res.status(200).json({
-        message: `Item '${item.name}' removed from inventory successfully.`,
+        message: `Item '${itemFound.name}' removed from inventory successfully.`,
       });
     } else {
-      throw new Error();
+      throw 'Item not found in inventory.';
     }
   } catch (error) {
     if (!itemFound) {
-      res.status(400).json({ error: 'Item not found in inventory.' });
+      res.status(400).json({ error });
     } else {
       res.status(500).json({ error });
     }
