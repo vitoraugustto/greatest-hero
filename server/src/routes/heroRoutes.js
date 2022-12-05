@@ -46,7 +46,7 @@ router.post('/equip-item/:id', async (req, res) => {
 
   try {
     const hero = await Hero.findOne();
-    const item = await Item.findOne({ _id: id });
+    const item = hero.inventory.find((item) => String(item._id) === id);
 
     itemTypeAlreadyEquipped = hero.equippedItems.some(
       (equippedItem) => equippedItem.type === item.type
@@ -70,12 +70,17 @@ router.post('/equip-item/:id', async (req, res) => {
       !itemAlreadyEquipped &&
       !itemTypeAlreadyEquipped
     ) {
+      const updatedInventory = hero.inventory.filter(
+        (inventoryItem) => String(inventoryItem._id) !== id
+      );
+
       await Hero.findOneAndUpdate(
         {},
         {
           'status.attack': currentAttack + itemAttack,
           'status.defense': currentDefense + itemDefense,
           equippedItems: [...hero.equippedItems, item],
+          inventory: updatedInventory,
         },
         { new: true }
       );
@@ -95,22 +100,17 @@ router.post('/equip-item/:id', async (req, res) => {
 
 router.put('/unequip-item/:id', async (req, res) => {
   const { id } = req.params;
-  let itemFound = false;
 
   try {
-    const item = await Item.findById(id);
     const hero = await Hero.findOne();
+    const item = hero.equippedItems.find((item) => String(item._id) === id);
 
     const currentAttack = hero.status.attack;
     const currentDefense = hero.status.defense;
     const itemAttack = item.status.attack;
     const itemDefense = item.status.defense;
 
-    itemFound = hero.equippedItems.some(
-      (equippedItem) => String(equippedItem._id) === id
-    );
-
-    if (itemFound) {
+    if (item) {
       const updatedEquippedItems = hero.equippedItems.filter(
         (equippedItem) => String(equippedItem._id) !== id
       );
@@ -118,9 +118,10 @@ router.put('/unequip-item/:id', async (req, res) => {
       await Hero.updateOne(
         {},
         {
-          equippedItems: updatedEquippedItems,
           'status.attack': currentAttack - itemAttack,
           'status.defense': currentDefense - itemDefense,
+          equippedItems: updatedEquippedItems,
+          inventory: [...hero.inventory, item],
         }
       );
 
@@ -128,14 +129,10 @@ router.put('/unequip-item/:id', async (req, res) => {
         message: `Item '${item.name}' unequipped successfully.`,
       });
     } else {
-      throw new Error();
+      throw 'Item not equipped.';
     }
   } catch (error) {
-    if (!itemFound) {
-      res.status(400).json({ error: 'Item not equipped.' });
-    } else {
-      res.status(500).json({ error });
-    }
+    res.status(400).json({ error });
   }
 });
 
