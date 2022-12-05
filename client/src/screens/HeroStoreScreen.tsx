@@ -12,14 +12,14 @@ import {
 } from '../components';
 import { ConfirmModal } from '../components/Modals/ConfirmModal';
 import { IItem } from '../components/SlotItem/SlotItem.types';
-import { useInventory } from '../hooks/useInventory';
+import { useHero } from '../hooks/useHero';
 import { fetchItems } from '../services/items';
 
 export const HeroStoreScreen = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<IItem>(initItem);
   const [items, setItems] = useState<IItem[]>([]);
-  const { storeItem } = useInventory();
+  const { storeItem } = useHero();
 
   const handleFetchItems = async (): Promise<void> => {
     fetchItems().then(({ data }) => setItems(data));
