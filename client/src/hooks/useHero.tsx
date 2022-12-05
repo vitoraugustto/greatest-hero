@@ -29,35 +29,43 @@ export const useHero = () => {
   };
 
   const equipItem = (itemId: IItem['_id']) =>
-    new Promise((resolve) =>
-      _equipItem(itemId).then(() => {
-        handleFetchHero();
-        resolve({ message: 'Item equiped.' });
-      })
+    new Promise((resolve, reject) =>
+      _equipItem(itemId)
+        .then((res) => {
+          handleFetchHero();
+          resolve(res);
+        })
+        .catch(reject)
     );
 
   const unequipItem = (itemId: IItem['_id']) =>
-    new Promise((resolve) =>
-      _unequipItem(itemId).then(() => {
-        handleFetchHero();
-        resolve({ message: 'Item unequipped.' });
-      })
+    new Promise((resolve, reject) =>
+      _unequipItem(itemId)
+        .then((res) => {
+          handleFetchHero();
+          resolve(res);
+        })
+        .catch(reject)
     );
 
   const storeItem = (itemId: IItem['_id']) =>
-    new Promise((resolve) =>
-      storeInInventory(itemId).then(() => {
-        handleFetchHero();
-        resolve({ message: 'Item stored.' });
-      })
+    new Promise((resolve, reject) =>
+      storeInInventory(itemId)
+        .then((res) => {
+          handleFetchHero();
+          resolve(res);
+        })
+        .catch(reject)
     );
 
   const sellItem = (itemId: IItem['_id']) =>
-    new Promise((resolve) =>
-      removeFromInventory(itemId).then(() => {
-        handleFetchHero();
-        resolve({ message: 'Item sold.' });
-      })
+    new Promise((resolve, reject) =>
+      removeFromInventory(itemId)
+        .then((res) => {
+          handleFetchHero();
+          resolve(res);
+        })
+        .catch(reject)
     );
 
   useEffect(() => {
