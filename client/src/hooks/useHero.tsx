@@ -48,14 +48,9 @@ export const useHero = () => {
         .catch(reject)
     );
 
-  const storeItem = (itemId: IItem['_id']) =>
+  const buyItem = (itemId: IItem['_id']) =>
     new Promise((resolve, reject) =>
-      storeInInventory(itemId)
-        .then((res) => {
-          handleFetchHero();
-          resolve(res);
-        })
-        .catch(reject)
+      storeInInventory(itemId).then(resolve).catch(reject)
     );
 
   const sellItem = (itemId: IItem['_id']) =>
@@ -78,7 +73,7 @@ export const useHero = () => {
     inventory: hero.inventory,
     equipItem,
     unequipItem,
-    storeItem,
+    buyItem,
     sellItem,
   };
 };

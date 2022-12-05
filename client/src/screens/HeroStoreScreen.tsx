@@ -19,7 +19,7 @@ export const HeroStoreScreen = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<IItem>(initItem);
   const [items, setItems] = useState<IItem[]>([]);
-  const { storeItem } = useHero();
+  const { buyItem } = useHero();
 
   const handleFetchItems = async (): Promise<void> => {
     fetchItems().then(({ data }) => setItems(data));
@@ -32,8 +32,8 @@ export const HeroStoreScreen = () => {
 
   const closeModal = () => setModalOpen(false);
 
-  const buyItem = () => {
-    storeItem(selectedItem._id).then(closeModal);
+  const handleBuyItem = () => {
+    buyItem(selectedItem._id).then(closeModal);
   };
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export const HeroStoreScreen = () => {
       </Box>
       <ConfirmModal
         isModalOpen={isModalOpen}
-        onConfirm={buyItem}
+        onConfirm={handleBuyItem}
         onCancel={closeModal}
       >
         <Text size={20}>Você deseja comprar o item "{selectedItem.name}"?</Text>
