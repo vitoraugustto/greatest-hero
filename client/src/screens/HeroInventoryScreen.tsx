@@ -17,7 +17,7 @@ import { useHero } from '../hooks/useHero';
 export const HeroInventoryScreen = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<IItem>(initItem);
-  const { hero, inventory, sellItem } = useHero();
+  const { inventory, sellItem } = useHero();
 
   const closeModal = () => setModalOpen(false);
 
@@ -25,8 +25,6 @@ export const HeroInventoryScreen = () => {
     setSelectedItem(item);
     setModalOpen(true);
   };
-
-  console.log(hero);
 
   const handleSellItem = () => {
     sellItem(selectedItem._id).then(closeModal);
