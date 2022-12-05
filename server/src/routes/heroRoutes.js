@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import mongoose from 'mongoose';
 
 import Hero from '../models/Hero.js';
 import Item from '../models/Item.js';
@@ -146,13 +147,7 @@ router.post('/inventory/:id', async (req, res) => {
     const item = await Item.findOne({ _id: id });
     const hero = await Hero.findOne();
 
-    hero.inventory.forEach((inventoryItem) => {
-      if (String(inventoryItem._id) === id) {
-        itemAlreadyStored = item.name;
-
-        throw new Error();
-      }
-    });
+    item._id = new mongoose.Types.ObjectId();
 
     await Hero.findOneAndUpdate(
       {},
