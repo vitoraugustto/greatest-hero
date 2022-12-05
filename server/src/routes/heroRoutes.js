@@ -138,7 +138,6 @@ router.put('/unequip-item/:id', async (req, res) => {
 
 router.post('/inventory/:id', async (req, res) => {
   const { id } = req.params;
-  let itemAlreadyStored;
 
   try {
     const item = await Item.findOne({ _id: id });
@@ -156,13 +155,7 @@ router.post('/inventory/:id', async (req, res) => {
       message: `Item '${item.name}' stored in inventory successfully.`,
     });
   } catch (error) {
-    if (itemAlreadyStored) {
-      res.status(400).json({
-        error: `Item '${itemAlreadyStored}' already stored in inventory.`,
-      });
-    } else {
-      res.status(500).json({ error });
-    }
+    res.status(500).json({ error });
   }
 });
 
