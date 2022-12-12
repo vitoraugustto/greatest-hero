@@ -7,6 +7,8 @@ export const StyledDiv = styled.div<ISpacer>`
   flex-direction: inherit;
   justify-content: inherit;
   align-items: inherit;
+  width: inherit;
+  height: inherit;
   ${(props) => props.p && `padding: ${props.p}px`};
   ${(props) =>
     props.pt
