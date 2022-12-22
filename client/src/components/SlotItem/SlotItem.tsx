@@ -4,7 +4,12 @@ import { Spacer } from '../Layout/Spacer';
 import { Text } from '../Text';
 import { ISlotItem } from './SlotItem.types';
 
-export const SlotItem: React.FC<ISlotItem> = ({ item, onClick }) => {
+export const SlotItem: React.FC<ISlotItem> = ({
+  item,
+  size,
+  infos = true,
+  onClick,
+}) => {
   const { name, image, status, gold, type } = item;
 
   return (
@@ -13,29 +18,55 @@ export const SlotItem: React.FC<ISlotItem> = ({ item, onClick }) => {
       borderRadius={10}
       bgColor="#302a54"
       hCenter
-      width={260}
+      width={calcSize(size).width}
       onClick={onClick}
     >
       <Spacer p={16}>
         <Box height={32}>
-          <Text weight="bold" size={14}>
+          <Text weight="bold" size={calcSize(size).fontSize}>
             {name}
           </Text>
         </Box>
-        <img style={{ height: 160, borderRadius: 12 }} src={image} />
-        <Spacer mt={10} />
-        <Row>
-          <Box>
-            <Text size={14} color="gold">
-              {gold} moedas de ouro
-            </Text>
-            <Spacer mt={6} />
-            <Text size={14}>Tipo: {type.toUpperCase()}</Text>
-            <Text size={14}>Ataque: {status.attack}</Text>
-            <Text size={14}>Defesa: {status.defense}</Text>
-          </Box>
-        </Row>
+        <img
+          style={{ height: calcSize(size).height, borderRadius: 12 }}
+          src={image}
+        />
+        {infos ? (
+          <>
+            <Spacer mt={10} />
+            <Row>
+              <Box>
+                <Text size={calcSize(size).fontSize} color="gold">
+                  {gold} moedas de ouro
+                </Text>
+                <Spacer mt={6} />
+                <Text size={calcSize(size).fontSize}>
+                  Tipo: {type.toUpperCase()}
+                </Text>
+                <Text size={calcSize(size).fontSize}>
+                  Ataque: {status.attack}
+                </Text>
+                <Text size={calcSize(size).fontSize}>
+                  Defesa: {status.defense}
+                </Text>
+              </Box>
+            </Row>
+          </>
+        ) : (
+          <></>
+        )}
       </Spacer>
     </Box>
   );
+};
+
+const calcSize = (size: ISlotItem['size']) => {
+  switch (size) {
+    case 'small':
+      return { width: 180, height: 90, fontSize: 11 };
+    case 'medium':
+      return { width: 220, height: 130, fontSize: 12 };
+    default:
+      return { width: 260, height: 160, fontSize: 14 };
+  }
 };

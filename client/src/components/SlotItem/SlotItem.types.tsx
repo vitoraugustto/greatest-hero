@@ -12,5 +12,7 @@ export interface IItem {
 
 export interface ISlotItem {
   item: IItem;
+  size?: 'small' | 'medium' | 'large';
+  infos?: boolean;
   onClick?: () => void;
 }
