@@ -14,5 +14,5 @@ export interface ISlotItem {
   item: IItem;
   size?: 'small' | 'medium' | 'large';
   infos?: boolean;
-  onClick?: () => void;
+  onClick?: (e: MouseEvent) => void;
 }
