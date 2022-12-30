@@ -48,6 +48,10 @@ export const HeroInventoryScreen = () => {
     unequipItem(selectedItem._id).then(closeFloatingOptions);
   };
 
+  const handleSellItem = () => {
+    sellItem(selectedItem._id).then(closeConfirmModal);
+  };
+
   const handleEsc = (e: KeyboardEvent) => {
     if (e.key === 'Escape') closeFloatingOptions();
   };
@@ -78,59 +82,34 @@ export const HeroInventoryScreen = () => {
           <Inventory
             inventory={inventory}
             onSlotClick={(data) => {
-              setOptions([{ label: 'Equipar', onClick: handleEquipItem }]);
+              setOptions([
+                { label: 'Equipar', onClick: handleEquipItem },
+                { label: 'Vender', onClick: handleSellItem },
+              ]);
               handleSlotClick(data.item, {
                 x: data.e.clientX,
                 y: data.e.clientY,
               });
             }}
           />
-          <Box hCenter flex>
-            <Text align="center" size={20} weight="bold">
-              Equipados
-            </Text>
-            <Spacer mt={16} />
-            <EmptySlot text="Cabeça" />
-            <Spacer mt={8} />
-            <Row gap={8} hCenter>
-              <EmptySlot text="Mão direita" />
-              <EmptySlot text="Peitoral" />
-              <EmptySlot text="Mão esquerda" />
-            </Row>
-            <Spacer mt={8} />
-            <Row gap={8} hCenter>
-              <EmptySlot text="Mãos" />
-              <EmptySlot text="Pernas" />
-              {equippedItems.find((item) => item.type === 'botas') ? (
-                <SlotItem
-                  key={equippedItems.find((item) => item.type === 'botas')?._id}
-                  size="small"
-                  infos={false}
-                  onClick={(e) => {
-                    handleSlotClick(
-                      equippedItems.find((item) => item.type === 'botas') ||
-                        initItem,
-                      { x: e.clientX, y: e.clientY }
-                    );
-                    setOptions([
-                      { label: 'Desequipar', onClick: handleUnequipItem },
-                    ]);
-                  }}
-                  item={
-                    equippedItems.find((item) => item.type === 'botas') ||
-                    initItem
-                  }
-                />
-              ) : (
-                <EmptySlot text="Pés" />
-              )}
-            </Row>
-          </Box>
+          <EquippedItems
+            equippedItems={equippedItems}
+            onSlotClick={(data) => {
+              setOptions([{ label: 'Desequipar', onClick: handleUnequipItem }]);
+              handleSlotClick(
+                equippedItems.find((item) => item.type === 'botas') || initItem,
+                {
+                  x: data.e.clientX,
+                  y: data.e.clientY,
+                }
+              );
+            }}
+          />
         </Row>
       </Box>
       <ConfirmModal
         isModalOpen={isConfirmModalOpen}
-        onConfirm={() => sellItem(selectedItem._id).then(closeConfirmModal)}
+        onConfirm={handleSellItem}
         onCancel={closeConfirmModal}
       >
         <Text size={20}>Você deseja vender o item "{selectedItem.name}"?</Text>
@@ -150,17 +129,46 @@ export const HeroInventoryScreen = () => {
   );
 };
 
-const EmptySlot = ({ text }: { text: string }) => {
+interface IEquippedItems {
+  equippedItems: IItem[];
+  onSlotClick: ({ e }: { e: MouseEvent }) => void;
+}
+
+const EquippedItems: React.FC<IEquippedItems> = ({
+  equippedItems,
+  onSlotClick,
+}) => {
   return (
-    <Box
-      hCenter
-      vCenter
-      height={154}
-      width={180}
-      borderRadius={8}
-      bgColor="#302a54"
-    >
-      <Text>{text}</Text>
+    <Box hCenter flex>
+      <Text align="center" size={20} weight="bold">
+        Equipados
+      </Text>
+      <Spacer mt={16} />
+      <EmptySlot text="Cabeça" />
+      <Spacer mt={8} />
+      <Row gap={8} hCenter>
+        <EmptySlot text="Mão direita" />
+        <EmptySlot text="Peitoral" />
+        <EmptySlot text="Mão esquerda" />
+      </Row>
+      <Spacer mt={8} />
+      <Row gap={8} hCenter>
+        <EmptySlot text="Mãos" />
+        <EmptySlot text="Pernas" />
+        {equippedItems.find((item) => item.type === 'botas') ? (
+          <SlotItem
+            key={equippedItems.find((item) => item.type === 'botas')?._id}
+            size="small"
+            infos={false}
+            onClick={(e) => onSlotClick({ e })}
+            item={
+              equippedItems.find((item) => item.type === 'botas') || initItem
+            }
+          />
+        ) : (
+          <EmptySlot text="Pés" />
+        )}
+      </Row>
     </Box>
   );
 };
@@ -188,6 +196,21 @@ const Inventory: React.FC<IInventory> = ({ inventory, onSlotClick }) => {
           />
         ))}
       </Row>
+    </Box>
+  );
+};
+
+const EmptySlot: React.FC<{ text: string }> = ({ text }) => {
+  return (
+    <Box
+      hCenter
+      vCenter
+      height={154}
+      width={180}
+      borderRadius={8}
+      bgColor="#302a54"
+    >
+      <Text>{text}</Text>
     </Box>
   );
 };
