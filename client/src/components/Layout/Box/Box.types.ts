@@ -10,6 +10,6 @@ export interface IBox {
   borderColor?: string;
   flex?: boolean;
   testId?: string;
-  onClick?: () => void;
+  onClick?: (e: MouseEvent) => void;
   children?: React.ReactElement | React.ReactElement[];
 }
