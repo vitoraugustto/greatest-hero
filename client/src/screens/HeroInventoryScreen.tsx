@@ -84,7 +84,7 @@ export const HeroInventoryScreen = () => {
             onSlotClick={(data) => {
               setOptions([
                 { label: 'Equipar', onClick: handleEquipItem },
-                { label: 'Vender', onClick: handleSellItem },
+                { label: 'Vender', onClick: () => setConfirmModalOpen(true) },
               ]);
               handleSlotClick(data.item, {
                 x: data.e.clientX,
