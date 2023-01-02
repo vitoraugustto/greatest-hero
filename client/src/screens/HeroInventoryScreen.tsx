@@ -135,6 +135,7 @@ interface IEquippedItems {
   onSlotClick: ({ e, item }: { e: MouseEvent; item: IItem }) => void;
 }
 
+// TODO: Refactor this component
 const EquippedItems: React.FC<IEquippedItems> = ({
   equippedItems,
   onSlotClick,
@@ -197,13 +198,20 @@ const EquippedItems: React.FC<IEquippedItems> = ({
   );
 };
 
-// Refactor this component
-const MaybeSlotItem: React.FC<{
+interface IMaybeSlotItem {
   equippedItems: IItem[];
   onSlotClick: ({ e, item }: { e: MouseEvent; item: IItem }) => void;
   itemType: string;
   emptySlotText: string;
-}> = ({ equippedItems, onSlotClick, itemType, emptySlotText }) => {
+}
+
+// TODO: Refactor this component
+const MaybeSlotItem: React.FC<IMaybeSlotItem> = ({
+  equippedItems,
+  onSlotClick,
+  itemType,
+  emptySlotText,
+}) => {
   return equippedItems.find((item) => item.type === itemType) ? (
     <SlotItem
       key={equippedItems.find((item) => item.type === itemType)?._id}
