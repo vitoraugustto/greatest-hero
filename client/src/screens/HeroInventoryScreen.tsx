@@ -97,7 +97,8 @@ export const HeroInventoryScreen = () => {
             onSlotClick={(data) => {
               setOptions([{ label: 'Desequipar', onClick: handleUnequipItem }]);
               handleSlotClick(
-                equippedItems.find((item) => item.type === 'botas') || initItem,
+                equippedItems.find((item) => item.type === data.item.type) ||
+                  initItem,
                 {
                   x: data.e.clientX,
                   y: data.e.clientY,
@@ -131,7 +132,7 @@ export const HeroInventoryScreen = () => {
 
 interface IEquippedItems {
   equippedItems: IItem[];
-  onSlotClick: ({ e }: { e: MouseEvent }) => void;
+  onSlotClick: ({ e, item }: { e: MouseEvent; item: IItem }) => void;
 }
 
 const EquippedItems: React.FC<IEquippedItems> = ({
@@ -144,31 +145,89 @@ const EquippedItems: React.FC<IEquippedItems> = ({
         Equipados
       </Text>
       <Spacer mt={16} />
-      <EmptySlot text="Cabeça" />
+      <MaybeSlotItem
+        equippedItems={equippedItems}
+        itemType="head"
+        emptySlotText="Cabeça"
+        onSlotClick={onSlotClick}
+      />
       <Spacer mt={8} />
       <Row gap={8} hCenter>
-        <EmptySlot text="Mão direita" />
-        <EmptySlot text="Peitoral" />
-        <EmptySlot text="Mão esquerda" />
+        <MaybeSlotItem
+          equippedItems={equippedItems}
+          itemType="lefthand"
+          emptySlotText="Mão esquerda"
+          onSlotClick={onSlotClick}
+        />
+        <MaybeSlotItem
+          equippedItems={equippedItems}
+          itemType="chest"
+          emptySlotText="Peitoral"
+          onSlotClick={onSlotClick}
+        />
+        <MaybeSlotItem
+          equippedItems={equippedItems}
+          itemType="righthand"
+          emptySlotText="Mão direita"
+          onSlotClick={onSlotClick}
+        />
       </Row>
       <Spacer mt={8} />
       <Row gap={8} hCenter>
-        <EmptySlot text="Mãos" />
-        <EmptySlot text="Pernas" />
-        {equippedItems.find((item) => item.type === 'botas') ? (
-          <SlotItem
-            key={equippedItems.find((item) => item.type === 'botas')?._id}
-            size="small"
-            infos={false}
-            onClick={(e) => onSlotClick({ e })}
-            item={
-              equippedItems.find((item) => item.type === 'botas') || initItem
-            }
-          />
-        ) : (
-          <EmptySlot text="Pés" />
-        )}
+        <MaybeSlotItem
+          equippedItems={equippedItems}
+          itemType="hands"
+          emptySlotText="Mãos"
+          onSlotClick={onSlotClick}
+        />
+        <MaybeSlotItem
+          equippedItems={equippedItems}
+          itemType="legs"
+          emptySlotText="Pernas"
+          onSlotClick={onSlotClick}
+        />
+        <MaybeSlotItem
+          equippedItems={equippedItems}
+          itemType="feet"
+          emptySlotText="Pés"
+          onSlotClick={onSlotClick}
+        />
       </Row>
+    </Box>
+  );
+};
+
+// Refactor this component
+const MaybeSlotItem: React.FC<{
+  equippedItems: IItem[];
+  onSlotClick: ({ e, item }: { e: MouseEvent; item: IItem }) => void;
+  itemType: string;
+  emptySlotText: string;
+}> = ({ equippedItems, onSlotClick, itemType, emptySlotText }) => {
+  return equippedItems.find((item) => item.type === itemType) ? (
+    <SlotItem
+      key={equippedItems.find((item) => item.type === itemType)?._id}
+      size="small"
+      infos={false}
+      onClick={(e) =>
+        onSlotClick({
+          e,
+          item:
+            equippedItems.find((item) => item.type === itemType) || initItem,
+        })
+      }
+      item={equippedItems.find((item) => item.type === itemType) || initItem}
+    />
+  ) : (
+    <Box
+      hCenter
+      vCenter
+      height={154}
+      width={180}
+      borderRadius={8}
+      bgColor="#302a54"
+    >
+      <Text>{emptySlotText}</Text>
     </Box>
   );
 };
@@ -196,21 +255,6 @@ const Inventory: React.FC<IInventory> = ({ inventory, onSlotClick }) => {
           />
         ))}
       </Row>
-    </Box>
-  );
-};
-
-const EmptySlot: React.FC<{ text: string }> = ({ text }) => {
-  return (
-    <Box
-      hCenter
-      vCenter
-      height={154}
-      width={180}
-      borderRadius={8}
-      bgColor="#302a54"
-    >
-      <Text>{text}</Text>
     </Box>
   );
 };
