@@ -10,7 +10,7 @@ export const SlotItem: React.FC<ISlotItem> = ({
   infos = true,
   onClick,
 }) => {
-  const { name, image, status, gold, type } = item;
+  const { name, image, status, gold } = item;
 
   return (
     <Box
@@ -40,9 +40,6 @@ export const SlotItem: React.FC<ISlotItem> = ({
                   {gold} moedas de ouro
                 </Text>
                 <Spacer mt={6} />
-                <Text size={calcSize(size).fontSize}>
-                  Tipo: {type.toUpperCase()}
-                </Text>
                 <Text size={calcSize(size).fontSize}>
                   Ataque: {status.attack}
                 </Text>
