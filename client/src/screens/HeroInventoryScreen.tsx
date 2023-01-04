@@ -147,28 +147,24 @@ const EquippedItems: React.FC<IEquippedItems> = ({
       </Text>
       <Spacer mt={16} />
       <MaybeSlotItem
-        equippedItems={equippedItems}
-        itemType="head"
+        equippedItem={equippedItems.find((item) => item.type === 'head')}
         emptySlotText="Cabeça"
         onSlotClick={onSlotClick}
       />
       <Spacer mt={8} />
       <Row gap={8} hCenter>
         <MaybeSlotItem
-          equippedItems={equippedItems}
-          itemType="lefthand"
+          equippedItem={equippedItems.find((item) => item.type === 'lefthand')}
           emptySlotText="Mão esquerda"
           onSlotClick={onSlotClick}
         />
         <MaybeSlotItem
-          equippedItems={equippedItems}
-          itemType="chest"
+          equippedItem={equippedItems.find((item) => item.type === 'chest')}
           emptySlotText="Peitoral"
           onSlotClick={onSlotClick}
         />
         <MaybeSlotItem
-          equippedItems={equippedItems}
-          itemType="righthand"
+          equippedItem={equippedItems.find((item) => item.type === 'righthand')}
           emptySlotText="Mão direita"
           onSlotClick={onSlotClick}
         />
@@ -176,20 +172,17 @@ const EquippedItems: React.FC<IEquippedItems> = ({
       <Spacer mt={8} />
       <Row gap={8} hCenter>
         <MaybeSlotItem
-          equippedItems={equippedItems}
-          itemType="hands"
+          equippedItem={equippedItems.find((item) => item.type === 'hands')}
           emptySlotText="Mãos"
           onSlotClick={onSlotClick}
         />
         <MaybeSlotItem
-          equippedItems={equippedItems}
-          itemType="legs"
+          equippedItem={equippedItems.find((item) => item.type === 'legs')}
           emptySlotText="Pernas"
           onSlotClick={onSlotClick}
         />
         <MaybeSlotItem
-          equippedItems={equippedItems}
-          itemType="feet"
+          equippedItem={equippedItems.find((item) => item.type === 'feet')}
           emptySlotText="Pés"
           onSlotClick={onSlotClick}
         />
@@ -199,32 +192,24 @@ const EquippedItems: React.FC<IEquippedItems> = ({
 };
 
 interface IMaybeSlotItem {
-  equippedItems: IItem[];
+  equippedItem: IItem | undefined;
   onSlotClick: ({ e, item }: { e: MouseEvent; item: IItem }) => void;
-  itemType: string;
   emptySlotText: string;
 }
 
 // TODO: Refactor this component
 const MaybeSlotItem: React.FC<IMaybeSlotItem> = ({
-  equippedItems,
+  equippedItem,
   onSlotClick,
-  itemType,
   emptySlotText,
 }) => {
-  return equippedItems.find((item) => item.type === itemType) ? (
+  return equippedItem ? (
     <SlotItem
-      key={equippedItems.find((item) => item.type === itemType)?._id}
+      key={equippedItem._id}
       size="small"
       infos={false}
-      onClick={(e) =>
-        onSlotClick({
-          e,
-          item:
-            equippedItems.find((item) => item.type === itemType) || initItem,
-        })
-      }
-      item={equippedItems.find((item) => item.type === itemType) || initItem}
+      onClick={(e) => onSlotClick({ e, item: equippedItem })}
+      item={equippedItem}
     />
   ) : (
     <Box
