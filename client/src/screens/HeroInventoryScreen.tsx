@@ -135,7 +135,6 @@ interface IEquippedItems {
   onSlotClick: ({ e, item }: { e: MouseEvent; item: IItem }) => void;
 }
 
-// TODO: Refactor this component
 const EquippedItems: React.FC<IEquippedItems> = ({
   equippedItems,
   onSlotClick,
@@ -197,7 +196,6 @@ interface IMaybeSlotItem {
   emptySlotText: string;
 }
 
-// TODO: Refactor this component
 const MaybeSlotItem: React.FC<IMaybeSlotItem> = ({
   equippedItem,
   onSlotClick,
