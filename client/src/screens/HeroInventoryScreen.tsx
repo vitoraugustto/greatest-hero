@@ -230,7 +230,7 @@ interface IInventory {
 
 const Inventory: React.FC<IInventory> = ({ inventory, onSlotClick }) => {
   return (
-    <Box>
+    <Box flex>
       <Text align="center" size={20} weight="bold">
         Inventário
       </Text>
