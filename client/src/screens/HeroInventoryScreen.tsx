@@ -21,9 +21,7 @@ export const HeroInventoryScreen = () => {
   const [isFloatingOptionsVisible, setFloatingOptionsVisible] =
     useState<boolean>(false);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
-  const [options, setOptions] = useState<IOption[]>([
-    { label: '', onClick: () => null },
-  ]);
+  const [options, setOptions] = useState<IOption[] | []>([]);
   const { inventory, sellItem, equipItem, unequipItem, equippedItems } =
     useHero();
 
