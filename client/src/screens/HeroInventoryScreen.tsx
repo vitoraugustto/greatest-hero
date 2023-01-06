@@ -146,24 +146,24 @@ const EquippedItems: React.FC<IEquippedItems> = ({
       </Text>
       <Spacer mt={16} />
       <MaybeSlotItem
-        equippedItem={equippedItems.find((item) => item.type === 'head')}
+        equippedItem={findItemByType(equippedItems, 'head')}
         emptySlotText="Cabeça"
         onSlotClick={onSlotClick}
       />
       <Spacer mt={8} />
       <Row gap={8} hCenter>
         <MaybeSlotItem
-          equippedItem={equippedItems.find((item) => item.type === 'lefthand')}
+          equippedItem={findItemByType(equippedItems, 'lefthand')}
           emptySlotText="Mão esquerda"
           onSlotClick={onSlotClick}
         />
         <MaybeSlotItem
-          equippedItem={equippedItems.find((item) => item.type === 'chest')}
+          equippedItem={findItemByType(equippedItems, 'chest')}
           emptySlotText="Peitoral"
           onSlotClick={onSlotClick}
         />
         <MaybeSlotItem
-          equippedItem={equippedItems.find((item) => item.type === 'righthand')}
+          equippedItem={findItemByType(equippedItems, 'righthand')}
           emptySlotText="Mão direita"
           onSlotClick={onSlotClick}
         />
@@ -171,17 +171,17 @@ const EquippedItems: React.FC<IEquippedItems> = ({
       <Spacer mt={8} />
       <Row gap={8} hCenter>
         <MaybeSlotItem
-          equippedItem={equippedItems.find((item) => item.type === 'hands')}
+          equippedItem={findItemByType(equippedItems, 'hands')}
           emptySlotText="Mãos"
           onSlotClick={onSlotClick}
         />
         <MaybeSlotItem
-          equippedItem={equippedItems.find((item) => item.type === 'legs')}
+          equippedItem={findItemByType(equippedItems, 'legs')}
           emptySlotText="Pernas"
           onSlotClick={onSlotClick}
         />
         <MaybeSlotItem
-          equippedItem={equippedItems.find((item) => item.type === 'feet')}
+          equippedItem={findItemByType(equippedItems, 'feet')}
           emptySlotText="Pés"
           onSlotClick={onSlotClick}
         />
@@ -248,6 +248,10 @@ const Inventory: React.FC<IInventory> = ({ inventory, onSlotClick }) => {
       </Row>
     </Box>
   );
+};
+
+const findItemByType = (items: IItem[], type: string): IItem | undefined => {
+  return items.find((item) => item.type === type);
 };
 
 const initItem = {
