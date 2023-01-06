@@ -189,7 +189,7 @@ const EquippedItems: React.FC<IEquippedItems> = ({
 };
 
 interface IMaybeSlotItem {
-  equippedItem: IItem | undefined;
+  equippedItem?: IItem;
   onSlotClick: ({ e, item }: { e: MouseEvent; item: IItem }) => void;
   emptySlotText: string;
 }
