@@ -14,7 +14,9 @@ import {
 import { IOption } from '../components/FloatingOptions/FloatingOptions.types';
 import { ConfirmModal } from '../components/Modals/ConfirmModal';
 import { IItem } from '../components/SlotItem/SlotItem.types';
+import { Toast } from '../components/Toast/Toast';
 import { useHero } from '../hooks/useHero';
+import { useToast } from '../hooks/useToast';
 
 export const HeroInventoryScreen = () => {
   const [isConfirmModalOpen, setConfirmModalOpen] = useState<boolean>(false);
@@ -22,6 +24,7 @@ export const HeroInventoryScreen = () => {
     useState<boolean>(false);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [options, setOptions] = useState<IOption[] | []>([]);
+  const toast = useToast();
   const { inventory, sellItem, equipItem, unequipItem, equippedItems } =
     useHero();
 
@@ -39,15 +42,43 @@ export const HeroInventoryScreen = () => {
   const closeFloatingOptions = () => setFloatingOptionsVisible(false);
 
   const handleEquipItem = () => {
-    equipItem(selectedItem._id).then(closeFloatingOptions);
+    toast.promise(equipItem(selectedItem._id), {
+      pending: 'Equipando item...',
+      success: {
+        render() {
+          closeFloatingOptions();
+          return 'Item equipado com sucesso.';
+        },
+      },
+      error: 'Oops, algo deu errado! Por favor, tente novamente mais tarde.',
+    });
   };
 
   const handleUnequipItem = () => {
-    unequipItem(selectedItem._id).then(closeFloatingOptions);
+    toast.promise(unequipItem(selectedItem._id), {
+      pending: 'Desequipando item...',
+      success: {
+        render() {
+          closeFloatingOptions();
+          return 'Item desequipado com sucesso.';
+        },
+      },
+      error: 'Oops, algo deu errado! Por favor, tente novamente mais tarde.',
+    });
   };
 
   const handleSellItem = () => {
-    sellItem(selectedItem._id).then(closeConfirmModal);
+    toast.promise(sellItem(selectedItem._id), {
+      pending: 'Vendendo item...',
+      success: {
+        render() {
+          closeFloatingOptions();
+          closeConfirmModal();
+          return 'Item vendido com sucesso.';
+        },
+      },
+      error: 'Oops, algo deu errado! Por favor, tente novamente mais tarde.',
+    });
   };
 
   const handleEsc = (e: KeyboardEvent) => {
@@ -124,6 +155,7 @@ export const HeroInventoryScreen = () => {
         isVisible={isFloatingOptionsVisible}
         options={options}
       />
+      <Toast />
     </Background>
   );
 };
