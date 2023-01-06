@@ -6572,7 +6572,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^1.0.4":
+"clsx@npm:^1.0.4, clsx@npm:^1.1.1":
   version: 1.2.1
   resolution: "clsx@npm:1.2.1"
   checksum: cae17fd0fd5ea449d000c681169a8a6f7add4929b369cae3e2d5b604fba2798b39334121e467dbf6ac752562c28a6894a443f30761b004317c0668eb031af52d
@@ -9744,6 +9744,7 @@ __metadata:
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-router-dom: "npm:^6.4.2"
+    react-toastify: "npm:^9.1.1"
     storybook: "npm:^6.5.13"
     styled-components: "npm:^5.3.6"
     styled-react-modal: "npm:^3.0.1"
@@ -14003,6 +14004,18 @@ __metadata:
   peerDependencies:
     react: ">=16.8"
   checksum: 5cd99582ac3d61d79097649feaf1dc63fa1a3be2e5cfc254eadb9f19ad190dbefe026c9c656e7b0b9f920979dde8bb7d7b044425bf5ed329f93801843683ab3a
+  languageName: node
+  linkType: hard
+
+"react-toastify@npm:^9.1.1":
+  version: 9.1.1
+  resolution: "react-toastify@npm:9.1.1"
+  dependencies:
+    clsx: "npm:^1.1.1"
+  peerDependencies:
+    react: ">=16"
+    react-dom: ">=16"
+  checksum: a6c5f74ed248980b7c0ba17932f3938b5e971afe01954f860cdd5b75f937f81c690ae4c05b978bdcb53d4ee361f5d6eb44f2c832f13974f5aff33a8b91f1c8e2
   languageName: node
   linkType: hard
 
