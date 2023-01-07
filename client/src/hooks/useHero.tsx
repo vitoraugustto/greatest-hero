@@ -8,6 +8,7 @@ import {
   removeFromInventory,
   storeInInventory,
 } from '../services/hero';
+import { useToast } from './useToast';
 
 export interface IHero {
   name: string;
@@ -22,6 +23,7 @@ export interface IHero {
 }
 
 export const useHero = () => {
+  const toast = useToast();
   const [hero, setHero] = useState<IHero>(initHero);
 
   const handleFetchHero = () => {
@@ -29,38 +31,63 @@ export const useHero = () => {
   };
 
   const equipItem = (itemId: IItem['_id']) =>
-    new Promise((resolve, reject) =>
-      _equipItem(itemId)
-        .then((res) => {
-          handleFetchHero();
-          resolve(res);
-        })
-        .catch(reject)
+    toast.promise(
+      new Promise((resolve, reject) =>
+        _equipItem(itemId)
+          .then((res) => {
+            handleFetchHero();
+            resolve(res);
+          })
+          .catch(reject)
+      ),
+      {
+        pending: 'Equipando item...',
+        success: 'Item equipado com sucesso.',
+        error: GENERIC_ERROR_MESSAGE,
+      }
     );
 
   const unequipItem = (itemId: IItem['_id']) =>
-    new Promise((resolve, reject) =>
-      _unequipItem(itemId)
-        .then((res) => {
-          handleFetchHero();
-          resolve(res);
-        })
-        .catch(reject)
+    toast.promise(
+      new Promise((resolve, reject) =>
+        _unequipItem(itemId)
+          .then((res) => {
+            handleFetchHero();
+            resolve(res);
+          })
+          .catch(reject)
+      ),
+      {
+        pending: 'Desequipando item...',
+        success: 'Item desequipado com sucesso.',
+        error: GENERIC_ERROR_MESSAGE,
+      }
     );
 
   const buyItem = (itemId: IItem['_id']) =>
     new Promise((resolve, reject) =>
-      storeInInventory(itemId).then(resolve).catch(reject)
+      toast.promise(storeInInventory(itemId).then(resolve).catch(reject), {
+        pending: 'Comprando item...',
+        success: 'Item comprado com sucesso.',
+        error: GENERIC_ERROR_MESSAGE,
+      })
     );
 
   const sellItem = (itemId: IItem['_id']) =>
-    new Promise((resolve, reject) =>
-      removeFromInventory(itemId)
-        .then((res) => {
-          handleFetchHero();
-          resolve(res);
-        })
-        .catch(reject)
+    toast.promise(
+      new Promise((resolve, reject) =>
+        removeFromInventory(itemId)
+          .then((res) => {
+            handleFetchHero();
+            resolve(res);
+          })
+          .catch(reject)
+      ),
+      {
+        pending: 'Vendendo item...',
+        success: 'Item vendido com sucesso.',
+        error: GENERIC_ERROR_MESSAGE,
+      }
     );
 
   useEffect(() => {
@@ -89,3 +116,6 @@ const initHero = {
   inventory: [],
   equippedItems: [],
 };
+
+const GENERIC_ERROR_MESSAGE =
+  'Oops, algo deu errado. Por favor, tente novamente mais tarde.';
