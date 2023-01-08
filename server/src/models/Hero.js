@@ -8,6 +8,7 @@ const heroSchema = new Schema(
   {
     name: String,
     role: String,
+    gold: Number,
     status: {
       attack: Number,
       defense: Number,
