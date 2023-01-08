@@ -43,7 +43,7 @@ router.post('/', upload.single('image'), async (req, res) => {
   ) {
     res.status(422).json({
       error:
-        'Name, description, role, status, type, gold and image are required.',
+        "'Name', 'description', 'role', 'status', 'type', 'gold' e 'image' são obrigatórios.",
     });
     return;
   }
@@ -74,7 +74,7 @@ router.get('/:id', async (req, res) => {
     const item = await Item.findOne({ _id: id });
 
     if (!item) {
-      res.status(422).json({ message: 'Item not found.' });
+      res.status(422).json({ message: 'Item não encontrado.' });
       return;
     }
 
@@ -104,7 +104,7 @@ router.patch('/:id', async (req, res) => {
     });
 
     if (updatedItem.matchedCount === 0) {
-      res.status(422).json({ message: 'Item not found.' });
+      res.status(422).json({ message: 'Item não encontrado.' });
       return;
     }
 
@@ -119,14 +119,14 @@ router.delete('/:id', async (req, res) => {
   const item = await Item.findOne({ _id: id });
 
   if (!item) {
-    res.status(422).json({ message: 'Item not found.' });
+    res.status(422).json({ message: 'Item não encontrado.' });
     return;
   }
 
   try {
     await Item.deleteOne({ _id: id });
 
-    res.status(200).json({ message: 'Item deleted successfully.' });
+    res.status(200).json({ message: 'Item deletado com sucesso.' });
   } catch (error) {
     res.status(500).json({ error });
   }

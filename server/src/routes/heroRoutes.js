@@ -86,13 +86,15 @@ router.post('/equip-item/:id', async (req, res) => {
         { new: true }
       );
 
-      res.status(200).json({ message: `Item '${item.name}' equipped.` });
+      res
+        .status(200)
+        .json({ message: `Item '${item.name}' equipado com sucesso.` });
     } else if (itemAlreadyEquipped) {
-      throw `Item '${item.name}' already equipped.`;
+      throw `Item '${item.name}' já equipado.`;
     } else if (!itemFoundInInventory && !itemAlreadyEquipped) {
-      throw `Item '${item.name}' not found in inventory.`;
+      throw `Item '${item.name}' não encontrado no inventário.`;
     } else if (itemTypeAlreadyEquipped) {
-      throw `Item of type '${item.type}' already equipped. You can only have one item of the same type equipped.`;
+      throw `Item do tipo '${item.type}' já equipado. Você só pode ter um item do mesmo tipo equipado.`;
     }
   } catch (error) {
     res.status(400).json({ error });
@@ -127,10 +129,10 @@ router.put('/unequip-item/:id', async (req, res) => {
       );
 
       res.status(200).json({
-        message: `Item '${item.name}' unequipped successfully.`,
+        message: `Item '${item.name}' desequipado com sucesso.`,
       });
     } else {
-      throw 'Item not equipped.';
+      throw `Item ${item.name} não está equipado.`;
     }
   } catch (error) {
     res.status(400).json({ error });
@@ -153,7 +155,7 @@ router.post('/inventory/:id', async (req, res) => {
     );
 
     res.status(200).json({
-      message: `Item '${item.name}' stored in inventory successfully.`,
+      message: `Item '${item.name}' comprado com sucesso.`,
     });
   } catch (error) {
     res.status(500).json({ error });
@@ -179,10 +181,10 @@ router.put('/inventory/:id', async (req, res) => {
       await Hero.updateOne({}, { inventory: updatedInventory });
 
       res.status(200).json({
-        message: `Item '${itemFound.name}' removed from inventory successfully.`,
+        message: `Item '${itemFound.name}' vendido com sucesso.`,
       });
     } else {
-      throw 'Item not found in inventory.';
+      throw 'Item não encontrado no inventário.';
     }
   } catch (error) {
     if (!itemFound) {
