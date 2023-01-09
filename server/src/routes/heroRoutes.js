@@ -1,8 +1,6 @@
 import { Router } from 'express';
-import mongoose from 'mongoose';
 
 import Hero from '../models/Hero.js';
-import Item from '../models/Item.js';
 
 const router = Router();
 
@@ -39,7 +37,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.post('/equip-item/:id', async (req, res) => {
+router.post('/:id/equipment', async (req, res) => {
   const { id } = req.params;
   let itemFoundInInventory;
   let itemAlreadyEquipped;
@@ -101,7 +99,7 @@ router.post('/equip-item/:id', async (req, res) => {
   }
 });
 
-router.put('/unequip-item/:id', async (req, res) => {
+router.put('/:id/equipment', async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -139,30 +137,7 @@ router.put('/unequip-item/:id', async (req, res) => {
   }
 });
 
-router.post('/inventory/:id', async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    const item = await Item.findOne({ _id: id });
-    const hero = await Hero.findOne();
-
-    item._id = new mongoose.Types.ObjectId();
-
-    await Hero.findOneAndUpdate(
-      {},
-      { inventory: [...hero.inventory, item] },
-      { new: true }
-    );
-
-    res.status(200).json({
-      message: `Item '${item.name}' comprado com sucesso.`,
-    });
-  } catch (error) {
-    res.status(500).json({ error });
-  }
-});
-
-router.put('/inventory/:id', async (req, res) => {
+router.put('/:id/sell', async (req, res) => {
   const { id } = req.params;
   let itemFound = false;
 
