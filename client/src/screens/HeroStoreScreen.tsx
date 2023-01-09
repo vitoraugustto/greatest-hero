@@ -19,7 +19,7 @@ export const HeroStoreScreen = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<IItem>(initItem);
   const [items, setItems] = useState<IItem[]>([]);
-  const { buyItem } = useHero();
+  const { purchaseItem } = useHero();
 
   const handleFetchItems = async (): Promise<void> => {
     fetchItems().then(({ data }) => setItems(data));
@@ -32,8 +32,8 @@ export const HeroStoreScreen = () => {
 
   const closeModal = () => setModalOpen(false);
 
-  const handleBuyItem = () => {
-    buyItem(selectedItem._id).then(closeModal);
+  const handlePurchaseItem = () => {
+    purchaseItem(selectedItem._id).then(closeModal);
   };
 
   useEffect(() => {
