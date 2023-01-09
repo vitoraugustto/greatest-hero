@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.post('/:id/equipment', async (req, res) => {
+router.post('/inventory/:id/equipment', async (req, res) => {
   const { id } = req.params;
   let itemFoundInInventory;
   let itemAlreadyEquipped;
@@ -99,7 +99,7 @@ router.post('/:id/equipment', async (req, res) => {
   }
 });
 
-router.put('/:id/equipment', async (req, res) => {
+router.put('/inventory/:id/equipment', async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -137,7 +137,7 @@ router.put('/:id/equipment', async (req, res) => {
   }
 });
 
-router.put('/:id/sell', async (req, res) => {
+router.put('/inventory/:id/sell', async (req, res) => {
   const { id } = req.params;
   let itemFound = false;
 
