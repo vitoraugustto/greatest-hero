@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react';
 import { IItem } from '../components/SlotItem/SlotItem.types';
 import {
   equipItem as _equipItem,
+  sellItem as _sellItem,
   unequipItem as _unequipItem,
   fetchHero,
-  removeFromInventory,
-  storeInInventory,
 } from '../services/hero';
+import { purchaseItem as _purchaseItem } from '../services/store'
 import { useToast } from './useToast';
 
 export interface IHero {
@@ -64,9 +64,9 @@ export const useHero = () => {
       }
     );
 
-  const buyItem = (itemId: IItem['_id']) =>
+  const purchaseItem = (itemId: IItem['_id']) =>
     new Promise((resolve, reject) =>
-      toast.promise(storeInInventory(itemId).then(resolve).catch(reject), {
+      toast.promise(_purchaseItem(itemId).then(resolve).catch(reject), {
         pending: 'Comprando item...',
         success: 'Item comprado com sucesso.',
         error: GENERIC_ERROR_MESSAGE,
@@ -76,7 +76,7 @@ export const useHero = () => {
   const sellItem = (itemId: IItem['_id']) =>
     toast.promise(
       new Promise((resolve, reject) =>
-        removeFromInventory(itemId)
+        _sellItem(itemId)
           .then((res) => {
             handleFetchHero();
             resolve(res);
@@ -100,7 +100,7 @@ export const useHero = () => {
     inventory: hero.inventory,
     equipItem,
     unequipItem,
-    buyItem,
+    purchaseItem,
     sellItem,
   };
 };
