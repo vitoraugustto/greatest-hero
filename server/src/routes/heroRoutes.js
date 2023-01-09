@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
         gold: 0,
         status: { attack: 1, defense: 0, hp: 100 },
         inventory: [],
-        equippedItems: [],
+        equipment: [],
       },
       { upsert: true, new: true }
     );
@@ -47,7 +47,7 @@ router.post('/inventory/:id/equipment', async (req, res) => {
     const hero = await Hero.findOne();
     const item = hero.inventory.find((item) => String(item._id) === id);
 
-    itemTypeAlreadyEquipped = hero.equippedItems.some(
+    itemTypeAlreadyEquipped = hero.equipment.find(
       (equippedItem) => equippedItem.type === item.type
     );
 
@@ -60,7 +60,7 @@ router.post('/inventory/:id/equipment', async (req, res) => {
       (inventoryItem) => String(inventoryItem._id) === id
     );
 
-    itemAlreadyEquipped = hero.equippedItems.some(
+    itemAlreadyEquipped = hero.equipment.some(
       (inventoryItem) => String(inventoryItem._id) === id
     );
 
@@ -78,7 +78,7 @@ router.post('/inventory/:id/equipment', async (req, res) => {
         {
           'status.attack': currentAttack + itemAttack,
           'status.defense': currentDefense + itemDefense,
-          equippedItems: [...hero.equippedItems, item],
+          equipment: [...hero.equipment, item],
           inventory: updatedInventory,
         },
         { new: true }
@@ -104,7 +104,7 @@ router.put('/inventory/:id/equipment', async (req, res) => {
 
   try {
     const hero = await Hero.findOne();
-    const item = hero.equippedItems.find((item) => String(item._id) === id);
+    const item = hero.equipment.find((item) => String(item._id) === id);
 
     const currentAttack = hero.status.attack;
     const currentDefense = hero.status.defense;
@@ -112,7 +112,7 @@ router.put('/inventory/:id/equipment', async (req, res) => {
     const itemDefense = item.status.defense;
 
     if (item) {
-      const updatedEquippedItems = hero.equippedItems.filter(
+      const updatedEquipment = hero.equipment.filter(
         (equippedItem) => String(equippedItem._id) !== id
       );
 
@@ -121,7 +121,7 @@ router.put('/inventory/:id/equipment', async (req, res) => {
         {
           'status.attack': currentAttack - itemAttack,
           'status.defense': currentDefense - itemDefense,
-          equippedItems: updatedEquippedItems,
+          equipment: updatedEquipment,
           inventory: [...hero.inventory, item],
         }
       );

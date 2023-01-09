@@ -22,8 +22,7 @@ export const HeroInventoryScreen = () => {
     useState<boolean>(false);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [options, setOptions] = useState<IOption[] | []>([]);
-  const { inventory, sellItem, equipItem, unequipItem, equippedItems } =
-    useHero();
+  const { inventory, equipment, sellItem, equipItem, unequipItem } = useHero();
 
   const handleSlotClick = (
     item: IItem,
@@ -93,12 +92,12 @@ export const HeroInventoryScreen = () => {
               });
             }}
           />
-          <EquippedItems
-            equippedItems={equippedItems}
+          <Equipment
+            equipment={equipment}
             onSlotClick={(data) => {
               setOptions([{ label: 'Desequipar', onClick: handleUnequipItem }]);
               handleSlotClick(
-                equippedItems.find((item) => item.type === data.item.type) ||
+                equipment.find((item) => item.type === data.item.type) ||
                   initItem,
                 {
                   x: data.e.clientX,
@@ -131,15 +130,12 @@ export const HeroInventoryScreen = () => {
   );
 };
 
-interface IEquippedItems {
-  equippedItems: IItem[];
+interface IEquipment {
+  equipment: IItem[];
   onSlotClick: ({ e, item }: { e: MouseEvent; item: IItem }) => void;
 }
 
-const EquippedItems: React.FC<IEquippedItems> = ({
-  equippedItems,
-  onSlotClick,
-}) => {
+const Equipment: React.FC<IEquipment> = ({ equipment, onSlotClick }) => {
   return (
     <Box hCenter flex>
       <Text align="center" size={20} weight="bold">
@@ -147,24 +143,24 @@ const EquippedItems: React.FC<IEquippedItems> = ({
       </Text>
       <Spacer mt={16} />
       <MaybeSlotItem
-        equippedItem={findItemByType(equippedItems, 'head')}
+        equipment={findItemByType(equipment, 'head')}
         emptySlotText="Cabeça"
         onSlotClick={onSlotClick}
       />
       <Spacer mt={8} />
       <Row gap={8} hCenter>
         <MaybeSlotItem
-          equippedItem={findItemByType(equippedItems, 'lefthand')}
+          equipment={findItemByType(equipment, 'lefthand')}
           emptySlotText="Mão esquerda"
           onSlotClick={onSlotClick}
         />
         <MaybeSlotItem
-          equippedItem={findItemByType(equippedItems, 'chest')}
+          equipment={findItemByType(equipment, 'chest')}
           emptySlotText="Peitoral"
           onSlotClick={onSlotClick}
         />
         <MaybeSlotItem
-          equippedItem={findItemByType(equippedItems, 'righthand')}
+          equipment={findItemByType(equipment, 'righthand')}
           emptySlotText="Mão direita"
           onSlotClick={onSlotClick}
         />
@@ -172,17 +168,17 @@ const EquippedItems: React.FC<IEquippedItems> = ({
       <Spacer mt={8} />
       <Row gap={8} hCenter>
         <MaybeSlotItem
-          equippedItem={findItemByType(equippedItems, 'hands')}
+          equipment={findItemByType(equipment, 'hands')}
           emptySlotText="Mãos"
           onSlotClick={onSlotClick}
         />
         <MaybeSlotItem
-          equippedItem={findItemByType(equippedItems, 'legs')}
+          equipment={findItemByType(equipment, 'legs')}
           emptySlotText="Pernas"
           onSlotClick={onSlotClick}
         />
         <MaybeSlotItem
-          equippedItem={findItemByType(equippedItems, 'feet')}
+          equipment={findItemByType(equipment, 'feet')}
           emptySlotText="Pés"
           onSlotClick={onSlotClick}
         />
@@ -192,23 +188,23 @@ const EquippedItems: React.FC<IEquippedItems> = ({
 };
 
 interface IMaybeSlotItem {
-  equippedItem?: IItem;
+  equipment?: IItem;
   onSlotClick: ({ e, item }: { e: MouseEvent; item: IItem }) => void;
   emptySlotText: string;
 }
 
 const MaybeSlotItem: React.FC<IMaybeSlotItem> = ({
-  equippedItem,
+  equipment,
   onSlotClick,
   emptySlotText,
 }) => {
-  return equippedItem ? (
+  return equipment ? (
     <SlotItem
-      key={equippedItem._id}
+      key={equipment._id}
       size="small"
       infos={false}
-      onClick={(e) => onSlotClick({ e, item: equippedItem })}
-      item={equippedItem}
+      onClick={(e) => onSlotClick({ e, item: equipment })}
+      item={equipment}
     />
   ) : (
     <Box

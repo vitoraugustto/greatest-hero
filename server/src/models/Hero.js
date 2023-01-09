@@ -15,7 +15,7 @@ const heroSchema = new Schema(
       hp: Number,
     },
     inventory: [itemSchema],
-    equippedItems: [itemSchema]
+    equipment: [itemSchema],
   },
   { timestamps: true }
 );

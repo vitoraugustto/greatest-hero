@@ -19,7 +19,7 @@ export interface IHero {
     hp: number;
   };
   inventory: IItem[];
-  equippedItems: IItem[];
+  equipment: IItem[];
 }
 
 export const useHero = () => {
@@ -92,7 +92,7 @@ export const useHero = () => {
       status: hero.status,
       gold: hero.gold,
     },
-    equippedItems: hero.equippedItems,
+    equipment: hero.equipment,
     inventory: hero.inventory,
     equipItem,
     unequipItem,
@@ -110,7 +110,7 @@ const initHero = {
     hp: 0,
   },
   inventory: [],
-  equippedItems: [],
+  equipment: [],
 };
 
 const GENERIC_ERROR_MESSAGE =
