@@ -66,7 +66,7 @@ export const HeroStoreScreen = () => {
       </Box>
       <ConfirmModal
         isModalOpen={isModalOpen}
-        onConfirm={handleBuyItem}
+        onConfirm={handlePurchaseItem}
         onCancel={closeModal}
       >
         <Text size={20}>Você deseja comprar o item "{selectedItem.name}"?</Text>
