@@ -12,6 +12,7 @@ import { useToast } from './useToast';
 export interface IHero {
   name: string;
   role: string;
+  gold: number;
   status: {
     attack: number;
     defense: number;
@@ -85,7 +86,12 @@ export const useHero = () => {
   }, []);
 
   return {
-    hero: { name: hero.name, role: hero.role, status: hero.status },
+    hero: {
+      name: hero.name,
+      role: hero.role,
+      status: hero.status,
+      gold: hero.gold,
+    },
     equippedItems: hero.equippedItems,
     inventory: hero.inventory,
     equipItem,
@@ -97,6 +103,7 @@ export const useHero = () => {
 const initHero = {
   name: '',
   role: '',
+  gold: 0,
   status: {
     attack: 0,
     defense: 0,
