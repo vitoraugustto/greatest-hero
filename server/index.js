@@ -17,8 +17,6 @@ const allowedOrigins = {
   default: CLIENT_URL,
 };
 
-addGold.start();
-
 app.use((req, res, next) => {
   const origin = () => {
     if (allowedOrigins.domains.includes(req.headers.origin))
@@ -56,6 +54,8 @@ mongoose
   )
   .then(() => {
     app.listen(PORT, () => {
+      addGold.start();
+
       console.log('App listening on port', PORT);
     });
   })
