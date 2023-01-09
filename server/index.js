@@ -3,6 +3,7 @@ import helmet from 'helmet';
 import mongoose from 'mongoose';
 
 import { DB_PASSWORD, DB_USERNAME } from './.env.js';
+import { addGold } from './src/crons/addGold.js';
 import heroRoutes from './src/routes/heroRoutes.js';
 import itemsRoutes from './src/routes/itemsRoutes.js';
 import storeRoutes from './src/routes/storeRoutes.js';
@@ -15,6 +16,8 @@ const allowedOrigins = {
   domains: [CLIENT_URL, ...VERCEL_URLS],
   default: CLIENT_URL,
 };
+
+addGold.start();
 
 app.use((req, res, next) => {
   const origin = () => {
