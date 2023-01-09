@@ -7,7 +7,6 @@ import {
   unequipItem as _unequipItem,
   fetchHero,
 } from '../services/hero';
-import { purchaseItem as _purchaseItem } from '../services/store'
 import { useToast } from './useToast';
 
 export interface IHero {
@@ -64,15 +63,6 @@ export const useHero = () => {
       }
     );
 
-  const purchaseItem = (itemId: IItem['_id']) =>
-    new Promise((resolve, reject) =>
-      toast.promise(_purchaseItem(itemId).then(resolve).catch(reject), {
-        pending: 'Comprando item...',
-        success: 'Item comprado com sucesso.',
-        error: GENERIC_ERROR_MESSAGE,
-      })
-    );
-
   const sellItem = (itemId: IItem['_id']) =>
     toast.promise(
       new Promise((resolve, reject) =>
@@ -100,7 +90,6 @@ export const useHero = () => {
     inventory: hero.inventory,
     equipItem,
     unequipItem,
-    purchaseItem,
     sellItem,
   };
 };
