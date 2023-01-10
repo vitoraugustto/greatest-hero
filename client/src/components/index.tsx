@@ -6,6 +6,7 @@ import { Spacer } from './Layout/Spacer';
 import { Link } from './Link/Link';
 import { SlotItem } from './SlotItem';
 import { Text } from './Text';
+import { Toast } from './Toast';
 import { Button } from './UI/Button';
 import { Input } from './UI/Input';
 
@@ -20,4 +21,5 @@ export {
   Button,
   Input,
   FloatingOptions,
+  Toast,
 };
