@@ -78,35 +78,33 @@ export const HeroInventoryScreen = () => {
             <Button text="Menu" />
           </Link>
         </Row>
-        <Row gap={18}>
-          <Inventory
-            inventory={inventory}
-            onSlotClick={(data) => {
-              setOptions([
-                { label: 'Equipar', onClick: handleEquipItem },
-                { label: 'Vender', onClick: () => setConfirmModalOpen(true) },
-              ]);
-              handleSlotClick(data.item, {
-                x: data.e.clientX,
-                y: data.e.clientY,
-              });
-            }}
-          />
-          <Equipment
-            equipment={equipment}
-            onSlotClick={(data) => {
-              setOptions([{ label: 'Desequipar', onClick: handleUnequipItem }]);
-              handleSlotClick(
-                equipment.find((item) => item.type === data.item.type) ||
-                  initItem,
-                {
-                  x: data.e.clientX,
-                  y: data.e.clientY,
-                }
-              );
-            }}
-          />
-        </Row>
+        <Equipment
+          equipment={equipment}
+          onSlotClick={(data) => {
+            setOptions([{ label: 'Desequipar', onClick: handleUnequipItem }]);
+            handleSlotClick(
+              equipment.find((item) => item.type === data.item.type) ||
+                initItem,
+              {
+                x: data.e.pageX,
+                y: data.e.pageY,
+              }
+            );
+          }}
+        />
+        <Inventory
+          inventory={inventory}
+          onSlotClick={(data) => {
+            setOptions([
+              { label: 'Equipar', onClick: handleEquipItem },
+              { label: 'Vender', onClick: () => setConfirmModalOpen(true) },
+            ]);
+            handleSlotClick(data.item, {
+              x: data.e.pageX,
+              y: data.e.pageY,
+            });
+          }}
+        />
       </Box>
       <ConfirmModal
         isModalOpen={isConfirmModalOpen}
@@ -139,7 +137,7 @@ const Equipment: React.FC<IEquipment> = ({ equipment, onSlotClick }) => {
   return (
     <Box hCenter flex>
       <Text align="center" size={20} weight="bold">
-        Equipados
+        Equipamento
       </Text>
       <Spacer mt={16} />
       <MaybeSlotItem
@@ -227,21 +225,25 @@ interface IInventory {
 
 const Inventory: React.FC<IInventory> = ({ inventory, onSlotClick }) => {
   return (
-    <Box flex>
+    <Box>
       <Text align="center" size={20} weight="bold">
         Inventário
       </Text>
       <Spacer mt={16} />
       <Row gap={26} hCenter flexWrap>
-        {inventory.map((item) => (
-          <SlotItem
-            key={item._id}
-            size="small"
-            infos={false}
-            onClick={(e) => onSlotClick({ e, item })}
-            item={item}
-          />
-        ))}
+        {inventory.length ? (
+          inventory.map((item) => (
+            <SlotItem
+              key={item._id}
+              size="small"
+              infos={false}
+              onClick={(e) => onSlotClick({ e, item })}
+              item={item}
+            />
+          ))
+        ) : (
+          <Text>Inventário vazio. 🙁</Text>
+        )}
       </Row>
     </Box>
   );
