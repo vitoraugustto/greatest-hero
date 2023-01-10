@@ -4,8 +4,8 @@ import {
   Routes as _Routes,
 } from 'react-router-dom';
 
+import { Toast } from '../components';
 import GlobalStyle from '../components/GlobalStyle';
-import { Toast } from '../components/Toast/Toast';
 import { HeroInventoryScreen } from '../screens/HeroInventoryScreen';
 import { HeroStoreScreen } from '../screens/HeroStoreScreen';
 import { MenuScreen } from '../screens/MenuScreen';
