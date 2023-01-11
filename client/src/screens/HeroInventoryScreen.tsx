@@ -26,10 +26,12 @@ export const HeroInventoryScreen = () => {
 
   const handleSlotClick = (
     item: IItem,
-    coords: { x: number; y: number }
+    coords: { x: number; y: number },
+    _options: IOption[]
   ): void => {
     selectedItem = item;
 
+    setOptions(_options);
     setCoords({ x: coords.x, y: coords.y });
     setFloatingOptionsVisible(true);
   };
@@ -81,28 +83,31 @@ export const HeroInventoryScreen = () => {
         <Equipment
           equipment={equipment}
           onSlotClick={(data) => {
-            setOptions([{ label: 'Desequipar', onClick: handleUnequipItem }]);
             handleSlotClick(
               equipment.find((item) => item.type === data.item.type) ||
                 initItem,
               {
                 x: data.e.pageX,
                 y: data.e.pageY,
-              }
+              },
+              [{ label: 'Desequipar', onClick: handleUnequipItem }]
             );
           }}
         />
         <Inventory
           inventory={inventory}
           onSlotClick={(data) => {
-            setOptions([
-              { label: 'Equipar', onClick: handleEquipItem },
-              { label: 'Vender', onClick: () => setConfirmModalOpen(true) },
-            ]);
-            handleSlotClick(data.item, {
-              x: data.e.pageX,
-              y: data.e.pageY,
-            });
+            handleSlotClick(
+              data.item,
+              {
+                x: data.e.pageX,
+                y: data.e.pageY,
+              },
+              [
+                { label: 'Equipar', onClick: handleEquipItem },
+                { label: 'Vender', onClick: () => setConfirmModalOpen(true) },
+              ]
+            );
           }}
         />
       </Box>
