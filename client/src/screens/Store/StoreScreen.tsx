@@ -34,7 +34,7 @@ export const StoreScreen = () => {
       <Aside>
         <Box gap={18}>
           <Text align="center" as="h1" weight="bold" color="#fff">
-            Loja do Herói
+            Loja
           </Text>
           <Row gap={26} flexWrap>
             {store.map((item) => (

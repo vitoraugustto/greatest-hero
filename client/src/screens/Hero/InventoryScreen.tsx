@@ -21,7 +21,7 @@ export const InventoryScreen = () => {
     useState<boolean>(false);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [options, setOptions] = useState<IOption[] | []>([]);
-  const { inventory, equipment, sellItem, equipItem, unequipItem } = useHero();
+  const { inventory, sellItem, equipItem } = useHero();
 
   const handleSlotClick = (
     item: IItem,
@@ -40,10 +40,6 @@ export const InventoryScreen = () => {
 
   const handleEquipItem = () => {
     equipItem(selectedItem._id).then(closeFloatingOptions);
-  };
-
-  const handleUnequipItem = () => {
-    unequipItem(selectedItem._id).then(closeFloatingOptions);
   };
 
   const handleSellItem = () => {
@@ -70,22 +66,8 @@ export const InventoryScreen = () => {
       <Aside>
         <Box gap={18}>
           <Text align="center" as="h1" weight="bold" color="#fff">
-            Herói
+            Inventário
           </Text>
-          <Equipment
-            equipment={equipment}
-            onSlotClick={(data) => {
-              handleSlotClick(
-                equipment.find((item) => item.type === data.item.type) ||
-                  initItem,
-                {
-                  x: data.e.pageX,
-                  y: data.e.pageY,
-                },
-                [{ label: 'Desequipar', onClick: handleUnequipItem }]
-              );
-            }}
-          />
           <Inventory
             inventory={inventory}
             onSlotClick={(data) => {
@@ -128,96 +110,6 @@ export const InventoryScreen = () => {
   );
 };
 
-interface IEquipment {
-  equipment: IItem[];
-  onSlotClick: ({ e, item }: { e: MouseEvent; item: IItem }) => void;
-}
-
-const Equipment: React.FC<IEquipment> = ({ equipment, onSlotClick }) => {
-  return (
-    <Box hCenter flex>
-      <Text align="center" size={20} weight="bold">
-        Equipamento
-      </Text>
-      <Spacer mt={16} />
-      <MaybeSlotItem
-        equipment={findItemByType(equipment, 'head')}
-        emptySlotText="Cabeça"
-        onSlotClick={onSlotClick}
-      />
-      <Spacer mt={8} />
-      <Row gap={8} hCenter>
-        <MaybeSlotItem
-          equipment={findItemByType(equipment, 'lefthand')}
-          emptySlotText="Mão esquerda"
-          onSlotClick={onSlotClick}
-        />
-        <MaybeSlotItem
-          equipment={findItemByType(equipment, 'chest')}
-          emptySlotText="Peitoral"
-          onSlotClick={onSlotClick}
-        />
-        <MaybeSlotItem
-          equipment={findItemByType(equipment, 'righthand')}
-          emptySlotText="Mão direita"
-          onSlotClick={onSlotClick}
-        />
-      </Row>
-      <Spacer mt={8} />
-      <Row gap={8} hCenter>
-        <MaybeSlotItem
-          equipment={findItemByType(equipment, 'hands')}
-          emptySlotText="Mãos"
-          onSlotClick={onSlotClick}
-        />
-        <MaybeSlotItem
-          equipment={findItemByType(equipment, 'legs')}
-          emptySlotText="Pernas"
-          onSlotClick={onSlotClick}
-        />
-        <MaybeSlotItem
-          equipment={findItemByType(equipment, 'feet')}
-          emptySlotText="Pés"
-          onSlotClick={onSlotClick}
-        />
-      </Row>
-    </Box>
-  );
-};
-
-interface IMaybeSlotItem {
-  equipment?: IItem;
-  onSlotClick: ({ e, item }: { e: MouseEvent; item: IItem }) => void;
-  emptySlotText: string;
-}
-
-const MaybeSlotItem: React.FC<IMaybeSlotItem> = ({
-  equipment,
-  onSlotClick,
-  emptySlotText,
-}) => {
-  return equipment ? (
-    <SlotItem
-      key={equipment._id}
-      size="small"
-      infos={false}
-      onClick={(e) => onSlotClick({ e, item: equipment })}
-      item={equipment}
-    />
-  ) : (
-    <Box
-      hCenter
-      vCenter
-      height={154}
-      width={180}
-      borderRadius={8}
-      bgColor="#302a54"
-    >
-      <Text>{emptySlotText}</Text>
-    </Box>
-  );
-};
-
 interface IInventory {
   inventory: IItem[];
   onSlotClick: ({ e, item }: { e: MouseEvent; item: IItem }) => void;
@@ -226,10 +118,6 @@ interface IInventory {
 const Inventory: React.FC<IInventory> = ({ inventory, onSlotClick }) => {
   return (
     <Box>
-      <Text align="center" size={20} weight="bold">
-        Inventário
-      </Text>
-      <Spacer mt={16} />
       <Row gap={26} hCenter flexWrap>
         {inventory.length ? (
           inventory.map((item) => (
@@ -247,10 +135,6 @@ const Inventory: React.FC<IInventory> = ({ inventory, onSlotClick }) => {
       </Row>
     </Box>
   );
-};
-
-const findItemByType = (items: IItem[], type: string): IItem | undefined => {
-  return items.find((item) => item.type === type);
 };
 
 const initItem = {
