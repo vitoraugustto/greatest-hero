@@ -36,11 +36,11 @@ export const HeroStoreScreen = () => {
           <Text align="center" as="h1" weight="bold" color="#fff">
             Loja do Herói
           </Text>
-          <Row hCenter gap={26} flexWrap>
+          <Row gap={26} flexWrap>
             {store.map((item) => (
               <SlotItem
                 key={item._id}
-                size="medium"
+                size="small"
                 onClick={() => handleClick(item)}
                 item={item}
               />
