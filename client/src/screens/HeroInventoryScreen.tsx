@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import {
+  Aside,
   Background,
   Box,
   Button,
@@ -68,67 +69,71 @@ export const HeroInventoryScreen = () => {
 
   return (
     <Background>
-      <Box gap={18}>
-        <Text align="center" as="h1" weight="bold" color="#fff">
-          Herói
-        </Text>
-        <Row gap={18} hCenter>
-          <Link to="/store">
-            <Button text="Loja" />
-          </Link>
-          <Link to="/">
-            <Button text="Menu" />
-          </Link>
-        </Row>
-        <Equipment
-          equipment={equipment}
-          onSlotClick={(data) => {
-            handleSlotClick(
-              equipment.find((item) => item.type === data.item.type) ||
-                initItem,
-              {
-                x: data.e.pageX,
-                y: data.e.pageY,
-              },
-              [{ label: 'Desequipar', onClick: handleUnequipItem }]
-            );
-          }}
+      <Aside>
+        <Box gap={18}>
+          <Text align="center" as="h1" weight="bold" color="#fff">
+            Herói
+          </Text>
+          <Row gap={18} hCenter>
+            <Link to="/store">
+              <Button text="Loja" />
+            </Link>
+            <Link to="/">
+              <Button text="Menu" />
+            </Link>
+          </Row>
+          <Equipment
+            equipment={equipment}
+            onSlotClick={(data) => {
+              handleSlotClick(
+                equipment.find((item) => item.type === data.item.type) ||
+                  initItem,
+                {
+                  x: data.e.pageX,
+                  y: data.e.pageY,
+                },
+                [{ label: 'Desequipar', onClick: handleUnequipItem }]
+              );
+            }}
+          />
+          <Inventory
+            inventory={inventory}
+            onSlotClick={(data) => {
+              handleSlotClick(
+                data.item,
+                {
+                  x: data.e.pageX,
+                  y: data.e.pageY,
+                },
+                [
+                  { label: 'Equipar', onClick: handleEquipItem },
+                  { label: 'Vender', onClick: () => setConfirmModalOpen(true) },
+                ]
+              );
+            }}
+          />
+        </Box>
+        <ConfirmModal
+          isModalOpen={isConfirmModalOpen}
+          onConfirm={handleSellItem}
+          onCancel={closeConfirmModal}
+        >
+          <Text size={20}>
+            Você deseja vender o item "{selectedItem.name}"?
+          </Text>
+          <Spacer mt={8} />
+          <Text color="gold">
+            Você receberá {selectedItem.gold} moedas de ouro.
+          </Text>
+          <Spacer mt={16} />
+        </ConfirmModal>
+        <FloatingOptions
+          x={coords.x}
+          y={coords.y}
+          isVisible={isFloatingOptionsVisible}
+          options={options}
         />
-        <Inventory
-          inventory={inventory}
-          onSlotClick={(data) => {
-            handleSlotClick(
-              data.item,
-              {
-                x: data.e.pageX,
-                y: data.e.pageY,
-              },
-              [
-                { label: 'Equipar', onClick: handleEquipItem },
-                { label: 'Vender', onClick: () => setConfirmModalOpen(true) },
-              ]
-            );
-          }}
-        />
-      </Box>
-      <ConfirmModal
-        isModalOpen={isConfirmModalOpen}
-        onConfirm={handleSellItem}
-        onCancel={closeConfirmModal}
-      >
-        <Text size={20}>Você deseja vender o item "{selectedItem.name}"?</Text>
-        <Spacer mt={8} />
-        <Text color="gold">
-          Você receberá {selectedItem.gold} moedas de ouro.
-        </Text>
-        <Spacer mt={16} />
-      </ConfirmModal>
-      <FloatingOptions
-        x={coords.x}
-        y={coords.y}
-        isVisible={isFloatingOptionsVisible}
-        options={options}
-      />
+      </Aside>
     </Background>
   );
 };
