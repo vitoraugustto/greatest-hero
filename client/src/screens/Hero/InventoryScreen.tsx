@@ -9,13 +9,13 @@ import {
   SlotItem,
   Spacer,
   Text,
-} from '../components';
-import { IOption } from '../components/FloatingOptions/FloatingOptions.types';
-import { ConfirmModal } from '../components/Modals/ConfirmModal';
-import { IItem } from '../components/SlotItem/SlotItem.types';
-import { useHero } from '../hooks/useHero';
+} from '../../components';
+import { IOption } from '../../components/FloatingOptions/FloatingOptions.types';
+import { ConfirmModal } from '../../components/Modals/ConfirmModal';
+import { IItem } from '../../components/SlotItem/SlotItem.types';
+import { useHero } from '../../hooks/useHero';
 
-export const HeroInventoryScreen = () => {
+export const InventoryScreen = () => {
   const [isConfirmModalOpen, setConfirmModalOpen] = useState<boolean>(false);
   const [isFloatingOptionsVisible, setFloatingOptionsVisible] =
     useState<boolean>(false);

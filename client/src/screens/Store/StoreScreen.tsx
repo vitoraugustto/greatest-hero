@@ -8,12 +8,12 @@ import {
   SlotItem,
   Spacer,
   Text,
-} from '../components';
-import { ConfirmModal } from '../components/Modals/ConfirmModal';
-import { IItem } from '../components/SlotItem/SlotItem.types';
-import { useStore } from '../hooks/useStore';
+} from '../../components';
+import { ConfirmModal } from '../../components/Modals/ConfirmModal';
+import { IItem } from '../../components/SlotItem/SlotItem.types';
+import { useStore } from '../../hooks/useStore';
 
-export const HeroStoreScreen = () => {
+export const StoreScreen = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<IItem>(initItem);
   const { store, purchaseItem } = useStore();

@@ -4,15 +4,15 @@ import {
   Routes as _Routes,
 } from 'react-router-dom';
 
-import { HeroInventoryScreen } from '../screens/HeroInventoryScreen';
-import { HeroStoreScreen } from '../screens/HeroStoreScreen';
+import { InventoryScreen } from '../screens/Hero/InventoryScreen';
+import { StoreScreen } from '../screens/Store/StoreScreen';
 
 export const Routes = () => {
   return (
     <Router>
       <_Routes>
-        <Route path="/store" element={<HeroStoreScreen />} />
-        <Route path="/" element={<HeroInventoryScreen />} />
+        <Route path="/store" element={<StoreScreen />} />
+        <Route path="/" element={<InventoryScreen />} />
       </_Routes>
     </Router>
   );
