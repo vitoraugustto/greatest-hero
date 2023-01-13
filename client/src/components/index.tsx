@@ -1,3 +1,4 @@
+import { Aside } from './Aside';
 import { FloatingOptions } from './FloatingOptions';
 import { Background } from './Layout/Background';
 import { Box } from './Layout/Box';
@@ -22,4 +23,5 @@ export {
   Input,
   FloatingOptions,
   Toast,
+  Aside,
 };
