@@ -48,6 +48,7 @@ export const HeroStoreScreen = () => {
           {store.map((item) => (
             <SlotItem
               key={item._id}
+              size="medium"
               onClick={() => handleClick(item)}
               item={item}
             />
