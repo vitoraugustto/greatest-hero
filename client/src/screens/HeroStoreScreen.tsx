@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import {
+  Aside,
   Background,
   Box,
   Button,
@@ -32,41 +33,37 @@ export const HeroStoreScreen = () => {
 
   return (
     <Background>
-      <Box gap={18}>
-        <Text align="center" as="h1" weight="bold" color="#fff">
-          Loja do Herói
-        </Text>
-        <Row gap={18} hCenter>
-          <Link to="/hero/inventory">
-            <Button text="Inventário" />
-          </Link>
-          <Link to="/">
-            <Button text="Menu" />
-          </Link>
-        </Row>
-        <Row hCenter gap={26} flexWrap>
-          {store.map((item) => (
-            <SlotItem
-              key={item._id}
-              size="medium"
-              onClick={() => handleClick(item)}
-              item={item}
-            />
-          ))}
-        </Row>
-      </Box>
-      <ConfirmModal
-        isModalOpen={isModalOpen}
-        onConfirm={handlePurchaseItem}
-        onCancel={closeModal}
-      >
-        <Text size={20}>Você deseja comprar o item "{selectedItem.name}"?</Text>
-        <Spacer mt={8} />
-        <Text color="gold">
-          Vai te custar {selectedItem.gold} moedas de ouro.
-        </Text>
-        <Spacer mt={16} />
-      </ConfirmModal>
+      <Aside>
+        <Box gap={18}>
+          <Text align="center" as="h1" weight="bold" color="#fff">
+            Loja do Herói
+          </Text>
+          <Row hCenter gap={26} flexWrap>
+            {store.map((item) => (
+              <SlotItem
+                key={item._id}
+                size="medium"
+                onClick={() => handleClick(item)}
+                item={item}
+              />
+            ))}
+          </Row>
+        </Box>
+        <ConfirmModal
+          isModalOpen={isModalOpen}
+          onConfirm={handlePurchaseItem}
+          onCancel={closeModal}
+        >
+          <Text size={20}>
+            Você deseja comprar o item "{selectedItem.name}"?
+          </Text>
+          <Spacer mt={8} />
+          <Text color="gold">
+            Vai te custar {selectedItem.gold} moedas de ouro.
+          </Text>
+          <Spacer mt={16} />
+        </ConfirmModal>
+      </Aside>
     </Background>
   );
 };

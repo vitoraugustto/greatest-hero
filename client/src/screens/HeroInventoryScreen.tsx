@@ -74,14 +74,6 @@ export const HeroInventoryScreen = () => {
           <Text align="center" as="h1" weight="bold" color="#fff">
             Herói
           </Text>
-          <Row gap={18} hCenter>
-            <Link to="/store">
-              <Button text="Loja" />
-            </Link>
-            <Link to="/">
-              <Button text="Menu" />
-            </Link>
-          </Row>
           <Equipment
             equipment={equipment}
             onSlotClick={(data) => {

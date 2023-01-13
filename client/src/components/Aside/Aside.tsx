@@ -12,7 +12,7 @@ export const Aside: React.FC<IAside> = ({ children }) => {
   return (
     <>
       <StyledAside>
-        <AsideOption linkTo="/hero/inventory" label="Inventário" />
+        <AsideOption linkTo="/" label="Inventário" />
         <AsideOption linkTo="/store" label="Loja" />
       </StyledAside>
       <Spacer pl={ASIDE_WIDTH}>{children}</Spacer>

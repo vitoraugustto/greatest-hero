@@ -12,7 +12,7 @@ export const Routes = () => {
     <Router>
       <_Routes>
         <Route path="/store" element={<HeroStoreScreen />} />
-        <Route path="/hero/inventory" element={<HeroInventoryScreen />} />
+        <Route path="/" element={<HeroInventoryScreen />} />
       </_Routes>
     </Router>
   );
