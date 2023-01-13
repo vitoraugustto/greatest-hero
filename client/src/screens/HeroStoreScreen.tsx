@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import {
   Aside,
   Background,
   Box,
-  Button,
-  Link,
   Row,
   SlotItem,
   Spacer,
