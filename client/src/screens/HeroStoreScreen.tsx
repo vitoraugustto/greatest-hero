@@ -13,17 +13,11 @@ import {
 import { ConfirmModal } from '../components/Modals/ConfirmModal';
 import { IItem } from '../components/SlotItem/SlotItem.types';
 import { useStore } from '../hooks/useStore';
-import { fetchItems } from '../services/items';
 
 export const HeroStoreScreen = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<IItem>(initItem);
-  const [items, setItems] = useState<IItem[]>([]);
-  const { purchaseItem } = useStore();
-
-  const handleFetchItems = async (): Promise<void> => {
-    fetchItems().then(({ data }) => setItems(data));
-  };
+  const { store, purchaseItem } = useStore();
 
   const handleClick = (item: IItem): void => {
     setSelectedItem(item);
@@ -35,10 +29,6 @@ export const HeroStoreScreen = () => {
   const handlePurchaseItem = () => {
     purchaseItem(selectedItem._id).then(closeModal);
   };
-
-  useEffect(() => {
-    handleFetchItems();
-  }, []);
 
   return (
     <Background>
@@ -55,7 +45,7 @@ export const HeroStoreScreen = () => {
           </Link>
         </Row>
         <Row hCenter gap={26} flexWrap>
-          {items.map((item) => (
+          {store.map((item) => (
             <SlotItem
               key={item._id}
               onClick={() => handleClick(item)}

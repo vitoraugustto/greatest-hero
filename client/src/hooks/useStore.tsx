@@ -1,9 +1,16 @@
+import { useEffect, useState } from 'react';
+
 import { IItem } from '../components/SlotItem/SlotItem.types';
-import { purchaseItem as _purchaseItem } from '../services/store';
+import { purchaseItem as _purchaseItem, fetchStore } from '../services/store';
 import { useToast } from './useToast';
 
 export const useStore = () => {
+  const [store, setStore] = useState<IItem[]>([]);
   const toast = useToast();
+
+  const handleFetchStore = () => {
+    fetchStore().then(({ data }) => setStore(data));
+  };
 
   const purchaseItem = (itemId: IItem['_id']) =>
     new Promise((resolve, reject) =>
@@ -14,7 +21,11 @@ export const useStore = () => {
       })
     );
 
-  return { purchaseItem };
+  useEffect(() => {
+    handleFetchStore();
+  }, []);
+
+  return { store, purchaseItem };
 };
 
 const GENERIC_ERROR_MESSAGE =
