@@ -27,7 +27,7 @@ export const useHero = () => {
   const [hero, setHero] = useState<IHero>(initHero);
 
   const handleFetchHero = () => {
-    fetchHero().then((res) => setHero(res.data));
+    fetchHero().then(({ data }) => setHero(data));
   };
 
   const equipItem = (itemId: IItem['_id']) =>
