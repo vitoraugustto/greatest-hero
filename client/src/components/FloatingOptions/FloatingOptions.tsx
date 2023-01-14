@@ -2,6 +2,7 @@ import { Box } from '../Layout/Box';
 import { Button } from '../UI/Button';
 import { IFloatingOptions } from './FloatingOptions.types';
 
+// TODO: Refactor this component
 export const FloatingOptions: React.FC<IFloatingOptions> = ({
   x,
   y,
