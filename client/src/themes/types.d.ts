@@ -11,10 +11,8 @@ declare module 'styled-components' {
     name: string;
     colors: {
       background: { emphasized: Color; notEmphasized: Color };
-      font: Color;
-      border: Color;
-      title: Color;
-      gold: Color;
+      font: { title: Color; body: Color; gold: Color };
+      border: { emphasized: Color; notEmphasized: Color };
     };
   }
 }
