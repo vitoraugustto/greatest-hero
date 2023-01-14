@@ -1,3 +1,5 @@
+import { useTheme } from 'styled-components';
+
 import { Box } from '../Layout/Box';
 import { Button } from '../UI/Button';
 import { IFloatingOptions } from './FloatingOptions.types';
@@ -9,6 +11,8 @@ export const FloatingOptions: React.FC<IFloatingOptions> = ({
   isVisible,
   options = [],
 }) => {
+  const theme = useTheme();
+
   return (
     <div
       style={{
@@ -23,9 +27,9 @@ export const FloatingOptions: React.FC<IFloatingOptions> = ({
           <Button
             key={index}
             fontSize={18}
-            bgColor="#332e5b"
+            bgColor={theme.colors.background.notEmphasized}
             text={option.label}
-            borderColor="#caa5fa"
+            borderColor={theme.colors.border.notEmphasized}
             onClick={option.onClick}
           />
         ))}

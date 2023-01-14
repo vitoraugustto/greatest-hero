@@ -1,4 +1,4 @@
-import { CSSObject } from 'styled-components';
+import { DefaultTheme } from 'styled-components';
 import Modal from 'styled-react-modal';
 
 interface IModalBase {
@@ -25,9 +25,8 @@ export const ModalBase: React.FC<IModalBase> = ({
   );
 };
 
-const modalStyles: CSSObject = {
-  borderRadius: '8px',
-  backgroundColor: '#302a54',
-};
-
-const StyledModal = Modal.styled(modalStyles);
+const StyledModal = Modal.styled`
+  border-radius: 8px;
+  background-color: ${(props: { theme: DefaultTheme }) =>
+    props.theme.colors.background.emphasized};
+`;

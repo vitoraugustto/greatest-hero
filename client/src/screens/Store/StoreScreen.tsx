@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTheme } from 'styled-components';
 
 import {
   Aside,
@@ -16,7 +17,9 @@ import { useStore } from '../../hooks/useStore';
 export const StoreScreen = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<IItem>(initItem);
+
   const { store, purchaseItem } = useStore();
+  const theme = useTheme();
 
   const handleClick = (item: IItem): void => {
     setSelectedItem(item);
@@ -33,7 +36,12 @@ export const StoreScreen = () => {
     <Background>
       <Aside>
         <Box gap={18}>
-          <Text align="center" as="h1" weight="bold" color="#fff">
+          <Text
+            align="center"
+            as="h1"
+            weight="bold"
+            color={theme.colors.font.title}
+          >
             Loja
           </Text>
           <Row gap={26} flexWrap>

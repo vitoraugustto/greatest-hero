@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTheme } from 'styled-components';
 
 import {
   Aside,
@@ -21,7 +22,9 @@ export const InventoryScreen = () => {
     useState<boolean>(false);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [options, setOptions] = useState<IOption[] | []>([]);
+
   const { inventory, sellItem, equipItem } = useHero();
+  const theme = useTheme();
 
   const handleSlotClick = (
     item: IItem,
@@ -65,7 +68,12 @@ export const InventoryScreen = () => {
     <Background>
       <Aside>
         <Box gap={18}>
-          <Text align="center" as="h1" weight="bold" color="#fff">
+          <Text
+            align="center"
+            as="h1"
+            weight="bold"
+            color={theme.colors.font.title}
+          >
             Inventário
           </Text>
           <Inventory

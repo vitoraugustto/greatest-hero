@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { DefaultTheme } from 'styled-components';
 
 import { addTestId } from '../../../helpers/utils';
 import { IButton } from './Button.types';
@@ -18,7 +18,7 @@ export const StyledButton = styled.button.attrs((props: IButton) => {
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
 `;
 
-const borderColor = (props: IButton) => {
+const borderColor = (props: IButton & { theme: DefaultTheme }) => {
   if (props.cleared) {
     return 'none';
   } else if (props.borderColor && !props.color) {
@@ -26,7 +26,7 @@ const borderColor = (props: IButton) => {
   } else if (!props.borderColor && props.color) {
     return `2px solid ${props.color}`;
   } else {
-    return '2px solid #caa5fa';
+    return `2px solid ${props.theme.colors.border.notEmphasized}`;
   }
 };
 

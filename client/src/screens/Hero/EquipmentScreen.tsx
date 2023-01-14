@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTheme } from 'styled-components';
 
 import {
   Aside,
@@ -19,7 +20,9 @@ export const EquipmentScreen = () => {
     useState<boolean>(false);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [options, setOptions] = useState<IOption[] | []>([]);
+
   const { equipment, unequipItem } = useHero();
+  const theme = useTheme();
 
   const handleSlotClick = (
     item: IItem,
@@ -42,7 +45,12 @@ export const EquipmentScreen = () => {
   return (
     <Background>
       <Aside>
-        <Text align="center" as="h1" weight="bold" color="#fff">
+        <Text
+          align="center"
+          as="h1"
+          weight="bold"
+          color={theme.colors.font.title}
+        >
           Equipamento
         </Text>
         <Equipment
@@ -135,6 +143,8 @@ const MaybeSlotItem: React.FC<IMaybeSlotItem> = ({
   onSlotClick,
   emptySlotText,
 }) => {
+  const theme = useTheme();
+
   return equipment ? (
     <SlotItem
       key={equipment._id}
@@ -150,7 +160,7 @@ const MaybeSlotItem: React.FC<IMaybeSlotItem> = ({
       height={154}
       width={180}
       borderRadius={8}
-      bgColor="#302a54"
+      bgColor={theme.colors.background.emphasized}
     >
       <Text>{emptySlotText}</Text>
     </Box>

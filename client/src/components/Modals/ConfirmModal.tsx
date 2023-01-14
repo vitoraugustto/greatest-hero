@@ -1,3 +1,5 @@
+import { useTheme } from 'styled-components';
+
 import { Spacer } from '../Layout/Spacer';
 import { Button } from '../UI/Button';
 import { ModalBase } from './ModalBase';
@@ -15,6 +17,8 @@ export const ConfirmModal: React.FC<IConfirmModal> = ({
   onConfirm,
   children,
 }) => {
+  const theme = useTheme();
+
   return (
     <ModalBase
       isModalOpen={isModalOpen}
@@ -27,7 +31,7 @@ export const ConfirmModal: React.FC<IConfirmModal> = ({
           text="Confirmar"
           extended
           onClick={onConfirm}
-          borderColor="#caa5fa"
+          borderColor={theme.colors.border.notEmphasized}
         />
         <Spacer mt={8} />
         <Button cleared text="Cancelar" extended onClick={onCancel} />

@@ -1,3 +1,5 @@
+import { useTheme } from 'styled-components';
+
 import { Box } from '../Layout/Box';
 import { Row } from '../Layout/Row';
 import { Spacer } from '../Layout/Spacer';
@@ -11,12 +13,13 @@ export const SlotItem: React.FC<ISlotItem> = ({
   onClick,
 }) => {
   const { name, image, status, gold } = item;
+  const theme = useTheme();
 
   return (
     <Box
       testId={`slot-${name.replaceAll(' ', '-')}`}
       borderRadius={10}
-      bgColor="#302a54"
+      bgColor={theme.colors.background.emphasized}
       hCenter
       width={calcSize(size).width}
       onClick={onClick}
@@ -36,7 +39,10 @@ export const SlotItem: React.FC<ISlotItem> = ({
             <Spacer mt={10} />
             <Row>
               <Box>
-                <Text size={calcSize(size).fontSize} color="gold">
+                <Text
+                  size={calcSize(size).fontSize}
+                  color={theme.colors.font.gold}
+                >
                   {gold} moedas de ouro
                 </Text>
                 <Spacer mt={6} />
