@@ -13,19 +13,23 @@ router.post('/:id/purchase', async (req, res) => {
     const item = await Item.findOne({ _id: id });
     const hero = await Hero.findOne();
 
-    item._id = new mongoose.Types.ObjectId();
+    if (hero.gold >= item.gold) {
+      item._id = new mongoose.Types.ObjectId();
 
-    await Hero.findOneAndUpdate(
-      {},
-      { inventory: [...hero.inventory, item] },
-      { new: true }
-    );
+      await Hero.findOneAndUpdate(
+        {},
+        { gold: hero.gold - item.gold, inventory: [...hero.inventory, item] },
+        { new: true }
+      );
 
-    res.status(200).json({
-      message: `Item '${item.name}' comprado com sucesso.`,
-    });
+      res.status(200).json({
+        message: `Item '${item.name}' comprado com sucesso.`,
+      });
+    } else {
+      throw 'Ouro insuficiente.';
+    }
   } catch (error) {
-    res.status(500).json({ error });
+    res.status(400).json({ error });
   }
 });
 
