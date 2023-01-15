@@ -153,7 +153,10 @@ router.put('/inventory/:id/sell', async (req, res) => {
         (inventoryItem) => String(inventoryItem._id) !== id
       );
 
-      await Hero.updateOne({}, { inventory: updatedInventory });
+      await Hero.updateOne(
+        {},
+        { gold: hero.gold + itemFound.gold, inventory: updatedInventory }
+      );
 
       res.status(200).json({
         message: `Item '${itemFound.name}' vendido com sucesso.`,
