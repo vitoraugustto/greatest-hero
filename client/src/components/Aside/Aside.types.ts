@@ -3,6 +3,7 @@ export interface IAside {
 }
 
 export interface IAsideOption {
+  icon: string;
   linkTo: string;
   label: string;
 }
