@@ -5,6 +5,7 @@ import {
   Aside,
   Background,
   Box,
+  ConfirmModal,
   FloatingOptions,
   Row,
   SlotItem,
@@ -12,7 +13,6 @@ import {
   Text,
 } from '../../components';
 import { IOption } from '../../components/FloatingOptions/FloatingOptions.types';
-import { ConfirmModal } from '../../components/Modals/ConfirmModal';
 import { IItem } from '../../components/SlotItem/SlotItem.types';
 import { useHero } from '../../hooks/useHero';
 
