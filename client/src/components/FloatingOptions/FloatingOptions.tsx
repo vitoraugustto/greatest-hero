@@ -1,7 +1,8 @@
-import { useTheme } from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
 import { Box } from '../Layout/Box';
 import { Button } from '../UI/Button';
+import { StyledDiv } from './FloatingOptions.styles';
 import { IFloatingOptions } from './FloatingOptions.types';
 
 // TODO: Refactor this component
@@ -14,14 +15,7 @@ export const FloatingOptions: React.FC<IFloatingOptions> = ({
   const theme = useTheme();
 
   return (
-    <div
-      style={{
-        display: isVisible ? 'block' : 'none',
-        position: 'absolute',
-        left: x,
-        top: y,
-      }}
-    >
+    <StyledDiv options={options} isVisible={isVisible} x={x} y={y}>
       <Box gap={8}>
         {options.map((option, index) => (
           <Button
@@ -34,6 +28,6 @@ export const FloatingOptions: React.FC<IFloatingOptions> = ({
           />
         ))}
       </Box>
-    </div>
+    </StyledDiv>
   );
 };
