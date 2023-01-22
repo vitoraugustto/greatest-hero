@@ -2405,22 +2405,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/pluginutils@npm:^5.0.2":
-  version: 5.0.2
-  resolution: "@rollup/pluginutils@npm:5.0.2"
-  dependencies:
-    "@types/estree": "npm:^1.0.0"
-    estree-walker: "npm:^2.0.2"
-    picomatch: "npm:^2.3.1"
-  peerDependencies:
-    rollup: ^1.20.0||^2.0.0||^3.0.0
-  peerDependenciesMeta:
-    rollup:
-      optional: true
-  checksum: c8e01caaf5d63c23f82ad6a1402cd8878718b298c29e09e57592dfffa18e01c389242610c41cb608f429828d13ef0848ff83fa474bbfe568966a9a8b2e93d25a
-  languageName: node
-  linkType: hard
-
 "@sinclair/typebox@npm:^0.24.1":
   version: 0.24.51
   resolution: "@sinclair/typebox@npm:0.24.51"
@@ -3735,133 +3719,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@svgr/babel-plugin-add-jsx-attribute@npm:^6.5.1":
-  version: 6.5.1
-  resolution: "@svgr/babel-plugin-add-jsx-attribute@npm:6.5.1"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 1cff7762a977f5d8e3a0b8d7619f77ec549bc0606eccf6cc55ca438d5301248d51b34dfc3b20d6ea27b0fc3fc33cd273a285a0c3d5cefbde6adc36024acb2245
-  languageName: node
-  linkType: hard
-
-"@svgr/babel-plugin-remove-jsx-attribute@npm:*":
-  version: 6.5.0
-  resolution: "@svgr/babel-plugin-remove-jsx-attribute@npm:6.5.0"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: d756967b3bcd95ab3a84cdedcf48dbe06f8dd2b1c567fa781d64439b75daacc257b2144fd3e1e0f09d3ec605e5c503245ea2136f067f75754e8e017a476d3b1b
-  languageName: node
-  linkType: hard
-
-"@svgr/babel-plugin-remove-jsx-empty-expression@npm:*":
-  version: 6.5.0
-  resolution: "@svgr/babel-plugin-remove-jsx-empty-expression@npm:6.5.0"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 499a35fc0236dcfd83405d09f8e422dfa989f6d4e01a7b695d243ec6478968d0ce7325c7d7f3da3f7423b19b300638b525f2ff10460bd20e6a5ccec33bdcb644
-  languageName: node
-  linkType: hard
-
-"@svgr/babel-plugin-replace-jsx-attribute-value@npm:^6.5.1":
-  version: 6.5.1
-  resolution: "@svgr/babel-plugin-replace-jsx-attribute-value@npm:6.5.1"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 1551d49a357f2188aa9ddae21b75655eb8300ea2ad256e9936852d51872eef2cb29e88da7270472e9ea6e55e30353bb12e0f502ff0a3e2969b2fbbee3aa63667
-  languageName: node
-  linkType: hard
-
-"@svgr/babel-plugin-svg-dynamic-title@npm:^6.5.1":
-  version: 6.5.1
-  resolution: "@svgr/babel-plugin-svg-dynamic-title@npm:6.5.1"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 33c0f06108aa26949941aa2787bb66d3891276eb64717cd1159bb127cd189f105ffb2ccc5049805e00d47709fafb05992ae616efb8f2fb2b4ecc6afed24747f8
-  languageName: node
-  linkType: hard
-
-"@svgr/babel-plugin-svg-em-dimensions@npm:^6.5.1":
-  version: 6.5.1
-  resolution: "@svgr/babel-plugin-svg-em-dimensions@npm:6.5.1"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 9fb389a2c641756a63bc31f50253a248718f374503f503b024c636e9bde3fdf8a9d2112ec8efb059ed324d9e213367ecd1bc918e6e79ac332e8081053e0b6970
-  languageName: node
-  linkType: hard
-
-"@svgr/babel-plugin-transform-react-native-svg@npm:^6.5.1":
-  version: 6.5.1
-  resolution: "@svgr/babel-plugin-transform-react-native-svg@npm:6.5.1"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 8dc1a51e99671b002200779ffa3707f18cd14111ce725e3c32c83ed8ce5db5754bea87f67a1f968344e8d8cd0b53f446c29e29f13d15ff50f84fedd7d60f86f2
-  languageName: node
-  linkType: hard
-
-"@svgr/babel-plugin-transform-svg-component@npm:^6.5.1":
-  version: 6.5.1
-  resolution: "@svgr/babel-plugin-transform-svg-component@npm:6.5.1"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: a542eb576cf91caf780a24c68372a5f6180071035b6dafcec736825dad7a252c57f2f16fae6e9e0dd5e8d10b06b98b9c04f600159825526f737b8adef93c4605
-  languageName: node
-  linkType: hard
-
-"@svgr/babel-preset@npm:^6.5.1":
-  version: 6.5.1
-  resolution: "@svgr/babel-preset@npm:6.5.1"
-  dependencies:
-    "@svgr/babel-plugin-add-jsx-attribute": "npm:^6.5.1"
-    "@svgr/babel-plugin-remove-jsx-attribute": "npm:*"
-    "@svgr/babel-plugin-remove-jsx-empty-expression": "npm:*"
-    "@svgr/babel-plugin-replace-jsx-attribute-value": "npm:^6.5.1"
-    "@svgr/babel-plugin-svg-dynamic-title": "npm:^6.5.1"
-    "@svgr/babel-plugin-svg-em-dimensions": "npm:^6.5.1"
-    "@svgr/babel-plugin-transform-react-native-svg": "npm:^6.5.1"
-    "@svgr/babel-plugin-transform-svg-component": "npm:^6.5.1"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: d3d8d1193cd475c60dd19243c2243d861258487ad1ce9ffe41a6b860759d764957c5927fcd14f3d06e02e54fbf4814e9b9ba297c091038a7454c7af082c5b8e7
-  languageName: node
-  linkType: hard
-
-"@svgr/core@npm:^6.5.1":
-  version: 6.5.1
-  resolution: "@svgr/core@npm:6.5.1"
-  dependencies:
-    "@babel/core": "npm:^7.19.6"
-    "@svgr/babel-preset": "npm:^6.5.1"
-    "@svgr/plugin-jsx": "npm:^6.5.1"
-    camelcase: "npm:^6.2.0"
-    cosmiconfig: "npm:^7.0.1"
-  checksum: 04d7895968ba657a89ffe0745362612bdd3de678a094260fb93cf448d3ddac6cdd41146c77df18de4718ba460ecf777aa1c8f278a3fffb2d67b5f0c3cac2b3cc
-  languageName: node
-  linkType: hard
-
-"@svgr/hast-util-to-babel-ast@npm:^6.5.1":
-  version: 6.5.1
-  resolution: "@svgr/hast-util-to-babel-ast@npm:6.5.1"
-  dependencies:
-    "@babel/types": "npm:^7.20.0"
-    entities: "npm:^4.4.0"
-  checksum: 07ed70934bdeeeb1484cece8c04a0de43233279f923f9158ea16c2be772ca2d2400e95f12249f809bb344478888c448ca50d96c5920e9d44f443d4578117f2aa
-  languageName: node
-  linkType: hard
-
-"@svgr/plugin-jsx@npm:^6.5.1":
-  version: 6.5.1
-  resolution: "@svgr/plugin-jsx@npm:6.5.1"
-  dependencies:
-    "@babel/core": "npm:^7.19.6"
-    "@svgr/babel-preset": "npm:^6.5.1"
-    "@svgr/hast-util-to-babel-ast": "npm:^6.5.1"
-    svg-parser: "npm:^2.0.4"
-  peerDependencies:
-    "@svgr/core": ^6.0.0
-  checksum: 04c5d6692735f79f2c4e5ea75b0ab1c3de7dc80ff623fdf415066de350e6bbf0ceec84b7a7727d482f61b8bdffd806384693c0d60060397c3e95810b3fa387ce
-  languageName: node
-  linkType: hard
-
 "@szmarczak/http-timer@npm:^1.1.2":
   version: 1.1.2
   resolution: "@szmarczak/http-timer@npm:1.1.2"
@@ -4038,7 +3895,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/estree@npm:*, @types/estree@npm:^1.0.0":
+"@types/estree@npm:*":
   version: 1.0.0
   resolution: "@types/estree@npm:1.0.0"
   checksum: 474df434e3a469cb7a68d44c8b7ac3a21bca344fa3b49651c3451d0f3662ff0c3b2ba52149cbc5b9c9a9f3f1ac37958c163ef29b65a8b36fccb5ccb2acfc9b08
@@ -6941,7 +6798,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cosmiconfig@npm:^7.0.0, cosmiconfig@npm:^7.0.1":
+"cosmiconfig@npm:^7.0.0":
   version: 7.1.0
   resolution: "cosmiconfig@npm:7.1.0"
   dependencies:
@@ -9679,7 +9536,6 @@ __metadata:
     styled-react-modal: "npm:^3.0.1"
     typescript: "npm:^4.6.4"
     vite: "npm:^3.1.0"
-    vite-plugin-svgr: "npm:^2.4.0"
     vitest: "npm:^0.25.2"
   languageName: unknown
   linkType: soft
@@ -15575,13 +15431,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svg-parser@npm:^2.0.4":
-  version: 2.0.4
-  resolution: "svg-parser@npm:2.0.4"
-  checksum: b970f4533a6ce64d3498f1a2c87d0cfd6d681e18fa58af7a9b061119dbb968e289a650e2c2094f08e28e83b9727a857545e7e15f6b27b2426f3c32cfa7f1a941
-  languageName: node
-  linkType: hard
-
 "symbol-tree@npm:^3.2.4":
   version: 3.2.4
   resolution: "symbol-tree@npm:3.2.4"
@@ -16583,18 +16432,6 @@ __metadata:
     unist-util-stringify-position: "npm:^2.0.0"
     vfile-message: "npm:^2.0.0"
   checksum: a806da53daba33873d92c6ab79add0a27030ccf46e95692692e910aabdf7dbcea29bc53c44f7252184bf6e081faba24d8b3b0d47b4ffb2cb6ec80b8de8a04892
-  languageName: node
-  linkType: hard
-
-"vite-plugin-svgr@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "vite-plugin-svgr@npm:2.4.0"
-  dependencies:
-    "@rollup/pluginutils": "npm:^5.0.2"
-    "@svgr/core": "npm:^6.5.1"
-  peerDependencies:
-    vite: ^2.6.0 || 3 || 4
-  checksum: 6968a095d4f70d24e5b52c97b2e94f95f43955108f414e6ba737f8794df48e2c6eab1a983230a3fbc690cb50c1dae9e812c3a5ea80c47fa3180b2df4e17a6169
   languageName: node
   linkType: hard
 
