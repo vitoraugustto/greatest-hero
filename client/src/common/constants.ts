@@ -1,9 +1,11 @@
+import { IHero, IItem } from './interfaces';
+
 export const ASIDE_WIDTH = 256;
 
 export const GENERIC_ERROR_MESSAGE =
   'Oops, algo deu errado. Por favor, tente novamente mais tarde.';
 
-export const INIT_HERO = {
+export const INIT_HERO: IHero = {
   name: '',
   role: '',
   gold: 0,
@@ -16,7 +18,7 @@ export const INIT_HERO = {
   equipment: [],
 };
 
-export const INIT_ITEM = {
+export const INIT_ITEM: IItem = {
   _id: '',
   name: '',
   image: '',
