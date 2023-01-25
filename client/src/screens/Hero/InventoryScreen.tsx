@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 
+import { INIT_ITEM } from '../../common/constants';
 import {
   Aside,
   Background,
@@ -145,13 +146,4 @@ const Inventory: React.FC<IInventory> = ({ inventory, onSlotClick }) => {
   );
 };
 
-const initItem = {
-  _id: '',
-  name: '',
-  image: '',
-  status: { attack: 0, defense: 0 },
-  gold: 0,
-  type: '',
-};
-
-let selectedItem: IItem = initItem;
+let selectedItem: IItem = INIT_ITEM;

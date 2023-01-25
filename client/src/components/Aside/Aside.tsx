@@ -3,7 +3,7 @@ import React from 'react';
 import Armor from '../../assets/icons/armor.png';
 import Chest from '../../assets/icons/chest.png';
 import Store from '../../assets/icons/store.png';
-import { ASIDE_WIDTH } from '../../helpers/constants';
+import { ASIDE_WIDTH } from '../../common/constants';
 import { Box } from '../Layout/Box';
 import { Row } from '../Layout/Row';
 import { Spacer } from '../Layout/Spacer';

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTheme } from 'styled-components';
 
+import { INIT_ITEM } from '../../common/constants';
 import {
   Aside,
   Background,
@@ -16,7 +17,7 @@ import { useStore } from '../../hooks/useStore';
 
 export const StoreScreen = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
-  const [selectedItem, setSelectedItem] = useState<IItem>(initItem);
+  const [selectedItem, setSelectedItem] = useState<IItem>(INIT_ITEM);
 
   const { store, purchaseItem } = useStore();
   const theme = useTheme();
@@ -72,13 +73,4 @@ export const StoreScreen = () => {
       </Aside>
     </Background>
   );
-};
-
-const initItem = {
-  _id: '',
-  name: '',
-  image: '',
-  status: { attack: 0, defense: 0 },
-  gold: 0,
-  type: '',
 };

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTheme } from 'styled-components';
 
+import { INIT_ITEM } from '../../common/constants';
 import {
   Aside,
   Background,
@@ -58,7 +59,7 @@ export const EquipmentScreen = () => {
           onSlotClick={(data) => {
             handleSlotClick(
               equipment.find((item) => item.type === data.item.type) ||
-                initItem,
+                INIT_ITEM,
               {
                 x: data.e.pageX,
                 y: data.e.pageY,
@@ -171,13 +172,4 @@ const findItemByType = (items: IItem[], type: string): IItem | undefined => {
   return items.find((item) => item.type === type);
 };
 
-const initItem = {
-  _id: '',
-  name: '',
-  image: '',
-  status: { attack: 0, defense: 0 },
-  gold: 0,
-  type: '',
-};
-
-let selectedItem: IItem = initItem;
+let selectedItem: IItem = INIT_ITEM;

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import { INIT_HERO } from '../common/constants';
 import { IItem } from '../components/SlotItem/SlotItem.types';
 import {
   equipItem as _equipItem,
@@ -24,7 +25,7 @@ export interface IHero {
 
 export const useHero = () => {
   const toast = useToast();
-  const [hero, setHero] = useState<IHero>(initHero);
+  const [hero, setHero] = useState<IHero>(INIT_HERO);
 
   const handleFetchHero = () => {
     fetchHero().then(({ data }) => setHero(data));
@@ -98,19 +99,6 @@ export const useHero = () => {
     unequipItem,
     sellItem,
   };
-};
-
-const initHero = {
-  name: '',
-  role: '',
-  gold: 0,
-  status: {
-    attack: 0,
-    defense: 0,
-    hp: 0,
-  },
-  inventory: [],
-  equipment: [],
 };
 
 const GENERIC_ERROR_MESSAGE =
