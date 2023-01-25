@@ -1,5 +1,8 @@
 export const ASIDE_WIDTH = 256;
 
+export const GENERIC_ERROR_MESSAGE =
+  'Oops, algo deu errado. Por favor, tente novamente mais tarde.';
+
 export const INIT_HERO = {
   name: '',
   role: '',

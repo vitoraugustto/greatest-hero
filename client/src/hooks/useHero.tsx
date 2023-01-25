@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { INIT_HERO } from '../common/constants';
+import { GENERIC_ERROR_MESSAGE, INIT_HERO } from '../common/constants';
 import { IHero, IItem } from '../common/interfaces';
 import {
   equipItem as _equipItem,
@@ -87,6 +87,3 @@ export const useHero = () => {
     sellItem,
   };
 };
-
-const GENERIC_ERROR_MESSAGE =
-  'Oops, algo deu errado. Por favor, tente novamente mais tarde.';
