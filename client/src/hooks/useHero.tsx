@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { INIT_HERO } from '../common/constants';
-import { IItem } from '../components/SlotItem/SlotItem.types';
+import { IHero, IItem } from '../common/interfaces';
 import {
   equipItem as _equipItem,
   sellItem as _sellItem,
@@ -10,22 +10,9 @@ import {
 } from '../services/hero';
 import { useToast } from './useToast';
 
-export interface IHero {
-  name: string;
-  role: string;
-  gold: number;
-  status: {
-    attack: number;
-    defense: number;
-    hp: number;
-  };
-  inventory: IItem[];
-  equipment: IItem[];
-}
-
 export const useHero = () => {
-  const toast = useToast();
   const [hero, setHero] = useState<IHero>(INIT_HERO);
+  const toast = useToast();
 
   const handleFetchHero = () => {
     fetchHero().then(({ data }) => setHero(data));

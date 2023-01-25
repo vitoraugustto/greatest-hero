@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTheme } from 'styled-components';
 
 import { INIT_ITEM } from '../../common/constants';
+import { IItem } from '../../common/interfaces';
 import {
   Aside,
   Background,
@@ -13,7 +14,6 @@ import {
   Text,
 } from '../../components';
 import { IOption } from '../../components/FloatingOptions/FloatingOptions.types';
-import { IItem } from '../../components/SlotItem/SlotItem.types';
 import { useHero } from '../../hooks/useHero';
 
 export const EquipmentScreen = () => {

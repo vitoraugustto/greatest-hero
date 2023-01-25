@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { IItem } from '../components/SlotItem/SlotItem.types';
+import { IItem } from '../common/interfaces';
 import { purchaseItem as _purchaseItem, fetchStore } from '../services/store';
 import { useToast } from './useToast';
 

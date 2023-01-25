@@ -1,7 +1,6 @@
 import { AxiosPromise } from 'axios';
 
-import { IItem } from '../components/SlotItem/SlotItem.types';
-import { IHero } from '../hooks/useHero';
+import { IHero, IItem } from '../common/interfaces';
 import { instance } from './axios';
 
 export const fetchHero = (): AxiosPromise<IHero> =>

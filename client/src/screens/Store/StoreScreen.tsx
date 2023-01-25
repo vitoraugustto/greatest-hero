@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTheme } from 'styled-components';
 
 import { INIT_ITEM } from '../../common/constants';
+import { IItem } from '../../common/interfaces';
 import {
   Aside,
   Background,
@@ -12,7 +13,6 @@ import {
   Text,
 } from '../../components';
 import { ConfirmModal } from '../../components/Modals/ConfirmModal';
-import { IItem } from '../../components/SlotItem/SlotItem.types';
 import { useStore } from '../../hooks/useStore';
 
 export const StoreScreen = () => {

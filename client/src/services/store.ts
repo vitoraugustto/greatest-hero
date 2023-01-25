@@ -1,6 +1,6 @@
 import { AxiosPromise } from 'axios';
 
-import { IItem } from '../components/SlotItem/SlotItem.types';
+import { IItem } from '../common/interfaces';
 import { instance } from './axios';
 
 export const fetchStore = (): AxiosPromise<IItem[]> =>
