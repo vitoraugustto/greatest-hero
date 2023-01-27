@@ -73,7 +73,9 @@ export const useHero = () => {
     );
 
   useEffect(() => {
-    handleFetchHero();
+    if (!hero.name) {
+      handleFetchHero();
+    }
   }, []);
 
   return {
