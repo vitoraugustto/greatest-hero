@@ -1,21 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { GENERIC_ERROR_MESSAGE, INIT_HERO } from '../common/constants';
-import { IHero, IItem } from '../common/interfaces';
+import { GENERIC_ERROR_MESSAGE } from '../common/constants';
+import { IItem } from '../common/interfaces';
 import {
   equipItem as _equipItem,
   sellItem as _sellItem,
   unequipItem as _unequipItem,
-  fetchHero,
 } from '../services/hero';
+import { AppDispatch, RootState } from '../store';
+import { fetchHeroAction } from '../store/actions/hero';
 import { useToast } from './useToast';
 
 export const useHero = () => {
-  const [hero, setHero] = useState<IHero>(INIT_HERO);
+  const dispatch = useDispatch<AppDispatch>();
+  const hero = useSelector((state: RootState) => state.hero);
   const toast = useToast();
 
   const handleFetchHero = () => {
-    fetchHero().then(({ data }) => setHero(data));
+    dispatch(fetchHeroAction());
   };
 
   const equipItem = (itemId: IItem['_id']) =>
