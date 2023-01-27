@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { INIT_HERO } from '../../common/constants';
-import { Loading } from '../../common/interfaces';
+import { IAsyncAction } from '../../common/interfaces';
 import { fetchHeroAction } from '../actions/hero';
 
-const initialState: typeof INIT_HERO & { loading: Loading; error?: string } = {
+const initialState: typeof INIT_HERO & IAsyncAction = {
   ...INIT_HERO,
   loading: 'idle',
 };

@@ -1,5 +1,10 @@
 export type Loading = 'idle' | 'pending' | 'succeeded' | 'failed';
 
+export interface IAsyncAction {
+  loading: Loading;
+  error?: string;
+}
+
 export interface IHero {
   name: string;
   role: string;
