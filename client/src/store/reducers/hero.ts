@@ -1,17 +1,33 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { INIT_HERO } from '../../common/constants';
+import { Loading } from '../../common/interfaces';
 import { fetchHeroAction } from '../actions/hero';
+
+const initialState: typeof INIT_HERO & { loading: Loading; error?: string } = {
+  ...INIT_HERO,
+  loading: 'idle',
+};
 
 const heroSlice = createSlice({
   name: 'hero',
-  initialState: INIT_HERO,
+  initialState: initialState,
   reducers: {},
   extraReducers(builder) {
-    builder.addCase(
-      fetchHeroAction.fulfilled,
-      (state, action) => (state = action.payload)
-    );
+    builder
+      .addCase(
+        fetchHeroAction.fulfilled,
+        (state, action) => (state = { ...action.payload, loading: 'succeeded' })
+      )
+      .addCase(
+        fetchHeroAction.pending,
+        (state) => (state = { ...state, loading: 'pending' })
+      )
+      .addCase(
+        fetchHeroAction.rejected,
+        (state, action) =>
+          (state = { ...state, loading: 'failed', error: action.error.message })
+      );
   },
 });
 
