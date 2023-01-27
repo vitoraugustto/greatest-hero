@@ -1,3 +1,5 @@
+export type Loading = 'idle' | 'pending' | 'succeeded' | 'failed';
+
 export interface IHero {
   name: string;
   role: string;
