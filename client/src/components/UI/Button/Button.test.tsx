@@ -1,13 +1,18 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render } from '@testing-library/react';
-import { CSSObject } from 'styled-components';
+import { CSSObject, ThemeProvider } from 'styled-components';
 import { describe, test, vi } from 'vitest';
 
+import { purple } from '../../../themes/purple';
 import { Button } from './Button';
+
+export const renderWithTheme = (children: React.ReactElement) => {
+  return render(<ThemeProvider theme={purple}>{children}</ThemeProvider>);
+};
 
 describe('Button', () => {
   test('Should be able to render the button', () => {
-    const { getByTestId } = render(
+    const { getByTestId } = renderWithTheme(
       <Button testId={buttonTestID} text="Hello, I am a Button!" />
     );
 
@@ -15,7 +20,7 @@ describe('Button', () => {
   });
 
   test('Should be able to render based on the children prop', () => {
-    const { getByTestId } = render(
+    const { getByTestId } = renderWithTheme(
       <Button testId={buttonTestID} text="Hello, I am a Button!" />
     );
     expect(getByTestId(buttonTestID)).toHaveTextContent(
@@ -26,7 +31,7 @@ describe('Button', () => {
   test('Should be able to fire event', () => {
     const handleClick = vi.fn();
 
-    const { getByTestId } = render(
+    const { getByTestId } = renderWithTheme(
       <Button
         onClick={handleClick}
         testId={buttonTestID}
@@ -40,7 +45,7 @@ describe('Button', () => {
   });
 
   test('Should be able to have default style', () => {
-    const { getByTestId } = render(
+    const { getByTestId } = renderWithTheme(
       <Button testId={buttonTestID} text="Hello, I am a Button!" />
     );
 
