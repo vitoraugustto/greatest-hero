@@ -79,6 +79,7 @@ export const useHero = () => {
   }, []);
 
   return {
+    loading: hero.loading,
     hero: {
       name: hero.name,
       role: hero.role,

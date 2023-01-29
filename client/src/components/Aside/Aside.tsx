@@ -15,19 +15,27 @@ import { StyledAside } from './Aside.styles';
 import { IAside, IAsideOption } from './Aside.types';
 
 export const Aside: React.FC<IAside> = ({ children }) => {
-  const { hero } = useHero();
+  const { hero, loading } = useHero();
   const theme = useTheme();
 
   return (
     <>
       <StyledAside>
         <Spacer pl={24}>
-          <Text>
-            {hero.name}, {hero.role}
-          </Text>
-          <Text color={theme.colors.font.gold}>
-            Moedas de ouro: {hero.gold}
-          </Text>
+          <>
+            {loading === 'succeeded' ? (
+              <Box>
+                <Text>
+                  {hero.name}, {hero.role}
+                </Text>
+                <Text color={theme.colors.font.gold}>
+                  Moedas de ouro: {hero.gold}
+                </Text>
+              </Box>
+            ) : (
+              <Text>Carregando informações do personagem...</Text>
+            )}
+          </>
         </Spacer>
         <AsideOption linkTo="/" label="Equipamento" icon={Armor} />
         <AsideOption linkTo="/hero/inventory" label="Inventário" icon={Chest} />
