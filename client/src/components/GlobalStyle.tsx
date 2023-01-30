@@ -17,10 +17,6 @@ const GlobalStyle = createGlobalStyle`
   ol, ul {
     list-style: none;
   }
-  /* img {
-    min-width: 100%;
-    height: auto;
-  } */
   button, input[type="submit"], input[type="reset"] {
     background: none;
     color: inherit;
