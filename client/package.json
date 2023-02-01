@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "prepare": "husky install",
     "start": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
@@ -25,6 +26,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
     "@mdx-js/react": "^1.6.22",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-docs": "^6.5.13",
@@ -52,7 +55,7 @@
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-storybook": "^0.6.7",
-    "husky": "^8.0.2",
+    "husky": "^8.0.3",
     "jsdom": "^20.0.2",
     "prettier": "^2.7.1",
     "storybook": "^6.5.13",
