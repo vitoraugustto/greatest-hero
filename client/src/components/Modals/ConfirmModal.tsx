@@ -2,7 +2,7 @@ import { useTheme } from 'styled-components';
 
 import { Spacer } from '../Layout/Spacer';
 import { Button } from '../UI/Button';
-import { ModalBase } from './ModalBase';
+import { ModalBase } from './ModalBase/ModalBase';
 
 interface IConfirmModal {
   isModalOpen: boolean;
