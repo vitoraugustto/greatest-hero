@@ -3,11 +3,11 @@ import { fireEvent, render } from '@testing-library/react';
 import { CSSObject, ThemeProvider } from 'styled-components';
 import { describe, test, vi } from 'vitest';
 
-import { purple } from '../../../themes/purple';
+import { defaultTheme } from '../../../themes/default/purple';
 import { Button } from './Button';
 
 export const renderWithTheme = (children: React.ReactElement) => {
-  return render(<ThemeProvider theme={purple}>{children}</ThemeProvider>);
+  return render(<ThemeProvider theme={defaultTheme}>{children}</ThemeProvider>);
 };
 
 describe('Button', () => {
