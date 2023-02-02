@@ -1,15 +1,9 @@
 import { useTheme } from 'styled-components';
 
-import { Spacer } from '../Layout/Spacer';
-import { Button } from '../UI/Button';
-import { ModalBase } from './ModalBase/ModalBase';
-
-interface IConfirmModal {
-  isModalOpen: boolean;
-  onCancel: () => void;
-  onConfirm: () => void;
-  children: React.ReactElement | React.ReactElement[];
-}
+import { Spacer } from '../../Layout/Spacer';
+import { Button } from '../../UI/Button';
+import { ModalBase } from '../ModalBase/ModalBase';
+import { IConfirmModal } from './ConfirmModal.types';
 
 export const ConfirmModal: React.FC<IConfirmModal> = ({
   isModalOpen,
