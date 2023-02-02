@@ -9,23 +9,23 @@ declare module 'styled-components' {
       body: {
         color: Color;
         fontFamily: string;
-        fontSize: number;
+        fontSize: string;
         fontWeight: string;
-        letterSpacing: number;
+        letterSpacing: string;
       };
       title: {
         color: Color;
         fontFamily: string;
-        fontSize: number;
+        fontSize: string;
         fontWeight: string;
-        letterSpacing: number;
+        letterSpacing: string;
       };
       button: {
         color: Color;
         fontFamily: string;
-        fontSize: number;
+        fontSize: string;
         fontWeight: string;
-        letterSpacing: number;
+        letterSpacing: string;
       };
     };
     palette: {
