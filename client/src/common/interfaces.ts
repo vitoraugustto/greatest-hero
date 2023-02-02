@@ -6,6 +6,14 @@ type HEX = `#${string}`;
 
 export type Color = RGB | RGBA | HEX;
 
+export interface IPaletteColor {
+  300: Color;
+  main: Color;
+  500: Color;
+  600: Color;
+  700: Color;
+}
+
 export interface IAsyncAction {
   loading: Loading;
   error?: string;
