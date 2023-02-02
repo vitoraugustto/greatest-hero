@@ -10,15 +10,22 @@ declare module 'styled-components' {
         color: Color;
         fontFamily: string;
         fontSize: number;
+        fontWeight: string;
         letterSpacing: number;
-        lineHeight: number;
       };
       title: {
         color: Color;
         fontFamily: string;
         fontSize: number;
+        fontWeight: string;
         letterSpacing: number;
-        lineHeight: number;
+      };
+      button: {
+        color: Color;
+        fontFamily: string;
+        fontSize: number;
+        fontWeight: string;
+        letterSpacing: number;
       };
     };
     palette: {
