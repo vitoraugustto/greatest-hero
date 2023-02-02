@@ -10,5 +10,5 @@ export const StyledAside = styled.aside<IAside>`
   left: 0;
   width: ${ASIDE_WIDTH}px;
   padding: 30px 0;
-  background-color: ${({ theme }) => theme.colors.background.emphasized};
+  background-color: ${({ theme }) => theme.palette.secondary.main};
 `;

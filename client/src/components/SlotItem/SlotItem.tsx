@@ -19,7 +19,7 @@ export const SlotItem: React.FC<ISlotItem> = ({
     <Box
       testId={`slot-${name.replaceAll(' ', '-')}`}
       borderRadius={10}
-      bgColor={theme.colors.background.emphasized}
+      bgColor={theme.palette.secondary.main}
       hCenter
       width={calcSize(size).width}
       onClick={onClick}
@@ -39,10 +39,7 @@ export const SlotItem: React.FC<ISlotItem> = ({
             <Spacer mt={10} />
             <Row>
               <Box>
-                <Text
-                  size={calcSize(size).fontSize}
-                  color={theme.colors.font.gold}
-                >
+                <Text size={calcSize(size).fontSize} color="gold">
                   {gold} moedas de ouro
                 </Text>
                 <Spacer mt={6} />

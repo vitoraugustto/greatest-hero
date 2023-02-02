@@ -28,5 +28,5 @@ export const ModalBase: React.FC<IModalBase> = ({
 const StyledModal = Modal.styled`
   border-radius: 8px;
   background-color: ${(props: { theme: DefaultTheme }) =>
-    props.theme.colors.background.emphasized};
+    props.theme.palette.secondary.main};
 `;

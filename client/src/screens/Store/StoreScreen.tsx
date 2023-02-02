@@ -41,7 +41,7 @@ export const StoreScreen = () => {
             align="center"
             as="h1"
             weight="bold"
-            color={theme.colors.font.title}
+            color={theme.typography.title.color}
             size={26}
           >
             Loja

@@ -26,7 +26,7 @@ const borderColor = (props: IButton & { theme: DefaultTheme }) => {
   } else if (!props.borderColor && props.color) {
     return `2px solid ${props.color}`;
   } else {
-    return `2px solid ${props.theme.colors.border.notEmphasized}`;
+    return `2px solid ${props.theme.palette.primary.main}`;
   }
 };
 

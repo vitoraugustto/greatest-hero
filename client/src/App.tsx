@@ -4,11 +4,11 @@ import { ModalProvider } from 'styled-react-modal';
 import { Toast } from './components';
 import GlobalStyle from './components/GlobalStyle';
 import { Routes } from './routes';
-import { purple } from './themes/purple';
+import { defaultTheme } from './themes/default/theme';
 
 export const App = () => {
   return (
-    <ThemeProvider theme={purple}>
+    <ThemeProvider theme={defaultTheme}>
       <ModalProvider>
         <GlobalStyle />
         <Toast />

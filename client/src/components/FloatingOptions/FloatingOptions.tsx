@@ -1,4 +1,4 @@
-import styled, { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 
 import { Box } from '../Layout/Box';
 import { Button } from '../UI/Button';
@@ -21,9 +21,9 @@ export const FloatingOptions: React.FC<IFloatingOptions> = ({
           <Button
             key={index}
             fontSize={18}
-            bgColor={theme.colors.background.notEmphasized}
+            bgColor={theme.palette.secondary[300]}
             text={option.label}
-            borderColor={theme.colors.border.notEmphasized}
+            borderColor={theme.palette.primary.main}
             onClick={option.onClick}
           />
         ))}

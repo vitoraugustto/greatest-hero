@@ -50,7 +50,7 @@ export const EquipmentScreen = () => {
           align="center"
           as="h1"
           weight="bold"
-          color={theme.colors.font.title}
+          color={theme.typography.title.color}
           size={26}
         >
           Equipamento
@@ -162,7 +162,7 @@ const MaybeSlotItem: React.FC<IMaybeSlotItem> = ({
       height={154}
       width={180}
       borderRadius={8}
-      bgColor={theme.colors.background.emphasized}
+      bgColor={theme.palette.secondary.main}
     >
       <Text>{emptySlotText}</Text>
     </Box>

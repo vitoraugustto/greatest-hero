@@ -16,7 +16,6 @@ import { IAside, IAsideOption } from './Aside.types';
 
 export const Aside: React.FC<IAside> = ({ children }) => {
   const { hero, loading } = useHero();
-  const theme = useTheme();
 
   return (
     <>
@@ -28,9 +27,7 @@ export const Aside: React.FC<IAside> = ({ children }) => {
                 <Text>
                   {hero.name}, {hero.role}
                 </Text>
-                <Text color={theme.colors.font.gold}>
-                  Moedas de ouro: {hero.gold}
-                </Text>
+                <Text color="gold">Moedas de ouro: {hero.gold}</Text>
               </Box>
             ) : (
               <Text>Carregando informações do personagem...</Text>

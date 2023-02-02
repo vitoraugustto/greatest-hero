@@ -31,7 +31,7 @@ export const ConfirmModal: React.FC<IConfirmModal> = ({
           text="Confirmar"
           extended
           onClick={onConfirm}
-          borderColor={theme.colors.border.notEmphasized}
+          borderColor={theme.palette.primary.main}
         />
         <Spacer mt={8} />
         <Button cleared text="Cancelar" extended onClick={onCancel} />
