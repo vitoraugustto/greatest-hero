@@ -74,6 +74,7 @@ export const InventoryScreen = () => {
             as="h1"
             weight="bold"
             color={theme.colors.font.title}
+            size={26}
           >
             Inventário
           </Text>
