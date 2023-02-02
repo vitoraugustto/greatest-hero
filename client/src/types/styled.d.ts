@@ -9,10 +9,37 @@ type Color = RGB | RGBA | HEX;
 declare module 'styled-components' {
   interface DefaultTheme {
     name: string;
-    colors: {
-      background: { emphasized: Color; notEmphasized: Color };
-      font: { title: Color; body: Color; gold: Color };
-      border: { emphasized: Color; notEmphasized: Color };
+    typography: {
+      body: {
+        color: Color;
+        fontFamily: string;
+        fontSize: number;
+        letterSpacing: number;
+        lineHeight: number;
+      };
+      title: {
+        color: Color;
+        fontFamily: string;
+        fontSize: number;
+        letterSpacing: number;
+        lineHeight: number;
+      };
+    };
+    palette: {
+      primary: {
+        300: Color;
+        main: Color;
+        500: Color;
+        600: Color;
+        700: Color;
+      };
+      secondary: {
+        300: Color;
+        main: Color;
+        500: Color;
+        600: Color;
+        700: Color;
+      };
     };
   }
 }
