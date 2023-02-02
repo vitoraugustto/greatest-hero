@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useTheme } from 'styled-components';
 
-import { INIT_ITEM } from '../../common/constants';
-import { IItem } from '../../common/interfaces';
+import { INIT_ITEM } from '@common/constants';
+import { IItem } from '@common/interfaces';
 import {
   Aside,
   Background,
@@ -12,9 +12,10 @@ import {
   SlotItem,
   Spacer,
   Text,
-} from '../../components';
+} from '@components';
+import { useHero } from '@hooks/useHero';
+
 import { IOption } from '../../components/FloatingOptions/FloatingOptions.types';
-import { useHero } from '../../hooks/useHero';
 
 export const EquipmentScreen = () => {
   const [isFloatingOptionsVisible, setFloatingOptionsVisible] =

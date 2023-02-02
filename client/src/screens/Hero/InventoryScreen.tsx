@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
+import { IOption } from 'src/components/FloatingOptions/FloatingOptions.types';
 import { useTheme } from 'styled-components';
 
-import { INIT_ITEM } from '../../common/constants';
-import { IItem } from '../../common/interfaces';
+import { INIT_ITEM } from '@common/constants';
+import { IItem } from '@common/interfaces';
 import {
   Aside,
   Background,
@@ -13,9 +14,8 @@ import {
   SlotItem,
   Spacer,
   Text,
-} from '../../components';
-import { IOption } from '../../components/FloatingOptions/FloatingOptions.types';
-import { useHero } from '../../hooks/useHero';
+} from '@components';
+import { useHero } from '@hooks/useHero';
 
 export const InventoryScreen = () => {
   const [isConfirmModalOpen, setConfirmModalOpen] = useState<boolean>(false);

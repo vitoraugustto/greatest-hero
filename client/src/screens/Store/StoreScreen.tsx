@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useTheme } from 'styled-components';
 
-import { INIT_ITEM } from '../../common/constants';
-import { IItem } from '../../common/interfaces';
+import { INIT_ITEM } from '@common/constants';
+import { IItem } from '@common/interfaces';
 import {
   Aside,
   Background,
@@ -12,8 +12,8 @@ import {
   SlotItem,
   Spacer,
   Text,
-} from '../../components';
-import { useStore } from '../../hooks/useStore';
+} from '@components';
+import { useStore } from '@hooks/useStore';
 
 export const StoreScreen = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
