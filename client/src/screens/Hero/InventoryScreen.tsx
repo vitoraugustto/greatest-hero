@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import { IOption } from 'src/components/FloatingOptions/FloatingOptions.types';
 import { useTheme } from 'styled-components';
 
 import { INIT_ITEM } from '@common/constants';
-import { IItem } from '@common/interfaces';
+import { IItem, IOption } from '@common/interfaces';
 import {
   Aside,
   Background,

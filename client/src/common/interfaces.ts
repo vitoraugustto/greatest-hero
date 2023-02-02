@@ -43,3 +43,8 @@ export interface IItem {
   gold: number;
   type: string;
 }
+
+export interface IOption {
+  label: string;
+  onClick: () => void;
+}

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTheme } from 'styled-components';
 
 import { INIT_ITEM } from '@common/constants';
-import { IItem } from '@common/interfaces';
+import { IItem, IOption } from '@common/interfaces';
 import {
   Aside,
   Background,
@@ -14,8 +14,6 @@ import {
   Text,
 } from '@components';
 import { useHero } from '@hooks/useHero';
-
-import { IOption } from '../../components/FloatingOptions/FloatingOptions.types';
 
 export const EquipmentScreen = () => {
   const [isFloatingOptionsVisible, setFloatingOptionsVisible] =
