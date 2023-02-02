@@ -7,12 +7,12 @@ import {
   Aside,
   Background,
   Box,
+  ConfirmModal,
   Row,
   SlotItem,
   Spacer,
   Text,
 } from '../../components';
-import { ConfirmModal } from '../../components/Modals/ConfirmModal';
 import { useStore } from '../../hooks/useStore';
 
 export const StoreScreen = () => {
