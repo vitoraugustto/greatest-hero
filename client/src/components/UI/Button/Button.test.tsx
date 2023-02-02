@@ -3,7 +3,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { CSSObject, ThemeProvider } from 'styled-components';
 import { describe, test, vi } from 'vitest';
 
-import { defaultTheme } from '../../../themes/default/purple';
+import { defaultTheme } from '../../../themes/default/theme';
 import { Button } from './Button';
 
 export const renderWithTheme = (children: React.ReactElement) => {
