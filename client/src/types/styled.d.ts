@@ -1,10 +1,6 @@
 import 'styled-components';
 
-type RGB = `rgb(${number}, ${number}, ${number})`;
-type RGBA = `rgba(${number}, ${number}, ${number}, ${number})`;
-type HEX = `#${string}`;
-
-type Color = RGB | RGBA | HEX;
+import { Color } from '../common/interfaces';
 
 declare module 'styled-components' {
   interface DefaultTheme {
