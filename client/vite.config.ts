@@ -15,6 +15,8 @@ export default defineConfig({
       '@components': path.resolve(__dirname, './src/components'),
       '@common': path.resolve(__dirname, './src/common/'),
       '@hooks': path.resolve(__dirname, './src/hooks/'),
+      '@screens': path.resolve(__dirname, './src/screens/'),
+      '@services': path.resolve(__dirname, './src/services/'),
     },
   },
   plugins: [react()],
