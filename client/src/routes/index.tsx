@@ -4,9 +4,9 @@ import {
   Routes as _Routes,
 } from 'react-router-dom';
 
-import { EquipmentScreen } from '../screens/Hero/EquipmentScreen';
-import { InventoryScreen } from '../screens/Hero/InventoryScreen';
-import { StoreScreen } from '../screens/Store/StoreScreen';
+import { EquipmentScreen } from '@screens/Hero/EquipmentScreen';
+import { InventoryScreen } from '@screens/Hero/InventoryScreen';
+import { StoreScreen } from '@screens/Store/StoreScreen';
 
 export const Routes = () => {
   return (

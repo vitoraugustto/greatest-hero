@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { GENERIC_ERROR_MESSAGE } from '../common/constants';
-import { IItem } from '../common/interfaces';
-import { purchaseItem as _purchaseItem, fetchStore } from '../services/store';
+import { GENERIC_ERROR_MESSAGE } from '@common/constants';
+import { IItem } from '@common/interfaces';
+import { useToast } from '@hooks/useToast';
+import { purchaseItem as _purchaseItem, fetchStore } from '@services/store';
+
 import { AppDispatch } from '../store';
 import { fetchHeroAction } from '../store/actions/hero';
-import { useToast } from './useToast';
 
 export const useStore = () => {
   const [store, setStore] = useState<IItem[]>([]);

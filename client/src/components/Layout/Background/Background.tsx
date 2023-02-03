@@ -1,4 +1,5 @@
-import { Spacer } from '../Spacer';
+import { Spacer } from '@components';
+
 import { StyledDiv } from './Background.styles';
 import { IBackground } from './Background.types';
 

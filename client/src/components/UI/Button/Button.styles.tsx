@@ -1,6 +1,7 @@
 import styled, { DefaultTheme } from 'styled-components';
 
-import { addTestId } from '../../../common/utils';
+import { addTestId } from '@common/utils';
+
 import { IButton } from './Button.types';
 
 export const StyledButton = styled.button.attrs((props: IButton) => {

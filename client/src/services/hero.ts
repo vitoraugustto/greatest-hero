@@ -1,7 +1,7 @@
 import { AxiosPromise } from 'axios';
 
-import { IHero, IItem } from '../common/interfaces';
-import { instance } from './axios';
+import { IHero, IItem } from '@common/interfaces';
+import { instance } from '@services/axios';
 
 export const fetchHero = (): AxiosPromise<IHero> =>
   instance({ url: '/api/v1/hero' });

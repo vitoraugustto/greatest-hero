@@ -1,6 +1,6 @@
 import 'styled-components';
 
-import { Color } from '../common/interfaces';
+import { Color } from '@common/interfaces';
 
 declare module 'styled-components' {
   interface DefaultTheme {

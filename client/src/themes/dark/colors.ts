@@ -1,4 +1,4 @@
-import { IPaletteColor } from '../../common/interfaces';
+import { IPaletteColor } from '@common/interfaces';
 
 export const black: IPaletteColor = {
   300: '#1f1f1f',

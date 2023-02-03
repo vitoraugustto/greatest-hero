@@ -1,16 +1,13 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
 
+import { ASIDE_WIDTH } from '@common/constants';
+import { Box, Link, Row, Spacer, Text } from '@components';
+import { useHero } from '@hooks/useHero';
+
 import Armor from '../../assets/icons/armor.png';
 import Chest from '../../assets/icons/chest.png';
 import Store from '../../assets/icons/store.png';
-import { ASIDE_WIDTH } from '../../common/constants';
-import { useHero } from '../../hooks/useHero';
-import { Box } from '../Layout/Box';
-import { Row } from '../Layout/Row';
-import { Spacer } from '../Layout/Spacer';
-import { Link } from '../Link';
-import { Text } from '../Text';
 import { StyledAside } from './Aside.styles';
 import { IAside, IAsideOption } from './Aside.types';
 

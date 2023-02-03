@@ -1,4 +1,4 @@
-import { IItem } from '../../common/interfaces';
+import { IItem } from '@common/interfaces';
 
 export interface ISlotItem {
   item: IItem;

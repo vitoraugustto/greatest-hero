@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Row } from '../../Layout/Row';
-import { Text } from '../../Text';
+import { Row, Text } from '@components';
+
 import { StyledButton } from './Button.styles';
 import { IButton } from './Button.types';
 

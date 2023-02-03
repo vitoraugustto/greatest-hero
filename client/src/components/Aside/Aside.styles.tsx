@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-import { ASIDE_WIDTH } from '../../common/constants';
+import { ASIDE_WIDTH } from '@common/constants';
+
 import { IAside } from './Aside.types';
 
 export const StyledAside = styled.aside<IAside>`

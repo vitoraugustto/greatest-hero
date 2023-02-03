@@ -1,7 +1,7 @@
+import { INIT_HERO } from '@common/constants';
+import { IAsyncAction } from '@common/interfaces';
 import { createSlice } from '@reduxjs/toolkit';
 
-import { INIT_HERO } from '../../common/constants';
-import { IAsyncAction } from '../../common/interfaces';
 import { fetchHeroAction } from '../actions/hero';
 
 const initialState: typeof INIT_HERO & IAsyncAction = {

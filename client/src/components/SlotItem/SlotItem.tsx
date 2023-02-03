@@ -1,9 +1,7 @@
 import { useTheme } from 'styled-components';
 
-import { Box } from '../Layout/Box';
-import { Row } from '../Layout/Row';
-import { Spacer } from '../Layout/Spacer';
-import { Text } from '../Text';
+import { Box, Row, Spacer, Text } from '@components';
+
 import { ISlotItem } from './SlotItem.types';
 
 export const SlotItem: React.FC<ISlotItem> = ({

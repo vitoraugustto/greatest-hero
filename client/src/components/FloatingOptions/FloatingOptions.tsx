@@ -1,7 +1,7 @@
 import { useTheme } from 'styled-components';
 
-import { Box } from '../Layout/Box';
-import { Button } from '../UI/Button';
+import { Box, Button } from '@components';
+
 import { StyledDiv } from './FloatingOptions.styles';
 import { IFloatingOptions } from './FloatingOptions.types';
 
