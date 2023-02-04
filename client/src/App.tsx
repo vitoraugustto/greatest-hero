@@ -5,7 +5,7 @@ import { Toast } from '@components';
 
 import GlobalStyle from './components/GlobalStyle';
 import { Routes } from './routes';
-import { defaultTheme } from './themes/default/theme';
+import { defaultTheme } from './themes/default';
 
 export const App = () => {
   return (

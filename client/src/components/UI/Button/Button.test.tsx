@@ -1,9 +1,10 @@
-import '@testing-library/jest-dom';
-import { fireEvent, render } from '@testing-library/react';
 import { CSSObject, ThemeProvider } from 'styled-components';
 import { describe, test, vi } from 'vitest';
 
-import { defaultTheme } from '../../../themes/default/theme';
+import '@testing-library/jest-dom';
+import { fireEvent, render } from '@testing-library/react';
+
+import { defaultTheme } from '../../../themes/default';
 import { Button } from './Button';
 
 export const renderWithTheme = (children: React.ReactElement) => {
