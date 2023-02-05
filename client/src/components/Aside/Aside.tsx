@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTheme } from 'styled-components';
 
 import { ASIDE_WIDTH } from '@common/constants';
 import { Box, Link, Row, Spacer, Text } from '@components';
