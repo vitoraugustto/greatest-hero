@@ -3,10 +3,12 @@ on: push
 jobs:
   security:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: [server]
     steps:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
-        working-directory: ./server
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
