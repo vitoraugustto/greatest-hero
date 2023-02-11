@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "prepare": "cd .. && husky install ./client/.husky",
+    "prepare": "husky install",
     "start": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
