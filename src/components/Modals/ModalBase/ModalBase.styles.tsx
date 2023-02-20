@@ -1,6 +1,8 @@
 import { DefaultTheme } from 'styled-components';
 import Modal from 'styled-react-modal';
 
+// TODO: Change Modal Library
+
 export const StyledModal = Modal.styled`
   border-radius: 8px;
   background-color: ${(props: { theme: DefaultTheme }) =>
