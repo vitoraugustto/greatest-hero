@@ -15,5 +15,5 @@ export const _FloatingOptions = Template.bind({});
 _FloatingOptions.args = {
   x: 100,
   y: 100,
-  options: [{ label: 'Equipar' }],
+  options: [{ label: 'Equipar', onClick: () => null }],
 };
