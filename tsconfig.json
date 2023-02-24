@@ -21,7 +21,8 @@
       "@common/*": ["src/common/*"],
       "@hooks/*": ["src/hooks/*"],
       "@screens/*": ["src/screens/*"],
-      "@services/*": ["src/services/*"]
+      "@services/*": ["src/services/*"],
+      "@assets/*": ["src/assets/*"]
     }
   },
   "include": ["src"],
