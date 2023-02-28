@@ -41,7 +41,7 @@ export const CombatScreen = () => {
                   <Text>Defesa: {combatResult.hero.status.defense}</Text>
                 </Box>
                 <Box>
-                  <Text>Monstro: {combatResult.monster.name}</Text>
+                  <Text>Inimigo: {combatResult.monster.name}</Text>
                   <Spacer mt={8} />
                   <Text>
                     Vida {combatResult.monster.status.hp}/
