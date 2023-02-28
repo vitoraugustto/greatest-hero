@@ -33,6 +33,16 @@ export interface IHero {
   equipment: IItem[];
 }
 
+export interface IMonster {
+  name: string;
+  status: {
+    attack: number;
+    defense: number;
+    hp: number;
+    maxHp: number;
+  };
+}
+
 export interface IItem {
   _id: string;
   name: string;
