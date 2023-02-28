@@ -42,6 +42,7 @@ export const CombatScreen = () => {
                 </Box>
                 <Box>
                   <Text>Monstro: {combatResult.monster.name}</Text>
+                  <Spacer mt={8} />
                   <Text>
                     Vida {combatResult.monster.status.hp}/
                     {combatResult.monster.status.maxHp}
