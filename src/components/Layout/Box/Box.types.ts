@@ -1,3 +1,5 @@
+import { CSSObject } from 'styled-components';
+
 export interface IBox {
   as?: 'section' | 'main' | 'header' | 'footer' | 'aside';
   bgColor?: string;
@@ -11,5 +13,6 @@ export interface IBox {
   flex?: boolean;
   testId?: string;
   onClick?: (e: MouseEvent) => void;
+  style?: CSSObject;
   children?: React.ReactElement | React.ReactElement[];
 }
