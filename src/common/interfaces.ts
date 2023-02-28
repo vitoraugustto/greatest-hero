@@ -33,7 +33,7 @@ export interface IHero {
   equipment: IItem[];
 }
 
-export interface IMonster {
+export interface IEnemy {
   name: string;
   status: {
     attack: number;
