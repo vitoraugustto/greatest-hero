@@ -58,7 +58,7 @@ const CharacterStatus: React.FC<{
     <Box>
       <Text>{character.name}</Text>
       <Spacer mt={8} />
-      <Box bgColor="red" width={250}>
+      <Box bgColor="#ff0000" width={250}>
         <Spacer p={8}>
           <Row style={{ justifyContent: 'space-between' }}>
             <Text weight="bold" color="white">
