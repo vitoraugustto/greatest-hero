@@ -1,15 +1,17 @@
 import { CSSObject } from 'styled-components';
 
+import { Color } from '@common/interfaces';
+
 export interface IBox {
   as?: 'section' | 'main' | 'header' | 'footer' | 'aside';
-  bgColor?: string;
-  width?: number;
-  height?: number;
-  gap?: number;
+  bgColor?: Color;
+  width?: number | string;
+  height?: number | string;
+  gap?: number | string;
   vCenter?: boolean;
   hCenter?: boolean;
-  borderRadius?: number;
-  borderColor?: string;
+  borderRadius?: number | string;
+  borderColor?: Color;
   flex?: boolean;
   testId?: string;
   onClick?: (e: MouseEvent) => void;
