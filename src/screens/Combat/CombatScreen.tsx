@@ -28,29 +28,9 @@ export const CombatScreen = () => {
       <Aside>
         <React.Fragment>
           {combatResult && (
-            <Box gap={18} style={{ alignItems: 'center', marginTop: 120 }}>
-              <Row style={{ justifyContent: 'space-evenly' }}>
-                <Box>
-                  <Text>Herói: {combatResult.hero.name}</Text>
-                  <Spacer mt={8} />
-                  <Text>
-                    Vida {combatResult.hero.status.hp}/
-                    {combatResult.hero.status.maxHp}
-                  </Text>
-                  <Text>Ataque: {combatResult.hero.status.attack}</Text>
-                  <Text>Defesa: {combatResult.hero.status.defense}</Text>
-                </Box>
-                <Box>
-                  <Text>Inimigo: {combatResult.monster.name}</Text>
-                  <Spacer mt={8} />
-                  <Text>
-                    Vida {combatResult.monster.status.hp}/
-                    {combatResult.monster.status.maxHp}
-                  </Text>
-                  <Text>Ataque: {combatResult.monster.status.attack}</Text>
-                  <Text>Defesa: {combatResult.monster.status.defense}</Text>
-                </Box>
-              </Row>
+            <Box gap={42}>
+              <CharacterStatus character={combatResult.hero} />
+              <CharacterStatus character={combatResult.monster} />
               <Text>
                 O {combatResult.monster.name} te atacou e desferiu{' '}
                 {combatResult.combat.damageTaken} de dano à sua vida.
@@ -60,5 +40,39 @@ export const CombatScreen = () => {
         </React.Fragment>
       </Aside>
     </Background>
+  );
+};
+
+const CharacterStatus: React.FC<{
+  character: {
+    name: string;
+    status: {
+      attack: number;
+      defense: number;
+      hp: number;
+      maxHp: number;
+    };
+  };
+}> = ({ character }) => {
+  return (
+    <Box>
+      <Text>{character.name}</Text>
+      <Spacer mt={8} />
+      <Box bgColor="red" width={250}>
+        <Spacer p={8}>
+          <Row style={{ justifyContent: 'space-between' }}>
+            <Text weight="bold" color="white">
+              Vida
+            </Text>
+            <Text weight="bold" color="white">
+              {character.status.hp}/{character.status.maxHp}
+            </Text>
+          </Row>
+        </Spacer>
+      </Box>
+      <Spacer mt={8} />
+      <Text>Ataque: {character.status.attack}</Text>
+      <Text>Defesa: {character.status.defense}</Text>
+    </Box>
   );
 };
