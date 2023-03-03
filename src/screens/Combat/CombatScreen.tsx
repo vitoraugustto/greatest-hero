@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { IEnemy, IHero } from '@common/interfaces';
+import { percentage } from '@common/utils';
 import { Aside, Background, Box, Row, Spacer, Text } from '@components';
 
 export const CombatScreen = () => {
@@ -32,7 +33,7 @@ export const CombatScreen = () => {
               <CharacterStatus character={combatResult.hero} />
               <CharacterStatus character={combatResult.monster} />
               <Text>
-                O {combatResult.monster.name} te atacou e desferiu{' '}
+                O {combatResult.monster.name} te atacou e desferiu&nbsp;
                 {combatResult.combat.damageTaken} de dano à sua vida.
               </Text>
             </Box>
@@ -58,9 +59,18 @@ const CharacterStatus: React.FC<{
     <Box>
       <Text>{character.name}</Text>
       <Spacer mt={8} />
-      <Box bgColor="#ff0000" width={250}>
-        <Spacer p={8}>
-          <Row style={{ justifyContent: 'space-between' }}>
+      <Box bgColor="#be0000" width={250}>
+        <Box
+          bgColor="#ff0000"
+          width={`${percentage(character.status.hp, character.status.maxHp)}%`}
+        >
+          <Row
+            style={{
+              justifyContent: 'space-between',
+              minWidth: 250,
+              padding: 8,
+            }}
+          >
             <Text weight="bold" color="white">
               Vida
             </Text>
@@ -68,7 +78,7 @@ const CharacterStatus: React.FC<{
               {character.status.hp}/{character.status.maxHp}
             </Text>
           </Row>
-        </Spacer>
+        </Box>
       </Box>
       <Spacer mt={8} />
       <Text>Ataque: {character.status.attack}</Text>
