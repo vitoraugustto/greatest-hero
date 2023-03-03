@@ -3,3 +3,6 @@ export const addTestId = (testId?: string) => {
     'data-testid': testId,
   };
 };
+
+export const percentage = (partialValue: number, totalValue: number) =>
+  (100 * partialValue) / totalValue;
