@@ -5,11 +5,11 @@ import { Toast } from '@components';
 
 import GlobalStyle from './components/GlobalStyle';
 import { Routes } from './routes';
-import { defaultTheme } from './themes/default';
+import { darkTheme } from './themes/dark';
 
 export const App = () => {
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={darkTheme}>
       <ModalProvider>
         <GlobalStyle />
         <Toast />
