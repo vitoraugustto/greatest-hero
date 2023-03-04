@@ -40,6 +40,7 @@ export interface IEnemy {
     defense: number;
     hp: number;
     maxHp: number;
+    attackSpeed: number;
   };
 }
 
