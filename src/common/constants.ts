@@ -13,6 +13,7 @@ export const INIT_HERO: IHero = {
     attack: 0,
     defense: 0,
     hp: 0,
+    maxHp: 0,
   },
   inventory: [],
   equipment: [],
