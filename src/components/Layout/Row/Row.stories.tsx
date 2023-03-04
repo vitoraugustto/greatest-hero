@@ -30,9 +30,9 @@ _Row.args = {
   gap: 16,
   children: (
     <>
-      <Box height={100} width={100} bgColor="blue" />
-      <Box height={80} width={100} bgColor="red" />
-      <Box height={60} width={100} bgColor="green" />
+      <Box height={100} width={100} bgColor="#ff0000" />
+      <Box height={80} width={100} bgColor="#00ff00" />
+      <Box height={60} width={100} bgColor="#0000ff" />
     </>
   ),
 };
