@@ -52,6 +52,7 @@ const CharacterStatus: React.FC<{
       defense: number;
       hp: number;
       maxHp: number;
+      attackSpeed: number;
     };
   };
 }> = ({ character }) => {
