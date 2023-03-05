@@ -28,6 +28,7 @@ export interface IHero {
     defense: number;
     hp: number;
     maxHp: number;
+    attackSpeed: number;
   };
   inventory: IItem[];
   equipment: IItem[];
