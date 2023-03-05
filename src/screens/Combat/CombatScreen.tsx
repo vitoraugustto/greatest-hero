@@ -55,6 +55,16 @@ const CharacterStatus: React.FC<{
     };
   };
 }> = ({ character }) => {
+  const [attackSpeed, setAttackSpeed] = useState(character.status.attackSpeed);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAttackSpeed((prevState) => prevState - 1000);
+    }, 1000);
+
+    () => clearInterval(interval);
+  }, []);
+
   return (
     <Box>
       <Text>{character.name}</Text>
@@ -83,6 +93,16 @@ const CharacterStatus: React.FC<{
       <Spacer mt={8} />
       <Text>Ataque: {character.status.attack}</Text>
       <Text>Defesa: {character.status.defense}</Text>
+      <Spacer mt={8} />
+      <Box width={250}>
+        <Box
+          style={{ transition: 'width 1s linear' }}
+          width={`${percentage(attackSpeed, character.status.attackSpeed)}%`}
+          height={8}
+          borderRadius={4}
+          bgColor="#3cc1ff"
+        />
+      </Box>
     </Box>
   );
 };
