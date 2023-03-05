@@ -44,6 +44,7 @@ export const CombatScreen = () => {
   );
 };
 
+// TODO: Refactor useEffects
 const CharacterStatus: React.FC<{
   character: {
     name: string;
@@ -65,6 +66,12 @@ const CharacterStatus: React.FC<{
 
     () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (attackSpeed < 0) {
+      setAttackSpeed(character.status.attackSpeed);
+    }
+  }, [attackSpeed]);
 
   return (
     <Box>
