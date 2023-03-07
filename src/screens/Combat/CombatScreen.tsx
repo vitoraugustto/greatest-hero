@@ -3,8 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { IEnemy, IHero } from '@common/interfaces';
 import { percentage } from '@common/utils';
 import { Aside, Background, Box, Row, Spacer, Text } from '@components';
+import { useToast } from '@hooks/useToast';
 
 export const CombatScreen = () => {
+  const toast = useToast();
   const [combatResult, setCombatResult] = useState<{
     hero: IHero;
     monster: IEnemy;
@@ -14,7 +16,14 @@ export const CombatScreen = () => {
   useEffect(() => {
     const ws = new WebSocket('ws://localhost:8080');
 
-    ws.addEventListener('message', (e) => setCombatResult(JSON.parse(e.data)));
+    ws.addEventListener('message', (e) => {
+      setCombatResult(JSON.parse(e.data));
+      toast.info(
+        `O ${JSON.parse(e.data).monster.name} te atacou e desferiu ${
+          JSON.parse(e.data).combat.damageTaken
+        } de dano à sua vida.`
+      );
+    });
 
     return () => {
       ws.removeEventListener('message', (e) =>
@@ -23,7 +32,6 @@ export const CombatScreen = () => {
       ws.close();
     };
   }, []);
-
   return (
     <Background>
       <Aside>
@@ -32,10 +40,6 @@ export const CombatScreen = () => {
             <Box gap={42}>
               <CharacterStatus character={combatResult.hero} />
               <CharacterStatus character={combatResult.monster} />
-              <Text>
-                O {combatResult.monster.name} te atacou e desferiu&nbsp;
-                {combatResult.combat.damageTaken} de dano à sua vida.
-              </Text>
             </Box>
           )}
         </React.Fragment>
