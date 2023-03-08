@@ -48,7 +48,6 @@ export const CombatScreen = () => {
   );
 };
 
-// TODO: Refactor useEffects
 const CharacterStatus: React.FC<{
   character: {
     name: string;
