@@ -9,7 +9,7 @@ export const CombatScreen = () => {
   const toast = useToast();
   const [combatResult, setCombatResult] = useState<{
     hero: IHero;
-    monster: IEnemy;
+    enemy: IEnemy;
     combat: { damageTaken: number };
   }>();
 
@@ -19,7 +19,7 @@ export const CombatScreen = () => {
     ws.addEventListener('message', (e) => {
       setCombatResult(JSON.parse(e.data));
       toast.info(
-        `O ${JSON.parse(e.data).monster.name} te atacou e desferiu ${
+        `O ${JSON.parse(e.data).enemy.name} te atacou e desferiu ${
           JSON.parse(e.data).combat.damageTaken
         } de dano à sua vida.`
       );
@@ -39,7 +39,7 @@ export const CombatScreen = () => {
           {combatResult && (
             <Box gap={42}>
               <CharacterStatus character={combatResult.hero} />
-              <CharacterStatus character={combatResult.monster} />
+              <CharacterStatus character={combatResult.enemy} />
             </Box>
           )}
         </React.Fragment>
