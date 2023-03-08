@@ -48,7 +48,7 @@ export const CombatScreen = () => {
   );
 };
 
-const CharacterStatus: React.FC<{
+interface ICharacterStatus {
   character: {
     name: string;
     status: {
@@ -59,7 +59,9 @@ const CharacterStatus: React.FC<{
       attackSpeed: number;
     };
   };
-}> = ({ character }) => {
+}
+
+const CharacterStatus: React.FC<ICharacterStatus> = ({ character }) => {
   return (
     <Box>
       <Text>{character.name}</Text>
