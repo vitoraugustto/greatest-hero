@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { IEnemy, IHero } from '@common/interfaces';
+import { ICombat, IEnemy, IHero } from '@common/interfaces';
 import { percentage } from '@common/utils';
 import { Aside, Background, Box, Row, Spacer, Text } from '@components';
 import { useToast } from '@hooks/useToast';
@@ -10,7 +10,7 @@ export const CombatScreen = () => {
   const [combatResult, setCombatResult] = useState<{
     hero: IHero;
     enemy: IEnemy;
-    combat: { damageTaken: number };
+    combat: ICombat;
   }>();
 
   useEffect(() => {
