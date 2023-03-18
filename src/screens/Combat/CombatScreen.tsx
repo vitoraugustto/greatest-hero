@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 
 import { IEnemy } from '@common/interfaces';
@@ -16,16 +16,27 @@ export const CombatScreen = () => {
   return (
     <Background>
       <Aside>
-        {enemies.map((enemy) => (
-          <Row>
-            <Box borderRadius={10} bgColor={theme.palette.secondary.main}>
-              <Spacer p={10}>
-                <img src={enemy.image} width="124px" />
-                <Text>{enemy.name}</Text>
-              </Spacer>
-            </Box>
-          </Row>
-        ))}
+        <Text
+          align="center"
+          as="h1"
+          weight="bold"
+          color={theme.typography.title.color}
+          size={26}
+        >
+          Combate
+        </Text>
+        <React.Fragment>
+          {enemies.map((enemy) => (
+            <Row>
+              <Box borderRadius={10} bgColor={theme.palette.secondary.main}>
+                <Spacer p={10}>
+                  <img src={enemy.image} width="124px" />
+                  <Text>{enemy.name}</Text>
+                </Spacer>
+              </Box>
+            </Row>
+          ))}
+        </React.Fragment>
       </Aside>
     </Background>
   );
