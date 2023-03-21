@@ -35,6 +35,7 @@ export interface IHero {
 }
 
 export interface IEnemy {
+  _id: string;
   name: string;
   image: string;
   status: {
