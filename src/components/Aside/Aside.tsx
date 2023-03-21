@@ -34,7 +34,7 @@ export const Aside: React.FC<IAside> = ({ children }) => {
         <AsideOption linkTo="/" label="Equipamento" icon={Armor} />
         <AsideOption linkTo="/hero/inventory" label="Inventário" icon={Chest} />
         <AsideOption linkTo="/store" label="Loja" icon={Store} />
-        <AsideOption linkTo="/combat/enemies" label="Combate" icon={Swords} />
+        <AsideOption linkTo="/combat" label="Combate" icon={Swords} />
       </StyledAside>
       <Spacer pl={ASIDE_WIDTH}>{children}</Spacer>
     </>

@@ -16,7 +16,7 @@ export const Routes = () => {
         <Route path="/" element={<EquipmentScreen />} />
         <Route path="/hero/inventory" element={<InventoryScreen />} />
         <Route path="/store" element={<StoreScreen />} />
-        <Route path="/combat/enemies" element={<EnemiesScreen />} />
+        <Route path="/combat" element={<EnemiesScreen />} />
       </_Routes>
     </Router>
   );
