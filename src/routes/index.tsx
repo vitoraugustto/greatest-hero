@@ -4,6 +4,7 @@ import {
   Routes as _Routes,
 } from 'react-router-dom';
 
+import { CombatScreen } from '@screens/Combat/CombatScreen';
 import { EnemiesScreen } from '@screens/Combat/EnemiesScreen';
 import { EquipmentScreen } from '@screens/Hero/EquipmentScreen';
 import { InventoryScreen } from '@screens/Hero/InventoryScreen';
@@ -17,6 +18,7 @@ export const Routes = () => {
         <Route path="/hero/inventory" element={<InventoryScreen />} />
         <Route path="/store" element={<StoreScreen />} />
         <Route path="/combat" element={<EnemiesScreen />} />
+        <Route path="/combat/:enemyId/fight" element={<CombatScreen />} />
       </_Routes>
     </Router>
   );
