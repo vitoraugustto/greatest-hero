@@ -23,7 +23,7 @@ export const EnemiesScreen = () => {
           color={theme.typography.title.color}
           size={26}
         >
-          Combate
+          Inimigos
         </Text>
         <React.Fragment>
           {enemies.map((enemy) => (
