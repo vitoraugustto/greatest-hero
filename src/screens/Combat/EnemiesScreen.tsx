@@ -5,7 +5,7 @@ import { IEnemy } from '@common/interfaces';
 import { Aside, Background, Box, Row, Spacer, Text } from '@components';
 import { fetchEnemies } from '@services/enemy';
 
-export const CombatScreen = () => {
+export const EnemiesScreen = () => {
   const [enemies, setEnemies] = useState<IEnemy[]>([]);
   const theme = useTheme();
 
@@ -27,7 +27,7 @@ export const CombatScreen = () => {
         </Text>
         <React.Fragment>
           {enemies.map((enemy) => (
-            <Row>
+            <Row key={enemy._id}>
               <Box borderRadius={10} bgColor={theme.palette.secondary.main}>
                 <Spacer p={10}>
                   <img src={enemy.image} width="124px" />
