@@ -1,3 +1,5 @@
+import Modal from 'styled-react-modal';
+
 import { StyledModal } from './ModalBase.styles';
 import { IModalBase } from './ModalBase.types';
 
@@ -8,12 +10,12 @@ export const ModalBase: React.FC<IModalBase> = ({
   children,
 }) => {
   return (
-    <StyledModal
+    <Modal
       onEscapeKeydown={onEscapeKeydown}
       onBackgroundClick={onBackgroundClick}
       isOpen={isModalOpen}
     >
-      {children}
-    </StyledModal>
+      <StyledModal>{children}</StyledModal>
+    </Modal>
   );
 };
