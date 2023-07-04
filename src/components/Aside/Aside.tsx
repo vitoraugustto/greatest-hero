@@ -3,7 +3,6 @@ import React from 'react';
 import Armor from '@assets/icons/armor.png';
 import Chest from '@assets/icons/chest.png';
 import Store from '@assets/icons/store.png';
-import Swords from '@assets/icons/swords.png';
 import { ASIDE_WIDTH } from '@common/constants';
 import { Box, Link, Row, Spacer, Text } from '@components';
 import { useHero } from '@hooks/useHero';
@@ -34,7 +33,6 @@ export const Aside: React.FC<IAside> = ({ children }) => {
         <AsideOption linkTo="/" label="Equipamento" icon={Armor} />
         <AsideOption linkTo="/hero/inventory" label="Inventário" icon={Chest} />
         <AsideOption linkTo="/store" label="Loja" icon={Store} />
-        <AsideOption linkTo="/combat" label="Combate" icon={Swords} />
       </StyledAside>
       <Spacer pl={ASIDE_WIDTH}>{children}</Spacer>
     </>
