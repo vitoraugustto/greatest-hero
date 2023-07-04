@@ -1,11 +1,15 @@
 # Greatest Hero (WIP)
 
 ## Current Features:
-- Inventory System
 
-Equip, unequip and sell an item from your inventory.
-___
+- Inventory & Equipment System
+
+Equip, unequip, or sell items from your character's inventory.
+
+---
+
 - Store System
 
 Buy items from the store. (requires gold)
-___
+
+---
