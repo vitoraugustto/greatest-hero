@@ -29,6 +29,7 @@ declare module 'styled-components' {
       };
     };
     palette: {
+      mode: 'light' | 'dark';
       primary: {
         300: Color;
         main: Color;
