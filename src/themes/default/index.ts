@@ -28,6 +28,7 @@ export const defaultTheme: DefaultTheme = {
     },
   },
   palette: {
+    mode: 'light',
     primary: {
       300: violet[300],
       main: violet.main,

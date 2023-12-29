@@ -29,6 +29,7 @@ export const darkTheme: DefaultTheme = {
     },
   },
   palette: {
+    mode: 'dark',
     primary: {
       300: violet[300],
       main: violet.main,
