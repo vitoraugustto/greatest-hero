@@ -4,7 +4,6 @@ import { Color } from '@common/interfaces';
 
 declare module 'styled-components' {
   interface DefaultTheme {
-    name: string;
     typography: {
       body: {
         color: Color;
