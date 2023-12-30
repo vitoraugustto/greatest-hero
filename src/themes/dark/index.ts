@@ -4,7 +4,6 @@ import { violet } from '../default/colors';
 import { black } from './colors';
 
 export const darkTheme: DefaultTheme = {
-  name: 'Tema escuro',
   typography: {
     body: {
       color: '#caa5fa',

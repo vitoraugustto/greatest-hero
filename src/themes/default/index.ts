@@ -3,7 +3,6 @@ import { DefaultTheme } from 'styled-components';
 import { purple, violet } from './colors';
 
 export const defaultTheme: DefaultTheme = {
-  name: 'Tema padrão',
   typography: {
     body: {
       color: '#caa5fa',
