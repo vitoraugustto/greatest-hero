@@ -1,6 +1,6 @@
-# Greatest Hero (WIP)
+# Greatest Hero
 
-## Current Features:
+## Features:
 
 - Inventory & Equipment System
 
